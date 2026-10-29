@@ -351,17 +351,39 @@ body.nav-open { overflow: hidden; }
 }
 .treatment-card { scroll-snap-align: start; min-width: 0; }
 .treatment-card__media {
-  aspect-ratio: 4 / 5;
-  background: var(--white);
-  color: var(--ink);
-  border: 1px solid var(--sand);
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #1a1614;
+  color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 16px 16px 18px;
 }
-.treatment-card:nth-child(2) .treatment-card__media,
-.treatment-card:nth-child(4) .treatment-card__media { background: var(--paper); }
+.treatment-card__media img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center 42%;
+}
+.treatment-card__media img.is-tool { object-position: center center; }
+.treatment-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(18, 14, 12, 0.58) 0%, rgba(18, 14, 12, 0.05) 32%, rgba(18, 14, 12, 0.02) 54%, rgba(18, 14, 12, 0.72) 100%);
+}
+.treatment-card__media .when,
+.treatment-card__media > div { position: relative; z-index: 2; }
 .when, .idx {
   font-family: Inter, system-ui, sans-serif;
   font-size: 0.7rem;
@@ -369,19 +391,27 @@ body.nav-open { overflow: hidden; }
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
-.treatment-card__media .when { color: var(--muted); }
+.treatment-card__media .when {
+  align-self: flex-start;
+  padding: 6px 9px 5px;
+  background: rgba(254, 251, 245, 0.94);
+  color: #1a1614;
+  line-height: 1.2;
+}
 .treatment-card__media .index {
   display: block;
   margin-bottom: 6px;
   font-family: Inter, system-ui, sans-serif;
   font-size: 0.72rem;
   letter-spacing: 0.18em;
-  color: var(--bronze);
+  color: rgba(254, 251, 245, 0.88);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
 }
 .treatment-card__media h3 {
   margin: 0;
-  color: var(--ink);
+  color: #fff;
   font-size: clamp(1.85rem, 2.4vw, 2.3rem);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
 }
 .treatment-card > p {
   margin-top: 12px;
@@ -489,8 +519,9 @@ html.js .quote.is-active { display: block; }
 .location-card img {
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
+  object-position: 36% 42%;
 }
 .location-card div { padding: 18px 18px 22px; }
 .location-card h3 {
@@ -782,7 +813,6 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
     overflow: visible;
   }
   .row-controls { display: none; }
-  .treatment-card__media { aspect-ratio: 3 / 4; }
   .location-grid { grid-template-columns: minmax(220px, 280px) minmax(0, 1fr); gap: 56px; align-items: start; }
   .about-grid { grid-template-columns: minmax(280px, 0.86fr) 1.1fr; gap: 72px; align-items: start; }
   .own-panel-grid, .closing-grid { grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
@@ -839,6 +869,9 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
 }
 @media (prefers-contrast: more) {
   .hero-shade { background: rgba(0, 0, 0, 0.55); }
+  .treatment-card__media::after {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.35) 42%, rgba(0, 0, 0, 0.82) 100%);
+  }
 }
 ::selection { background: #ede1d5; color: #000000; }
 </style>
@@ -933,10 +966,12 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
         <h2 id="treatments-title">What’s coming</h2>
         <p>Planned for after RN licensure, injector training, and a Physician. Not available now.</p>
       </div>
+      <!-- Stills in spa/ are royalty-free stock, not a reference medspa’s files and not the Coral Gables room. -->
       <div class="treatment-wrap">
         <div class="treatment-row" id="treatment-row">
           <article class="treatment-card">
             <div class="treatment-card__media">
+              <img src="spa/card-neuro.jpg" alt="Black-and-white close-up of a facial device at the cheek. A reference still for neuromodulator care, which is not offered yet." width="900" height="1200">
               <span class="when">Not offered yet</span>
               <div>
                 <span class="index">01</span>
@@ -947,6 +982,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
           </article>
           <article class="treatment-card">
             <div class="treatment-card__media">
+              <img class="is-tool" src="spa/card-filler.jpg" alt="Black-and-white close-up of a slim cosmetic tool. A reference still for dermal filler care, which is not offered yet." width="900" height="1200">
               <span class="when">Not offered yet</span>
               <div>
                 <span class="index">02</span>
@@ -957,6 +993,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
           </article>
           <article class="treatment-card">
             <div class="treatment-card__media">
+              <img src="spa/card-facial.jpg" alt="Black-and-white close-up of serum and a brush during a facial. A reference still. Facials are not offered yet." width="900" height="1200">
               <span class="when">Not offered yet</span>
               <div>
                 <span class="index">03</span>
@@ -967,6 +1004,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
           </article>
           <article class="treatment-card">
             <div class="treatment-card__media">
+              <img src="spa/card-consult.jpg" alt="Black-and-white close-up of a handheld device along the jaw. A reference still for consultations, which are not offered yet." width="900" height="1200">
               <span class="when">Not offered yet</span>
               <div>
                 <span class="index">04</span>
@@ -1022,7 +1060,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
         <p><a class="cta" href="#waitlist">Join the waitlist</a></p>
       </div>
       <article class="location-card">
-        <img src="night-poster.jpg" alt="The Miami skyline at night, the city Luxe is being built for." width="1920" height="1080">
+        <img src="spa/spa-bed.jpg" alt="A warm treatment bed in soft window light, the kind of room planned for Coral Gables. The suite is not open." width="1600" height="1067">
         <div>
           <p class="idx">01</p>
           <h3>Coral Gables</h3>
