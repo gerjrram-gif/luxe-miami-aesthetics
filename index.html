@@ -10,12 +10,12 @@
 <meta property="og:description" content="Natural results. Precise care. Built the right way. Coral Gables, Unit 110, coming 2028.">
 <meta property="og:url" content="https://luxemiamiaesthetics.com">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://luxemiamiaesthetics.com/hero-poster.jpg">
-<meta property="og:image:alt" content="A red LED facial treatment dissolving into the Miami skyline at night, the poster for the Luxe Miami Aesthetics hero.">
+<meta property="og:image" content="https://luxemiamiaesthetics.com/spa/hero-bw.jpg">
+<meta property="og:image:alt" content="Black-and-white editorial portrait, the homepage frame for Luxe Miami Aesthetics.">
 <meta name="theme-color" content="#fefbf5">
 <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch.png">
-<link rel="preload" as="image" href="hero-poster.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="spa/hero-bw.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -216,26 +216,27 @@ body.nav-open { overflow: hidden; }
   display: flex;
   align-items: flex-end;
   color: #fff;
-  background: var(--cream) url("hero-poster.jpg") center / cover no-repeat;
+  background: #141210;
   overflow: hidden;
 }
-.hero-video {
+.hero-still {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  max-width: none;
   object-fit: cover;
-  opacity: 0;
-  transition: opacity 1.7s ease;
+  object-position: 40% center;
 }
-.hero-video.is-front { opacity: 1; }
-.hero-video.is-hidden { display: none; }
+@media (min-width: 880px) {
+  .hero-still { object-position: 68% center; }
+}
 .hero-shade {
   position: absolute;
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(254, 251, 245, 0.04) 0%, rgba(0, 0, 0, 0.02) 36%, rgba(0, 0, 0, 0.16) 64%, rgba(0, 0, 0, 0.4) 100%);
+    linear-gradient(180deg, rgba(12, 10, 8, 0.04) 0%, rgba(12, 10, 8, 0) 34%, rgba(12, 10, 8, 0.42) 68%, rgba(12, 10, 8, 0.74) 100%);
 }
 .hero-content {
   position: relative;
@@ -370,9 +371,8 @@ body.nav-open { overflow: hidden; }
   height: 100%;
   max-width: none;
   object-fit: cover;
-  object-position: center 42%;
+  object-position: center;
 }
-.treatment-card__media img.is-tool { object-position: center center; }
 .treatment-card__media::after {
   content: "";
   position: absolute;
@@ -521,7 +521,7 @@ html.js .quote.is-active { display: block; }
   height: auto;
   aspect-ratio: 3 / 4;
   object-fit: cover;
-  object-position: 36% 42%;
+  object-position: center;
 }
 .location-card div { padding: 18px 18px 22px; }
 .location-card h3 {
@@ -863,7 +863,6 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .hero-video { display: none !important; }
   .quote-controls { display: none; }
   html.js [data-reveal], .hero-content { animation: none; opacity: 1; transform: none; }
 }
@@ -913,16 +912,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
 
 <main id="main">
   <section class="hero" aria-labelledby="hero-title">
-    <!--
-      Hero film: hero.mp4 (muted H.264, 1920×1080). Poster: hero-poster.jpg.
-      Optional mobile cut: hero-mobile.mp4 is not in the repo; phones use hero.mp4.
-      The page crossfades to night.mp4 near the end of each pass, then returns.
-      Footage: Mixkit Free License — clinic 52164, Miami night lights 12028.
-    -->
-    <video id="hero-video" class="hero-video" poster="hero-poster.jpg" preload="none" muted autoplay loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1">
-      <source src="hero.mp4" type="video/mp4" media="(prefers-reduced-motion: no-preference)">
-    </video>
-    <video id="night-video" class="hero-video" poster="night-poster.jpg" preload="none" muted playsinline webkit-playsinline loop disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1"></video>
+    <img class="hero-still" src="spa/hero-bw.jpg" alt="Black-and-white editorial portrait, the homepage frame." width="1280" height="720">
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="hero-content">
       <p class="eyebrow">Building Luxe · Coral Gables · <span class="nowrap">Coming 2028</span></p>
@@ -966,12 +956,12 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
         <h2 id="treatments-title">What’s coming</h2>
         <p>Planned for after RN licensure, injector training, and a Physician. Not available now.</p>
       </div>
-      <!-- Stills in spa/ are royalty-free stock, not a reference medspa’s files and not the Coral Gables room. -->
+      <!-- Photographs in spa/ were made for Luxe. They are not a reference medspa’s files and not the Coral Gables room. -->
       <div class="treatment-wrap">
         <div class="treatment-row" id="treatment-row">
           <article class="treatment-card">
             <div class="treatment-card__media">
-              <img src="spa/card-neuro.jpg" alt="Black-and-white close-up of a facial device at the cheek. A reference still for neuromodulator care, which is not offered yet." width="900" height="1200">
+              <img src="spa/card-neuro.jpg" alt="Black-and-white close-up of an eye. A reference still for neuromodulator care, which is not offered yet." width="1024" height="1024">
               <span class="when">Not offered yet</span>
               <div>
                 <span class="index">01</span>
@@ -982,7 +972,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
           </article>
           <article class="treatment-card">
             <div class="treatment-card__media">
-              <img class="is-tool" src="spa/card-filler.jpg" alt="Black-and-white close-up of a slim cosmetic tool. A reference still for dermal filler care, which is not offered yet." width="900" height="1200">
+              <img src="spa/card-filler.jpg" alt="Black-and-white close-up of lips. A reference still for dermal filler care, which is not offered yet." width="1024" height="1024">
               <span class="when">Not offered yet</span>
               <div>
                 <span class="index">02</span>
@@ -993,7 +983,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
           </article>
           <article class="treatment-card">
             <div class="treatment-card__media">
-              <img src="spa/card-facial.jpg" alt="Black-and-white close-up of serum and a brush during a facial. A reference still. Facials are not offered yet." width="900" height="1200">
+              <img src="spa/card-facial.jpg" alt="Black-and-white close-up of a shoulder in a spa wrap beside treatment equipment. Facials are not offered yet." width="1024" height="1024">
               <span class="when">Not offered yet</span>
               <div>
                 <span class="index">03</span>
@@ -1004,7 +994,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
           </article>
           <article class="treatment-card">
             <div class="treatment-card__media">
-              <img src="spa/card-consult.jpg" alt="Black-and-white close-up of a handheld device along the jaw. A reference still for consultations, which are not offered yet." width="900" height="1200">
+              <img src="spa/card-consult.jpg" alt="Black-and-white close-up of a neck and collarbone. A reference still for consultations, which are not offered yet." width="1024" height="1024">
               <span class="when">Not offered yet</span>
               <div>
                 <span class="index">04</span>
@@ -1060,7 +1050,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
         <p><a class="cta" href="#waitlist">Join the waitlist</a></p>
       </div>
       <article class="location-card">
-        <img src="spa/spa-bed.jpg" alt="A warm treatment bed in soft window light, the kind of room planned for Coral Gables. The suite is not open." width="1600" height="1067">
+        <img src="spa/location-interior.jpg" alt="A burgundy tiled corridor, the kind of interior planned for Coral Gables. The suite is not open." width="864" height="1152">
         <div>
           <p class="idx">01</p>
           <h3>Coral Gables</h3>
@@ -1074,7 +1064,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
   <section class="section-pad about" id="about" aria-labelledby="about-title">
     <div class="wide about-grid" data-reveal>
       <figure class="founder-photo">
-        <img src="founder.jpg" alt="Mateo Ramirez on a Miami rooftop at night" width="1500" height="2000">
+        <img src="spa/about-lifestyle.jpg" alt="A warm lifestyle portrait against pale stone. Not a photograph of Mateo Ramirez." width="864" height="1152">
       </figure>
       <div>
         <p class="kicker">About Luxe</p>
@@ -1292,8 +1282,6 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
   var header = document.querySelector(".site-header");
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.getElementById("primary-nav");
-  var video = document.getElementById("hero-video");
-  var night = document.getElementById("night-video");
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   function syncHeader() {
@@ -1477,129 +1465,6 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
     document.querySelectorAll("[data-reveal]").forEach(revealNow);
   }
 
-  function stripClip(clip) {
-    if (!clip) return;
-    clip.pause();
-    clip.removeAttribute("autoplay");
-    clip.preload = "none";
-    clip.querySelectorAll("source").forEach(function (source) { source.removeAttribute("src"); });
-    clip.removeAttribute("src");
-    try { clip.load(); } catch (e) {}
-    clip.classList.add("is-hidden");
-  }
-  function halt() {
-    window.clearTimeout(nightTimer);
-    stripClip(video);
-    stripClip(night);
-  }
-  if (reduce.matches) {
-    halt();
-    return;
-  }
-
-  var nightTimer = 0;
-  var switching = false;
-  var handedOff = false;
-  var nightOk = false;
-  var heroOnScreen = true;
-
-  function arm(clip) {
-    if (!clip || clip.dataset.armed === "1") return;
-    clip.dataset.armed = "1";
-    var source = document.createElement("source");
-    source.src = "night.mp4";
-    source.type = "video/mp4";
-    clip.appendChild(source);
-    clip.muted = true;
-    clip.defaultMuted = true;
-    clip.playsInline = true;
-    clip.load();
-  }
-  function playClip(clip) {
-    if (!clip || !heroOnScreen) return;
-    clip.muted = true;
-    var pending = clip.play();
-    if (pending && typeof pending.catch === "function") pending.catch(function () {});
-  }
-  if (!video) return;
-  video.muted = true;
-  video.defaultMuted = true;
-  video.playsInline = true;
-  video.addEventListener("playing", function () {
-    video.classList.add("is-front");
-    arm(night);
-  });
-  video.addEventListener("error", function () { video.classList.add("is-hidden"); });
-  if (night) {
-    night.addEventListener("canplay", function () {
-      nightOk = isFinite(night.duration) && night.duration > 1;
-    });
-    night.addEventListener("error", function () { nightOk = false; });
-  }
-  function toNight() {
-    if (!night || !nightOk || switching || handedOff) return;
-    handedOff = true;
-    switching = true;
-    video.loop = false;
-    night.currentTime = 0;
-    playClip(night);
-    night.classList.add("is-front");
-    window.setTimeout(function () {
-      video.classList.remove("is-front");
-      video.pause();
-      try { video.currentTime = 0; } catch (e) {}
-      switching = false;
-      var hold = (isFinite(night.duration) && night.duration > 1) ? night.duration * 1000 : 9000;
-      nightTimer = window.setTimeout(toHero, hold);
-    }, 1700);
-  }
-  function toHero() {
-    if (!night || switching) return;
-    switching = true;
-    if (video.currentTime > 0.35) {
-      try { video.currentTime = 0; } catch (e) {}
-    }
-    video.classList.add("is-front");
-    playClip(video);
-    window.requestAnimationFrame(function () { night.classList.remove("is-front"); });
-    window.setTimeout(function () {
-      night.pause();
-      switching = false;
-      handedOff = false;
-    }, 1700);
-  }
-  video.addEventListener("timeupdate", function () {
-    if (!nightOk || handedOff || switching) return;
-    var at = (isFinite(video.duration) && video.duration > 4) ? Math.max(1, video.duration - 3.3) : 9;
-    if (video.currentTime >= at) toNight();
-  });
-  video.addEventListener("ended", function () {
-    if (!nightOk) {
-      try { video.currentTime = 0; } catch (e) {}
-      playClip(video);
-      return;
-    }
-    if (!handedOff) toNight();
-  });
-  if ("IntersectionObserver" in window) {
-    var heroObserver = new IntersectionObserver(function (entries) {
-      heroOnScreen = entries[0].isIntersecting;
-      if (!heroOnScreen) {
-        video.pause();
-        if (night) night.pause();
-        return;
-      }
-      playClip(night && night.classList.contains("is-front") ? night : video);
-    }, { threshold: 0.12 });
-    var heroSection = video.closest("section");
-    if (heroSection) heroObserver.observe(heroSection);
-  }
-  playClip(video);
-  if (typeof reduce.addEventListener === "function") {
-    reduce.addEventListener("change", function (event) {
-      if (event.matches) halt();
-    });
-  }
 })();
 </script>
 </body>
