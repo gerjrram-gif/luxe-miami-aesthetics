@@ -31,7 +31,7 @@
   --red: #e10600;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+html { scroll-behavior: smooth; scroll-padding-top: 120px; }
 body {
   margin: 0;
   font-family: Inter, system-ui, sans-serif;
@@ -94,39 +94,27 @@ a { color: inherit; }
 .header-inner {
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
-  min-height: 64px;
+  min-height: 76px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding-top: env(safe-area-inset-top);
+  padding: 8px 0;
+  padding-top: calc(8px + env(safe-area-inset-top));
 }
 .wordmark {
   display: flex;
   align-items: center;
+  flex: 0 1 auto;
   min-width: 0;
-  color: #fff;
+  line-height: 0;
   text-decoration: none;
 }
-.wordmark-name {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1px;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-weight: 500;
-  color: #fff;
-  line-height: 1;
-}
-.wordmark-luxe {
-  font-size: 1.45rem;
-  letter-spacing: -0.02em;
-  line-height: 0.9;
-}
-.wordmark-place {
-  font-size: 0.92rem;
-  letter-spacing: -0.01em;
-  line-height: 1.05;
+.wordmark img {
+  height: 64px;
+  width: auto;
+  max-width: 100%;
+  display: block;
 }
 .header-actions {
   display: flex;
@@ -410,17 +398,9 @@ footer {
   color: #2c2622;
 }
 .footer-mark {
-  height: 92px;
+  height: 132px;
   width: auto;
-  margin: 0 auto 8px;
-  filter: brightness(0);
-}
-.footer-sub {
-  margin: 0;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
+  margin: 0 auto 18px;
 }
 .footer-meta { margin-top: 22px; color: var(--body); }
 .footer-meta p + p { margin-top: 8px; }
@@ -445,8 +425,7 @@ footer {
 
 @media (min-width: 720px) {
   .header-inner { width: min(1180px, calc(100% - 56px)); }
-  .wordmark-luxe { font-size: 1.7rem; }
-  .wordmark-place { font-size: 1.05rem; }
+  .wordmark img { height: 86px; }
   .form-row { flex-direction: row; align-items: center; }
   .form-row input { flex: 1; }
   .form-row .cta { flex: 0 0 auto; }
@@ -465,8 +444,7 @@ footer {
 }
 @media (max-width: 380px) {
   .cta-nav { padding: 0 12px; font-size: 0.78rem; }
-  .wordmark-luxe { font-size: 1.28rem; }
-  .wordmark-place { font-size: 0.82rem; }
+  .wordmark img { height: 56px; }
 }
 @media (max-height: 700px) {
   .hero h1 { font-size: clamp(2rem, 6vh, 3.1rem); }
@@ -491,10 +469,7 @@ footer {
 <header class="site-header" id="top">
   <div class="header-inner">
     <a class="wordmark" href="#top">
-      <span class="wordmark-name">
-        <span class="wordmark-luxe">Luxe</span>
-        <span class="wordmark-place">Miami Aesthetics</span>
-      </span>
+      <img src="logo.png" alt="Luxe Miami Aesthetics" width="1000" height="572">
     </a>
     <div class="header-actions">
       <nav aria-label="Primary">
@@ -675,8 +650,7 @@ footer {
 
 <footer>
   <div class="narrow">
-    <img class="footer-mark" src="logo-mark.png" alt="Luxe" width="232" height="171">
-    <p class="footer-sub">Miami Aesthetics</p>
+    <img class="footer-mark" src="logo.png" alt="Luxe Miami Aesthetics" width="1000" height="572">
     <div class="footer-meta">
       <p>Coral Gables, Florida</p>
       <p><a class="text-link" href="mailto:info@luxemiamiaesthetics.com">info@luxemiamiaesthetics.com</a></p>
