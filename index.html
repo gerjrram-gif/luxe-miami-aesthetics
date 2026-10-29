@@ -115,7 +115,6 @@ a { color: inherit; }
   width: auto;
   max-width: 100%;
   display: block;
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.28));
 }
 .header-actions {
   display: flex;
@@ -394,16 +393,16 @@ address {
 
 footer {
   padding: 72px 0 calc(40px + env(safe-area-inset-bottom));
-  background: #efe6db;
+  background: #070b14;
   text-align: center;
-  color: #2c2622;
+  color: #f4f0ea;
 }
 .footer-mark {
   height: 108px;
   width: auto;
   margin: 0 auto 18px;
 }
-.footer-meta { margin-top: 22px; color: var(--body); }
+.footer-meta { margin-top: 22px; color: rgba(244, 240, 234, 0.88); }
 .footer-meta p + p { margin-top: 8px; }
 .footer-links {
   display: flex;
@@ -414,14 +413,16 @@ footer {
   padding: 0;
   list-style: none;
 }
-.footer-links a { color: var(--ink); text-underline-offset: 0.16em; font-size: 0.92rem; }
+footer a { color: #f4f0ea; }
+footer a:hover { color: #fff; }
+.footer-links a { text-underline-offset: 0.16em; font-size: 0.92rem; }
 .legal {
   max-width: 34rem;
   margin: 16px auto 0;
   font-size: 0.75rem;
   line-height: 1.35;
   font-weight: 400;
-  color: #5c534c;
+  color: #c9c3bc;
 }
 
 @media (min-width: 720px) {
@@ -470,7 +471,7 @@ footer {
 <header class="site-header" id="top">
   <div class="header-inner">
     <a class="wordmark" href="#top">
-      <img src="logo.png" alt="Luxe Miami Aesthetics" width="900" height="515">
+      <img src="logo.png" alt="Luxe Miami Aesthetics" width="720" height="547">
     </a>
     <div class="header-actions">
       <nav aria-label="Primary">
@@ -651,7 +652,7 @@ footer {
 
 <footer>
   <div class="narrow">
-    <img class="footer-mark" src="logo.png" alt="Luxe Miami Aesthetics" width="900" height="515">
+    <img class="footer-mark" src="logo.png" alt="Luxe Miami Aesthetics" width="720" height="547">
     <div class="footer-meta">
       <p>Coral Gables, Florida</p>
       <p><a class="text-link" href="mailto:info@luxemiamiaesthetics.com">info@luxemiamiaesthetics.com</a></p>
