@@ -12,11 +12,12 @@
     --bg: #faf7f4;
     --text: #2c2420;
     --muted: #6b5e56;
-    --accent: #c17a5a;
-    --accent-dark: #a86448;
+    --accent: #e10600;
+    --accent-dark: #b80500;
     --gold: #d4af7a;
-    --blush: #f3e6e0;
+    --blush: #f8e8e6;
     --teal: #3d6b6a;
+    --red: #e10600;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -33,23 +34,24 @@
   }
   .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
   header {
-    padding: 24px 0;
+    padding: 20px 0 16px;
     text-align: center;
     background: #e10600;
   }
   .logo-img {
-    height: 70px;
+    height: 64px;
     width: auto;
     display: block;
     margin: 0 auto;
   }
   .logo-text {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: white;
-    margin-top: 6px;
+    margin-top: 4px;
+    opacity: 0.95;
   }
   @keyframes gradientShift {
     0% { background-position: 0% 50%; }
@@ -60,10 +62,9 @@
     padding: 90px 0 80px;
     text-align: center;
     background: 
-      radial-gradient(ellipse at 20% 30%, rgba(212,175,122,0.25) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 70%, rgba(193,122,90,0.2) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, rgba(61,107,106,0.08) 0%, transparent 60%),
-      linear-gradient(160deg, #fff8f5 0%, #f3e6e0 40%, #f8f0ea 100%);
+      radial-gradient(ellipse at 20% 30%, rgba(225,6,0,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(212,175,122,0.15) 0%, transparent 50%),
+      linear-gradient(160deg, #fff8f5 0%, #f8e8e6 40%, #faf7f4 100%);
     position: relative;
     overflow: hidden;
   }
@@ -97,9 +98,7 @@
   }
   .badge {
     display: inline-block;
-    background: rgba(193,122,90,0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: #e10600;
     color: white;
     padding: 8px 20px;
     font-size: 0.78rem;
@@ -108,14 +107,10 @@
     margin-bottom: 28px;
     border-radius: 30px;
     font-weight: 500;
-    border: 1px solid rgba(255,255,255,0.3);
-    box-shadow: 0 4px 15px rgba(193,122,90,0.25);
   }
   .cta {
     display: inline-block;
-    background: linear-gradient(135deg, rgba(193,122,90,0.95) 0%, rgba(168,100,72,0.95) 100%);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: #e10600;
     color: white;
     padding: 16px 36px;
     text-decoration: none;
@@ -124,32 +119,25 @@
     margin: 8px;
     border-radius: 40px;
     transition: all 0.2s ease;
-    border: 1px solid rgba(255,255,255,0.25);
-    box-shadow: 0 4px 14px rgba(193,122,90,0.3);
   }
   .cta:hover { 
-    background: linear-gradient(135deg, #a86448 0%, #8f5238 100%); 
+    background: #b80500; 
     transform: translateY(-2px); 
   }
   .cta.secondary {
-    background: rgba(255,255,255,0.6);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: var(--accent);
-    border: 1.5px solid rgba(193,122,90,0.4);
-    box-shadow: none;
+    background: white;
+    color: #e10600;
+    border: 1.5px solid #e10600;
   }
-  .cta.secondary:hover { background: rgba(243,230,224,0.8); }
+  .cta.secondary:hover { background: #f8e8e6; }
   section { padding: 90px 0; }
   section h2 {
     font-size: 2.5rem;
     margin-bottom: 28px;
     text-align: center;
-    background: linear-gradient(135deg, var(--teal) 0%, #5a8a89 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #2c2420;
   }
+  .service strong { color: #e10600; font-weight: 600; }
   section p { margin-bottom: 18px; color: #3d342f; font-size: 1.05rem; }
   .services {
     display: grid;
@@ -172,7 +160,7 @@
     inset: 0;
     border-radius: 12px;
     padding: 1.5px;
-    background: linear-gradient(135deg, rgba(212,175,122,0.6), rgba(193,122,90,0.4), transparent 70%);
+    background: linear-gradient(135deg, #e10600, #d4af7a, transparent 70%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -185,7 +173,7 @@
       radial-gradient(ellipse at 30% 20%, rgba(212,175,122,0.2) 0%, transparent 50%),
       linear-gradient(180deg, var(--blush) 0%, #fff 100%);
   }
-  .founder h3 { font-size: 1.8rem; margin-bottom: 6px; color: var(--accent); }
+  .founder h3 { font-size: 1.8rem; margin-bottom: 6px; color: #e10600; }
   form {
     max-width: 440px;
     margin: 36px auto 0;
@@ -225,10 +213,7 @@
     font-size: 0.9rem;
   }
   footer strong { 
-    background: linear-gradient(135deg, #d4af7a, #c17a5a);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #e10600;
   }
   footer p { margin-bottom: 10px; }
   @media (max-width: 600px) {
