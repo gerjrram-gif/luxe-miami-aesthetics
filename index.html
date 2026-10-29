@@ -104,17 +104,29 @@ a { color: inherit; }
 }
 .wordmark {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 3px;
   flex: 0 1 auto;
   min-width: 0;
-  line-height: 0;
+  color: #fff;
+  line-height: 1;
   text-decoration: none;
 }
 .wordmark img {
-  height: 58px;
+  height: 42px;
   width: auto;
   max-width: 100%;
   display: block;
+}
+.wordmark-sub {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #fff;
+  line-height: 1;
+  white-space: nowrap;
 }
 .header-actions {
   display: flex;
@@ -312,26 +324,27 @@ h2 {
 }
 .band .prose p + p { margin-top: 18px; }
 
-.founder { text-align: center; }
-.monogram {
-  width: 104px;
-  height: 104px;
-  margin: 8px auto 20px;
-  border: 1px solid rgba(26, 22, 20, 0.45);
-  border-radius: 50%;
+.founder-grid {
   display: grid;
-  place-items: center;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.85rem;
-  letter-spacing: 0.08em;
-  color: var(--ink);
+  gap: 32px;
+  align-items: center;
 }
+.founder-photo {
+  margin: 0;
+}
+.founder-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.founder-copy { text-align: left; }
+.founder h2 { margin-bottom: 12px; }
 .founder h3 {
   margin: 0 0 6px;
   font-size: 2rem;
 }
 .role { color: var(--muted); margin-bottom: 18px; }
-.founder .narrow p:last-child { max-width: 38rem; margin-left: auto; margin-right: auto; }
+.founder-copy p:last-child { max-width: 38rem; }
 
 .faq-list { margin-top: 12px; border-top: 1px solid var(--line); }
 .faq-list details { border-bottom: 1px solid var(--line); }
@@ -397,10 +410,25 @@ footer {
   text-align: center;
   color: #f4f0ea;
 }
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
 .footer-mark {
-  height: 108px;
+  height: 84px;
   width: auto;
-  margin: 0 auto 18px;
+  margin: 0;
+}
+.footer-sub {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: #fff;
+  line-height: 1;
 }
 .footer-meta { margin-top: 22px; color: rgba(244, 240, 234, 0.88); }
 .footer-meta p + p { margin-top: 8px; }
@@ -427,7 +455,8 @@ footer a:hover { color: #fff; }
 
 @media (min-width: 720px) {
   .header-inner { width: min(1180px, calc(100% - 56px)); }
-  .wordmark img { height: 72px; }
+  .wordmark img { height: 52px; }
+  .wordmark-sub { font-size: 0.7rem; letter-spacing: 0.14em; }
   .form-row { flex-direction: row; align-items: center; }
   .form-row input { flex: 1; }
   .form-row .cta { flex: 0 0 auto; }
@@ -443,10 +472,16 @@ footer a:hover { color: #fff; }
   .service-list li { border-bottom: 0; border-top: 1px solid var(--line); }
   .closing-grid { grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
   .hero-content { padding-bottom: 72px; }
+  .founder-grid {
+    grid-template-columns: minmax(240px, 0.82fr) 1.15fr;
+    gap: 72px;
+    align-items: center;
+  }
 }
 @media (max-width: 380px) {
   .cta-nav { padding: 0 12px; font-size: 0.78rem; }
-  .wordmark img { height: 50px; }
+  .wordmark img { height: 36px; }
+  .wordmark-sub { font-size: 0.56rem; letter-spacing: 0.08em; }
 }
 @media (max-height: 700px) {
   .hero h1 { font-size: clamp(2rem, 6vh, 3.1rem); }
@@ -471,7 +506,8 @@ footer a:hover { color: #fff; }
 <header class="site-header" id="top">
   <div class="header-inner">
     <a class="wordmark" href="#top">
-      <img src="logo.png" alt="Luxe Miami Aesthetics" width="720" height="547">
+      <img src="logo.png" alt="Luxe" width="497" height="355">
+      <span class="wordmark-sub">Miami Aesthetics</span>
     </a>
     <div class="header-actions">
       <nav aria-label="Primary">
@@ -590,12 +626,16 @@ footer a:hover { color: #fff; }
   </section>
 
   <section class="block founder">
-    <div class="narrow">
-      <h2 id="founder">Founder</h2>
-      <div class="monogram" aria-hidden="true">MR</div>
-      <h3>Mateo Ramirez</h3>
-      <p class="role">Founder, Luxe Miami Aesthetics</p>
-      <p>I’ve spent years building businesses and learning how to do things properly the first time. Luxe Miami Aesthetics is the next one — focused on facial aesthetics, natural results, and the kind of care that doesn’t look like work was done.</p>
+    <div class="wide founder-grid">
+      <figure class="founder-photo">
+        <img src="founder.jpg" alt="Mateo Ramirez on a Miami rooftop at night" width="1500" height="2000">
+      </figure>
+      <div class="founder-copy">
+        <h2 id="founder">Founder</h2>
+        <h3>Mateo Ramirez</h3>
+        <p class="role">Founder, Luxe Miami Aesthetics</p>
+        <p>I’ve spent years building businesses and learning how to do things properly the first time. Luxe Miami Aesthetics is the next one — focused on facial aesthetics, natural results, and the kind of care that doesn’t look like work was done.</p>
+      </div>
     </div>
   </section>
 
@@ -652,7 +692,10 @@ footer a:hover { color: #fff; }
 
 <footer>
   <div class="narrow">
-    <img class="footer-mark" src="logo.png" alt="Luxe Miami Aesthetics" width="720" height="547">
+    <div class="footer-brand">
+      <img class="footer-mark" src="logo.png" alt="Luxe" width="497" height="355">
+      <p class="footer-sub">Miami Aesthetics</p>
+    </div>
     <div class="footer-meta">
       <p>Coral Gables, Florida</p>
       <p><a class="text-link" href="mailto:info@luxemiamiaesthetics.com">info@luxemiamiaesthetics.com</a></p>
