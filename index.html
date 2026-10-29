@@ -14,7 +14,8 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
 h1, h2, h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; }
 .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
 header { padding: 20px 0; text-align: center; background: var(--red); }
-.logo-img { height: 85px; width: auto; display: block; margin: 0 auto; border-radius: 12px; }
+.logo-wrap { display: inline-block; }
+.logo-wrap svg { height: 80px; width: auto; border-radius: 14px; }
 .hero { padding: 80px 0 70px; text-align: center; background: linear-gradient(160deg, #fff 0%, #fff8f7 60%, #f8f0ee 100%); }
 .hero h1 { font-size: clamp(2.6rem, 7vw, 4.2rem); line-height: 1.02; margin-bottom: 14px; }
 .hero .sub { font-size: 1.12rem; color: var(--muted); max-width: 480px; margin: 0 auto 28px; }
@@ -38,7 +39,13 @@ footer strong { color: white; }
 </head>
 <body>
 <header>
-<img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAsICAoIBgcKCQoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/2wBDAQ0OCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAeAYgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9/KKK/I//AILR/wDBaP4q+A/irq37H/7H/iz+wf7B32fjbxtp08E1zcXMkBWSxs5F3/ZfI8wrJMCtytzGUQw+QzTeXm+b4TJcJ9YxF7Xskt2+yPt+AOAM/wDEfP1lWVJKSTlOcnaEIKycpWTe7SSSbbfa7X1D+33/AMFvP2XP2JtSk+H3hiH/AIWT44j8xbnQfDmrwpaaXJFciGWC/ux5n2acbZ8QrHLIGhAkWJZEc/lj+0R/wXY/4KLftBWcui2vxTs/AOl3FnFDc2Hw7sWsHd45jKJlu5HlvInb5UYRTojIm0rhpN/x5RX41mvF2cZnNpTdOH8sXb73u/y8j/RXgbwC8POC8NBzw0cViFZurWiparVOMHeELPay5trybSZr+O/iB48+KXiu68d/E3xtq/iPXL7Z9u1nXtSlvLu42RrGm+aVmd9qIiDJOFUAcAVkUUV8zKUpScpO7Z+00qVKhSjTpxUYxSSSVkktEklsl0QUUUUiwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKt+H/EGveE9esfFXhXW7zTNU0y8iu9N1LT7l4bi0uI3DxyxSIQ0bqwDKykEEAggiqlFNNp3RMoxnFxkrp7o+rP2d/+C1f/AAUW/Z2vYltfjzeeNNLW8lubnRviIG1dLl3hEQDXMjC8jRcK6xxTogdclSHkD/pZ+wV/wcE/s9ftHXtl8Nf2mNOs/hh4rezdm1u+1SNfD168UMbORcTMrWTyN57JDNuQLGqfaJJHVD+E9FfRZZxVnOWTXLUc4/yy1Xyb1XyPyHjTwM8OuNMPP2mDjQrtaVaKUJJ62ckrRn58yba0TWjX9cFFfhn/AMEif+C0fxV+Avjzwt+zL+0r4s/tz4YXn2XQ9G1LU54IZvCO6UrDM1zJs8yyTzAkizOfIhjQxMqw+TL+5lfsmSZ5hM9wvtaN01pKL3T/AFXZ9fJ3R/nZ4leGef8Ahjna" alt="Luxe Miami Aesthetics" class="logo-img">
+<div class="logo-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230">
+<rect width="400" height="230" rx="28" fill="#e10600"/>
+<text x="200" y="140" text-anchor="middle" font-family="'Brush Script MT', 'Segoe Script', cursive" font-size="110" fill="#1a1a1a">luxe</text>
+<text x="200" y="185" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#ffffff" letter-spacing="6">MIAMI AESTHETICS</text>
+</svg>
+</div>
 </header>
 <section class="hero">
 <div class="container">
