@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="280" viewBox="0 0 600 280">
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="300" viewBox="0 0 600 300">
   <defs>
     <style>
-      .title { font-family: 'Georgia', 'Times New Roman', serif; font-weight: 600; fill: white; }
-      .sub { font-family: 'Inter', system-ui, sans-serif; font-weight: 400; fill: white; letter-spacing: 0.18em; }
+      .title { font-family: Georgia, 'Times New Roman', serif; font-weight: 700; fill: white; }
+      .sub { font-family: Inter, system-ui, sans-serif; font-weight: 400; fill: white; letter-spacing: 0.22em; }
     </style>
   </defs>
-  <rect width="600" height="280" rx="24" fill="#e10600"/>
-  <text x="300" y="120" text-anchor="middle" class="title" font-size="72">LUXE</text>
-  <text x="300" y="175" text-anchor="middle" class="sub" font-size="22">MIAMI AESTHETICS</text>
+  <rect width="600" height="300" rx="28" fill="#e10600"/>
+  <text x="300" y="140" text-anchor="middle" class="title" font-size="86">LUXE</text>
+  <text x="300" y="190" text-anchor="middle" class="sub" font-size="20">MIAMI AESTHETICS</text>
 </svg>
