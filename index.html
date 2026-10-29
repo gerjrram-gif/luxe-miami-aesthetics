@@ -4,62 +4,83 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Luxe Miami Aesthetics — Coming 2028 | Coral Gables</title>
-<meta name="description" content="Luxe Miami Aesthetics is coming to Coral Gables in 2028. Natural results, precise care, built the right way. Join the waitlist.">
+<meta name="description" content="Luxe Miami Aesthetics is being built for Coral Gables. Doors in 2028. No treatments yet. Join the waitlist.">
+<link rel="canonical" href="https://luxemiamiaesthetics.com/">
 <meta property="og:title" content="Luxe Miami Aesthetics — Coming 2028">
-<meta property="og:description" content="Natural results. Precise care. Built the right way. Coming to Coral Gables in 2028.">
+<meta property="og:description" content="Natural results. Precise care. Built the right way. Coral Gables, Unit 110, coming 2028.">
 <meta property="og:url" content="https://luxemiamiaesthetics.com">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://luxemiamiaesthetics.com/hero-poster.jpg">
 <meta property="og:image:alt" content="A red LED facial treatment dissolving into the Miami skyline at night, the poster for the Luxe Miami Aesthetics hero.">
-<meta name="theme-color" content="#070b14">
+<meta name="theme-color" content="#fefbf5">
 <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch.png">
 <link rel="preload" as="image" href="hero-poster.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Luxe Miami Aesthetics",
+  "url": "https://luxemiamiaesthetics.com",
+  "email": "info@luxemiamiaesthetics.com",
+  "description": "A Coral Gables aesthetics practice being built for a 2028 opening. Not currently offering treatments.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "4203 Ponce de Leon Blvd, Unit 110",
+    "addressLocality": "Coral Gables",
+    "addressRegion": "FL",
+    "postalCode": "33146",
+    "addressCountry": "US"
+  }
+}
+</script>
 <style>
 :root {
-  --navy: #070b14;
-  --ink: #1a1614;
-  --body: #3a332e;
-  --muted: #5c534c;
-  --cream: #f6f1ea;
-  --paper: #fffcf8;
-  --ivory: #f7f4ef;
-  --line: rgba(26, 22, 20, 0.14);
-  --red: #e10600;
+  --ink: #000000;
+  --body: #000000;
+  --muted: #878787;
+  --cream: #fefbf5;
+  --paper: #fdf7ee;
+  --white: #ffffff;
+  --line: #dddddd;
+  --btn: #000000;
+  --btn-text: #fefbf5;
+  --btn-hover: #633631;
+  --bronze: #b27860;
+  --champagne: #c2a68d;
+  --sand: #ede1d5;
+  --error: #eb001b;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
 body {
   margin: 0;
   font-family: Inter, system-ui, sans-serif;
   font-weight: 400;
-  background: var(--paper);
+  background: var(--cream);
   color: var(--ink);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
 img { max-width: 100%; display: block; }
-button, input { font: inherit; }
+button, input, textarea { font: inherit; }
 h1, h2, h3 {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-weight: 500;
   letter-spacing: -0.02em;
-  line-height: 1.05;
+  line-height: 1.08;
 }
 p { margin: 0; }
 a { color: inherit; }
-:focus-visible {
-  outline: 2px solid #9a0c08;
-  outline-offset: 3px;
-}
+:focus-visible { outline: 2px solid var(--btn); outline-offset: 3px; }
 .skip {
   position: absolute;
   left: 16px;
   top: -48px;
-  z-index: 20;
+  z-index: 30;
   background: #fff;
   color: var(--ink);
   padding: 8px 12px;
@@ -77,651 +98,749 @@ a { color: inherit; }
   white-space: nowrap;
   border: 0;
 }
+body.nav-open { overflow: hidden; }
 
 .site-header {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  background: #070b14;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+  z-index: 20;
+  background: var(--white);
+  border-bottom: 1px solid transparent;
+  padding-top: env(safe-area-inset-top);
 }
-.site-header.is-top {
-  background: linear-gradient(180deg, rgba(7, 11, 20, 0.9) 0%, rgba(7, 11, 20, 0.55) 100%);
-  box-shadow: none;
-}
+.site-header.is-scrolled { border-bottom-color: #f0f0f0; }
 .header-inner {
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
-  min-height: 76px;
-  display: flex;
+  min-height: 72px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 8px 0;
-  padding-top: calc(8px + env(safe-area-inset-top));
+  gap: 10px;
+}
+.nav-toggle {
+  justify-self: start;
+  min-height: 44px;
+  padding: 0 2px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 500;
+  cursor: pointer;
 }
 .wordmark {
+  justify-self: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
-  flex: 0 1 auto;
-  min-width: 0;
-  color: #fff;
-  line-height: 1;
+  gap: 2px;
   text-decoration: none;
+  color: var(--ink);
+  line-height: 1;
 }
 .wordmark img {
-  height: 42px;
+  height: 36px;
   width: auto;
-  max-width: 100%;
-  display: block;
+  filter: brightness(0);
 }
 .wordmark-sub {
-  font-family: Inter, system-ui, sans-serif;
-  font-size: 0.48rem;
+  font-size: 0.46rem;
   font-weight: 500;
   letter-spacing: 0.16em;
-  color: #fff;
-  line-height: 1;
   white-space: nowrap;
 }
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-}
+.cta-mobile { justify-self: end; }
+.site-nav { display: none; grid-column: 1 / -1; }
+.site-header.is-open .site-nav { display: block; }
 .nav-links {
-  display: none;
-  align-items: center;
-  gap: 26px;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 6px 0 18px;
+  display: grid;
+  gap: 2px;
 }
 .nav-links a {
-  color: rgba(247, 244, 239, 0.9);
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   text-decoration: none;
-  font-size: 0.88rem;
-  letter-spacing: 0.01em;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.7rem;
 }
-.nav-links a:hover { color: #fff; }
-.site-header :focus-visible,
-.hero :focus-visible,
-.band :focus-visible { outline-color: #fff; }
+.nav-spacer { display: none; }
+.nav-links a:hover { opacity: 0.62; }
+.nav-links a.cta {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  min-height: 38px;
+  opacity: 1;
+}
+.nav-links a.cta:hover { opacity: 1; filter: none; background: var(--btn-hover); }
 
 .cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 46px;
-  padding: 0 22px;
+  min-height: 44px;
+  padding: 0 18px;
   border: 0;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #d23c30 0%, #e10600 48%, #9a0c08 100%);
-  color: #fff;
-  font-family: Inter, system-ui, sans-serif;
-  font-size: 0.94rem;
+  border-radius: 60px;
+  background: var(--btn);
+  color: var(--btn-text);
+  font-size: 0.78rem;
   font-weight: 500;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 10px 24px rgba(120, 8, 4, 0.28);
 }
-.cta:hover { filter: brightness(1.06); }
-.cta:active { transform: translateY(1px); }
-.cta-nav {
-  min-height: 40px;
-  padding: 0 16px;
-  font-size: 0.82rem;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+.cta:hover { background: var(--btn-hover); color: var(--btn-text); }
+.cta:disabled { opacity: 0.72; cursor: default; }
+.cta-nav { min-height: 38px; padding: 0 14px; font-size: 0.68rem; }
+.hero .cta {
+  background: var(--cream);
+  color: var(--ink);
 }
+.hero .cta:hover { background: var(--white); color: var(--ink); }
 
 .hero {
   position: relative;
-  min-height: 100vh;
-  min-height: 100svh;
+  min-height: calc(100svh - 72px);
   display: flex;
   align-items: flex-end;
   color: #fff;
-  background: #070b14 url("hero-poster.jpg") center / cover no-repeat;
+  background: var(--cream) url("hero-poster.jpg") center / cover no-repeat;
   overflow: hidden;
 }
-.hero-video,
-.moment-video {
+.hero-video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
   opacity: 0;
   transition: opacity 1.7s ease;
 }
-.hero-video.is-front,
-.moment-video.is-ready { opacity: 1; }
-.hero-video.is-hidden,
-.moment-video.is-hidden { display: none; }
+.hero-video.is-front { opacity: 1; }
+.hero-video.is-hidden { display: none; }
 .hero-shade {
   position: absolute;
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(7, 11, 20, 0.72) 0%, rgba(7, 11, 20, 0.18) 26%, rgba(7, 11, 20, 0.16) 46%, rgba(7, 11, 20, 0.58) 70%, rgba(7, 11, 20, 0.9) 100%),
-    radial-gradient(ellipse 90% 55% at 50% 86%, rgba(7, 11, 20, 0.45), transparent 70%);
+    linear-gradient(180deg, rgba(254, 251, 245, 0.04) 0%, rgba(0, 0, 0, 0.02) 36%, rgba(0, 0, 0, 0.16) 64%, rgba(0, 0, 0, 0.4) 100%);
 }
 .hero-content {
   position: relative;
   z-index: 2;
-  width: min(880px, 100%);
-  margin: 0 auto;
-  padding: 24px 24px calc(48px + env(safe-area-inset-bottom));
-  text-align: center;
-  animation: rise-in 1.15s ease both;
+  width: min(680px, 100%);
+  padding: 28px 24px calc(40px + env(safe-area-inset-bottom));
 }
-@keyframes rise-in {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: none; }
-}
-.eyebrow {
-  margin: 0 0 16px;
-  font-size: 0.74rem;
+.nowrap { white-space: nowrap; }
+.eyebrow, .kicker {
+  margin: 0 0 12px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.88);
 }
+.hero .eyebrow { color: rgba(255, 255, 255, 0.86); }
 .hero h1 {
-  margin: 0 0 18px;
-  font-size: clamp(2.45rem, 7.4vw, 4.6rem);
-  font-weight: 500;
+  margin: 0 0 16px;
+  font-size: clamp(3rem, 10vw, 5.4rem);
   color: #fff;
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.28);
 }
 .deck {
   max-width: 34rem;
-  margin: 0 auto 28px;
+  margin: 0 0 22px;
   font-size: 1.02rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.92);
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
 }
+.hero :focus-visible { outline-color: #fff; }
 
-.block { padding: clamp(84px, 12vw, 148px) 0; }
-.narrow { width: min(680px, calc(100% - 48px)); margin: 0 auto; }
-.wide { width: min(1040px, calc(100% - 48px)); margin: 0 auto; }
-.approach, .founder, .closing, .build { background: var(--cream); }
-.story, .services, .faq { background: var(--paper); }
-.story .prose .lead { max-width: 18em; }
-.story-cta { margin-top: 28px; }
-.band h2 { margin-left: auto; margin-right: auto; }
-h2 {
-  margin: 0 0 22px;
-  font-size: clamp(2.35rem, 5vw, 3.7rem);
-  color: var(--ink);
-}
-.prose .lead {
-  margin: 0 0 28px;
-  max-width: 16em;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1.7rem, 3vw, 2.2rem);
-  font-weight: 500;
-  line-height: 1.22;
-  color: var(--ink);
-}
-.prose p + p { margin-top: 16px; }
-.prose p, .service-list p, .founder p, .faq p, .closing p {
-  color: var(--body);
-  font-size: 1.02rem;
-  line-height: 1.75;
-}
-.text-link {
-  color: var(--ink);
-  text-underline-offset: 0.18em;
-}
-.text-link:hover { color: var(--red); }
+.wide { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+.narrow { width: min(720px, calc(100% - 40px)); margin: 0 auto; }
+.section-pad { padding: clamp(72px, 10vw, 120px) 0; }
 
-.service-list {
-  list-style: none;
-  margin: 40px 0 0;
-  padding: 0;
-  border-top: 1px solid var(--line);
+.perk-band {
+  background: var(--paper);
+  color: var(--ink);
 }
-.service-list li {
+.perk-inner {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: 2.5rem 1fr;
-  gap: 8px 16px;
-  padding: 26px 0;
-  border-bottom: 1px solid var(--line);
+  gap: 28px;
+  padding: 36px 0 40px;
 }
-.idx {
-  padding-top: 0.55rem;
-  font-size: 0.72rem;
+.perk-band h2 {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-size: clamp(2.1rem, 4vw, 3rem);
+}
+.perk-band .perk-lead {
+  max-width: 28rem;
+  color: var(--ink);
+  margin-bottom: 18px;
+}
+.perk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.perk-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 132px;
+  padding: 16px 14px 18px;
+  text-decoration: none;
+  background: var(--white);
+  border: 1px solid var(--sand);
+}
+.perk-tile h3 {
+  margin: 0 0 8px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.98rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.perk-tile p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+.perk-tile:hover { background: var(--sand); }
+
+.section-label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+.section-label h2, .label {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.section-label p { color: var(--body); max-width: 36rem; }
+
+.treatment-wrap { position: relative; }
+.treatment-row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(240px, 78%);
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 8px;
+  scrollbar-color: rgba(26, 22, 20, 0.28) transparent;
+}
+.treatment-card { scroll-snap-align: start; min-width: 0; }
+.treatment-card__media {
+  aspect-ratio: 4 / 5;
+  background: var(--white);
+  color: var(--ink);
+  border: 1px solid var(--sand);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px 16px 18px;
+}
+.treatment-card:nth-child(2) .treatment-card__media,
+.treatment-card:nth-child(4) .treatment-card__media { background: var(--paper); }
+.when, .idx {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.16em;
-  color: #8d2a22;
+  text-transform: uppercase;
 }
-.service-list h3 {
-  margin: 0 0 6px;
-  font-size: 1.75rem;
+.treatment-card__media .when { color: var(--muted); }
+.treatment-card__media .index {
+  display: block;
+  margin-bottom: 6px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--bronze);
+}
+.treatment-card__media h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(1.85rem, 2.4vw, 2.3rem);
+}
+.treatment-card > p {
+  margin-top: 12px;
+  color: var(--body);
+  font-size: 0.98rem;
+}
+.row-controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+.row-controls button, .quote-controls button {
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  cursor: pointer;
+}
+.row-controls button:hover, .quote-controls button:hover { border-color: var(--ink); }
+.note {
+  margin: 26px 0 0;
+  max-width: 44rem;
+  color: var(--body);
+}
+
+.quote-band {
+  background: var(--white);
+  color: var(--ink);
+  text-align: center;
+  padding: clamp(72px, 12vw, 120px) 24px;
+  border-top: 1px solid var(--sand);
+  border-bottom: 1px solid var(--sand);
+}
+.quote-band h2 {
+  margin: 0 0 28px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.quote-stage { max-width: 46rem; margin: 0 auto; min-height: 11rem; }
+.quote blockquote {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(1.55rem, 3.2vw, 2.35rem);
+  line-height: 1.28;
   color: var(--ink);
 }
-.service-list p { margin: 0; }
-.note {
-  margin: 32px 0 0;
-  max-width: 42rem;
-  color: var(--body);
-  font-size: 1rem;
-  line-height: 1.7;
+.quote figcaption {
+  margin-top: 18px;
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bronze);
 }
-
-.band {
-  background: var(--navy);
-  color: var(--ivory);
-  text-align: center;
-}
-.band h2 { color: #fff; }
-.band .prose p {
-  max-width: 40rem;
-  margin-left: auto;
-  margin-right: auto;
-  color: rgba(247, 244, 239, 0.9);
-}
-.band .prose p + p { margin-top: 18px; }
-
-.founder-grid {
-  display: grid;
-  gap: 32px;
-  align-items: center;
-}
-.founder-photo {
-  margin: 0;
-}
-.founder-photo img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-.founder-copy { text-align: left; }
-.founder h2 { margin-bottom: 12px; }
-.founder h3 {
-  margin: 0 0 6px;
-  font-size: 2rem;
-}
-.role { color: var(--muted); margin-bottom: 18px; }
-.founder-copy p:last-child { max-width: 38rem; }
-
-.faq-list { margin-top: 12px; border-top: 1px solid var(--line); }
-.faq-list details { border-bottom: 1px solid var(--line); }
-.faq-list summary {
+html.js .quote { display: none; }
+html.js .quote.is-active { display: block; }
+.quote-controls {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 20px 0;
-  cursor: pointer;
-  list-style: none;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  line-height: 1.25;
-  color: var(--ink);
+  justify-content: center;
+  gap: 14px;
+  margin-top: 28px;
 }
-.faq-list summary::-webkit-details-marker { display: none; }
-.faq-list summary::after {
-  content: "";
+.quote-dots { display: flex; gap: 8px; }
+.quote-dots button {
   width: 9px;
   height: 9px;
-  border-right: 1.5px solid var(--muted);
-  border-bottom: 1.5px solid var(--muted);
-  transform: rotate(45deg) translateY(-3px);
-  flex: 0 0 auto;
+  min-height: 0;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--ink);
+  background: transparent;
+  letter-spacing: 0;
 }
-.faq-list details[open] summary::after { transform: rotate(225deg) translateY(-2px); }
-.faq-list details p { margin: 0 0 20px; max-width: 40rem; }
-
-html.js [data-reveal] {
-  opacity: 0;
-  transform: translateY(12px);
-}
-
-.moment {
-  position: relative;
-  min-height: 68vh;
-  min-height: 68svh;
-  display: flex;
-  align-items: flex-end;
-  color: #fff;
-  background: #070b14 url("night-poster.jpg") center / cover no-repeat;
-  overflow: hidden;
-}
-.moment-shade {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(7, 11, 20, 0.28) 0%, rgba(7, 11, 20, 0.08) 38%, rgba(7, 11, 20, 0.55) 72%, rgba(7, 11, 20, 0.88) 100%);
-}
-.moment-content {
-  position: relative;
-  z-index: 1;
-  width: min(760px, 100%);
-  margin: 0 auto;
-  padding: 28px 24px calc(48px + env(safe-area-inset-bottom));
-  text-align: center;
-}
-.moment-line {
-  margin: 0 auto;
-  max-width: 16em;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1.85rem, 4.4vw, 2.9rem);
-  font-weight: 500;
-  line-height: 1.15;
-  color: #fff;
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.28);
+.quote-dots button[aria-current="true"] { background: var(--bronze); border-color: var(--bronze); }
+.quote-note {
+  max-width: 36rem;
+  margin: 22px auto 0;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--muted);
 }
 
+.location { background: var(--cream); }
+.location-grid, .about-grid, .own-panel-grid, .closing-grid {
+  display: grid;
+  gap: 28px;
+}
+.location h2 { margin-bottom: 14px; }
+.location .intro p, .about p, .own-copy p, .closing p, .faq p, .build p {
+  color: var(--body);
+}
+.location .intro p + p, .about p + p, .own-copy p + p, .closing p + p { margin-top: 14px; }
+.location .cta, .about .cta { margin-top: 22px; }
+.location-card { background: var(--paper); }
+.location-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+.location-card div { padding: 18px 18px 22px; }
+.location-card h3 {
+  margin: 6px 0 8px;
+  font-size: 2rem;
+}
+.loc-note {
+  margin-top: 10px;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.about { background: var(--paper); }
+.about h2 {
+  margin: 0 0 16px;
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+}
+.role { color: var(--muted); margin-bottom: 12px; }
+.founder-photo img { width: 100%; height: auto; }
+
+.build { background: var(--cream); }
+.build h2 {
+  margin: 0 0 10px;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+}
 .build .lead {
-  max-width: 18em;
+  max-width: 36rem;
   margin: 0 0 8px;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1.55rem, 2.8vw, 2rem);
-  font-weight: 500;
-  line-height: 1.25;
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+  line-height: 1.35;
   color: var(--ink);
 }
 .timeline {
   list-style: none;
-  margin: 36px 0 0;
-  padding: 8px 0 0;
+  margin: 28px 0 0;
+  padding: 0;
   position: relative;
 }
 .timeline::before {
   content: "";
   position: absolute;
   left: 3px;
-  top: 18px;
-  bottom: 18px;
+  top: 14px;
+  bottom: 14px;
   width: 1px;
   background: var(--line);
 }
 .timeline li {
   position: relative;
-  display: grid;
-  gap: 4px;
-  padding: 18px 0 18px 28px;
+  padding: 16px 0 16px 28px;
 }
 .timeline li::before {
   content: "";
   position: absolute;
   left: 0;
-  top: 1.45rem;
+  top: 1.35rem;
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--cream);
-  box-shadow: 0 0 0 1px rgba(26, 22, 20, 0.38);
+  background: var(--white);
+  box-shadow: 0 0 0 1px var(--champagne);
 }
-.timeline li.is-now::before {
-  background: var(--red);
-  box-shadow: 0 0 0 1px var(--red);
-}
-.when {
-  margin: 0;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.timeline li.is-now .when { color: #8d2a22; }
-.timeline h3 {
-  margin: 0;
-  font-size: clamp(1.55rem, 2.6vw, 1.9rem);
-  color: var(--ink);
-}
-.timeline p:last-child {
-  margin: 4px 0 0;
-  color: var(--body);
-  font-size: 1.02rem;
-  line-height: 1.7;
-}
+.timeline li.is-now::before { background: var(--bronze); box-shadow: 0 0 0 1px var(--bronze); }
+.timeline .when { color: var(--muted); }
+.timeline li.is-now .when { color: var(--bronze); }
+.timeline h3 { margin: 2px 0 0; font-size: clamp(1.5rem, 2.4vw, 1.85rem); }
+.timeline p:last-child { margin-top: 4px; }
 
-.standards {
-  background: #f3efe8;
-  padding: clamp(52px, 8vw, 84px) 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+.own-hero {
+  position: relative;
+  min-height: 70svh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  background: var(--sand);
+  overflow: hidden;
 }
-.standards h2 {
-  margin: 0 0 28px;
-  font-family: Inter, system-ui, sans-serif;
-  font-size: 0.74rem;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  line-height: 1.4;
-  color: var(--muted);
-}
-.standards-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 0;
-}
-.standards-list li + li {
-  border-top: 1px solid var(--line);
-  margin-top: 22px;
-  padding-top: 22px;
-}
-.standards-list h3 {
-  margin: 0 0 6px;
-  font-size: clamp(1.4rem, 2.2vw, 1.65rem);
-  color: var(--ink);
-}
-.standards-list p {
-  margin: 0;
-  color: var(--body);
-  font-size: 0.98rem;
-  line-height: 1.65;
-}
-
-.closing-grid {
-  display: grid;
-  gap: 64px;
-}
-.closing h2 { margin-bottom: 16px; }
-.closing p + p,
-.closing address + p,
-.closing p + address { margin-top: 14px; }
-address {
-  font-style: normal;
-  color: var(--body);
-  line-height: 1.7;
-}
-.field { display: block; margin: 22px 0 8px; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
-.form-row { display: flex; flex-direction: column; gap: 12px; }
-.form-row input {
+.own-hero img {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  min-height: 48px;
-  padding: 0 18px;
-  border-radius: 999px;
-  border: 1px solid #5e564f;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+.own-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(254, 251, 245, 0.02), rgba(254, 251, 245, 0.18));
+}
+.own-card {
+  position: relative;
+  z-index: 1;
+  width: min(460px, calc(100% - 32px));
+  margin: 20px 16px;
+  padding: 28px 24px 26px;
+  background: var(--cream);
+  color: var(--ink);
+  border: 1px solid var(--sand);
+}
+.own-card .kicker { color: var(--bronze); }
+.own-card h2 {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+}
+.own-card p { color: var(--ink); margin-bottom: 18px; }
+.own-panel { background: var(--cream); }
+.own-copy h2 {
+  margin: 0 0 14px;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+}
+.own-list {
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.own-list li {
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+  color: var(--body);
+}
+.field {
+  display: block;
+  margin: 16px 0 6px;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+.inquiry-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.inquiry-form input, .inquiry-form textarea, .form-row input {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--line);
   background: #fff;
   color: var(--ink);
-  font-size: 1rem;
+  border-radius: 999px;
+  min-height: 48px;
+  padding: 0 16px;
 }
-.form-row input:focus-visible { outline-offset: 2px; }
-.cta:disabled { opacity: 0.72; cursor: default; }
-.cta:disabled:hover { filter: none; }
+.inquiry-form textarea {
+  border-radius: 18px;
+  min-height: 112px;
+  margin: 0;
+  padding: 12px 16px;
+  resize: vertical;
+}
+.inquiry-form .cta { align-self: flex-start; margin-top: 18px; }
 .form-error {
-  margin: 14px 0 0;
-  max-width: 36rem;
-  color: #8d2a22;
+  margin: 12px 0 0;
+  color: var(--error);
   font-size: 0.95rem;
-  line-height: 1.6;
 }
-.form-error a { color: inherit; }
-.follow { margin-top: 22px; }
-.waitlist-confirm {
-  background: var(--navy);
-  color: #fff;
-  text-align: center;
-  padding: 42px 28px 36px;
+.text-link { text-underline-offset: 0.18em; }
+.text-link:hover { color: var(--btn-hover); }
+.fine {
+  margin-top: 14px;
+  font-size: 0.86rem;
+  color: var(--muted);
 }
-.waitlist-confirm :focus-visible { outline-color: #fff; }
-.waitlist-confirm img {
-  height: 72px;
-  width: auto;
-  margin: 0 auto;
-}
-.waitlist-confirm .confirm-sub {
-  margin: 8px 0 0;
-  font-size: 0.56rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  color: #fff;
-}
-.waitlist-confirm h2 {
-  margin: 26px 0 12px;
-  color: #fff;
-  font-size: clamp(2.1rem, 4vw, 2.7rem);
-}
-.waitlist-confirm .confirm-line {
-  margin: 0 auto;
-  max-width: 16em;
+
+.faq { background: var(--paper); }
+.faq h2 { margin: 0 0 8px; font-size: clamp(2.2rem, 4vw, 3.2rem); }
+.faq-list { margin-top: 8px; border-top: 1px solid var(--line); }
+.faq-list details { border-bottom: 1px solid var(--line); }
+.faq-list summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 0;
+  cursor: pointer;
+  list-style: none;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(1.25rem, 2.2vw, 1.45rem);
-  font-weight: 500;
-  line-height: 1.35;
-  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+  line-height: 1.3;
 }
-.waitlist-confirm .confirm-meta {
-  margin: 18px 0 0;
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 1.5px solid var(--muted);
+  border-bottom: 1.5px solid var(--muted);
+  transform: rotate(45deg) translateY(-2px);
+  flex: 0 0 auto;
+}
+.faq-list details[open] summary::after { transform: rotate(225deg) translateY(-1px); }
+.faq-list details p { margin: 0 0 18px; max-width: 40rem; }
+
+.closing { background: var(--cream); }
+.closing h2 { margin: 0 0 12px; font-size: clamp(2.3rem, 4vw, 3.4rem); }
+address { font-style: normal; color: var(--body); line-height: 1.7; }
+.form-row { display: flex; flex-direction: column; gap: 12px; }
+.waitlist-confirm, .franchise-confirm {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 32px 24px;
+  border: 1px solid var(--sand);
+}
+.waitlist-confirm h2, .franchise-confirm h2 { color: var(--ink); margin: 18px 0 8px; }
+.waitlist-confirm img { height: 64px; width: auto; filter: brightness(0); }
+.confirm-sub {
+  margin: 6px 0 0;
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+}
+.confirm-line { color: var(--ink); }
+.confirm-meta {
+  margin-top: 14px;
   font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--muted);
 }
 
 footer {
-  padding: 72px 0 calc(40px + env(safe-area-inset-bottom));
-  background: #070b14;
-  text-align: center;
-  color: #f4f0ea;
+  background: var(--paper);
+  color: var(--ink);
+  border-top: 1px solid var(--sand);
+  padding: 56px 0 calc(28px + env(safe-area-inset-bottom));
 }
-.footer-brand {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
+.footer-grid {
+  display: grid;
+  gap: 28px;
 }
-.footer-mark {
-  height: 84px;
-  width: auto;
-  margin: 0;
-}
+.footer-mark { height: 72px; width: auto; filter: brightness(0); }
 .footer-sub {
-  margin: 0;
-  font-family: Inter, system-ui, sans-serif;
-  font-size: 0.56rem;
-  font-weight: 500;
+  margin-top: 6px;
+  font-size: 0.52rem;
   letter-spacing: 0.18em;
-  color: #fff;
-  line-height: 1;
 }
-.footer-meta { margin-top: 22px; color: rgba(244, 240, 234, 0.88); }
-.footer-meta p + p { margin-top: 8px; }
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px 18px;
-  margin: 22px 0 0;
-  padding: 0;
-  list-style: none;
+.footer-grid h2 {
+  margin: 0 0 10px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
-footer a { color: #f4f0ea; }
-footer a:hover { color: #fff; }
-.footer-links a { text-underline-offset: 0.16em; font-size: 0.92rem; }
+.footer-grid p, .footer-grid li, .footer-grid a { color: var(--ink); }
+.footer-grid ul { list-style: none; margin: 0; padding: 0; }
+.footer-grid li + li { margin-top: 6px; }
+.hours { margin: 0; }
+.hours div { display: grid; gap: 2px; padding: 8px 0; }
+.hours dt, .hours dd { margin: 0; }
+.hours dt { color: var(--muted); }
 .legal {
-  max-width: 34rem;
-  margin: 16px auto 0;
+  max-width: 40rem;
+  margin: 28px 0 0;
   font-size: 0.75rem;
-  line-height: 1.35;
-  font-weight: 400;
-  color: #c9c3bc;
+  line-height: 1.45;
+  color: var(--muted);
 }
+footer a:hover { color: var(--btn-hover); }
+
+html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
 
 @media (min-width: 720px) {
-  .header-inner { width: min(1180px, calc(100% - 56px)); }
-  .wordmark img { height: 52px; }
-  .wordmark-sub { font-size: 0.54rem; letter-spacing: 0.18em; }
+  .perk-inner { grid-template-columns: 0.85fr 1.15fr; align-items: center; gap: 40px; padding: 48px 0; }
+  .treatment-row { grid-auto-columns: minmax(240px, 42%); }
   .form-row { flex-direction: row; align-items: center; }
   .form-row input { flex: 1; }
-  .form-row .cta { flex: 0 0 auto; }
-  .moment { min-height: 78vh; min-height: 78svh; }
-  .moment-content { padding-bottom: 64px; }
+  .form-row .cta { width: auto; }
   .timeline li {
-    grid-template-columns: 6.75rem 1fr;
-    column-gap: 28px;
-    align-items: baseline;
-  }
-  .timeline li::before { top: 0.7rem; }
-  .standards-list { grid-template-columns: 1fr 1fr; gap: 32px 40px; }
-  .standards-list li + li { border-top: 0; margin-top: 0; padding-top: 0; }
-}
-@media (min-width: 880px) {
-  .nav-links { display: flex; }
-  .service-list {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 72px;
-    border-top: 0;
-  }
-  .service-list li { border-bottom: 0; border-top: 1px solid var(--line); }
-  .closing-grid { grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-  .hero-content { padding-bottom: 72px; }
-  .nav-links { gap: 22px; }
-  .standards-list { grid-template-columns: repeat(4, 1fr); gap: 0 28px; }
-  .standards-list li + li {
-    border-left: 1px solid var(--line);
+    grid-template-columns: 7rem 1fr;
+    gap: 8px 24px;
     padding-left: 28px;
   }
-  .founder-grid {
-    grid-template-columns: minmax(240px, 0.82fr) 1.15fr;
-    gap: 72px;
-    align-items: center;
+  .timeline li::before { top: 1.15rem; }
+  .footer-grid { grid-template-columns: 1.2fr 0.8fr 0.9fr 0.9fr; gap: 32px; }
+}
+@media (min-width: 980px) {
+  .treatment-row {
+    grid-auto-flow: unset;
+    grid-template-columns: repeat(4, 1fr);
+    overflow: visible;
   }
+  .row-controls { display: none; }
+  .treatment-card__media { aspect-ratio: 3 / 4; }
+  .location-grid { grid-template-columns: minmax(220px, 280px) minmax(0, 1fr); gap: 56px; align-items: start; }
+  .about-grid { grid-template-columns: minmax(280px, 0.86fr) 1.1fr; gap: 72px; align-items: start; }
+  .own-panel-grid, .closing-grid { grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .own-card { margin: 48px; }
+  .hero { min-height: calc(100svh - 88px); }
+  .hero-content { padding: 48px 7vw 72px; }
+}
+@media (min-width: 1100px) {
+  .header-inner {
+    display: block;
+    position: relative;
+    min-height: 88px;
+    width: min(1180px, calc(100% - 48px));
+  }
+  .nav-toggle, .cta-mobile { display: none; }
+  .site-nav { display: block; }
+  .wordmark {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+  .wordmark img { height: 42px; }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 88px;
+    padding: 0;
+  }
+  .nav-links a {
+    min-height: 0;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .nav-spacer { display: block; flex: 0 0 132px; width: 132px; }
+  .nav-cta a.cta { letter-spacing: 0.12em; }
 }
 @media (max-width: 380px) {
-  .cta-nav { padding: 0 12px; font-size: 0.78rem; }
-  .wordmark img { height: 36px; }
-  .wordmark-sub { font-size: 0.44rem; letter-spacing: 0.12em; }
-}
-@media (max-height: 700px) {
-  .hero h1 { font-size: clamp(2rem, 6vh, 3.1rem); }
-  .deck { margin-bottom: 16px; }
-  .hero-content { padding-bottom: 28px; }
+  .wordmark img { height: 30px; }
+  .wordmark-sub { letter-spacing: 0.12em; }
+  .perk-grid { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .hero-video, .moment-video { display: none !important; transition: none; }
-  .hero-content, html.js [data-reveal] { animation: none; opacity: 1; transform: none; transition: none; }
-  .cta, .site-header { transition: none; }
-  .cta:active { transform: none; }
+  .hero-video { display: none !important; }
+  .quote-controls { display: none; }
+  html.js [data-reveal], .hero-content { animation: none; opacity: 1; transform: none; }
 }
 @media (prefers-contrast: more) {
-  .hero-shade { background: rgba(7, 11, 20, 0.78); }
-  .deck, .eyebrow { color: #fff; }
+  .hero-shade { background: rgba(0, 0, 0, 0.55); }
 }
-::selection { background: #e8b8ae; color: #1a1614; }
+::selection { background: #ede1d5; color: #000000; }
 </style>
 <script>
 (function () {
@@ -736,23 +855,26 @@ footer a:hover { color: #fff; }
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header" id="top">
   <div class="header-inner">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+      <span class="nav-toggle-label">Menu</span>
+    </button>
     <a class="wordmark" href="#top">
       <img src="logo.png" alt="Luxe" width="497" height="355">
       <span class="wordmark-sub">MIAMI AESTHETICS</span>
     </a>
-    <div class="header-actions">
-      <nav aria-label="Primary">
-        <ul class="nav-links">
-          <li><a href="#approach">The approach</a></li>
-          <li><a href="#story">The story</a></li>
-          <li><a href="#build">The build</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="https://instagram.com/luxemiamiaesthetics" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-        </ul>
-      </nav>
-      <a class="cta cta-nav" href="#waitlist">Join the waitlist</a>
-    </div>
+    <a class="cta cta-nav cta-mobile" href="#waitlist">Waitlist</a>
+    <nav class="site-nav" id="primary-nav" aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="#list">The list</a></li>
+        <li><a href="#treatments">Treatments</a></li>
+        <li><a href="#location">Location</a></li>
+        <li class="nav-spacer" aria-hidden="true"></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#own">Franchise</a></li>
+        <li><a href="#standards">Standards</a></li>
+        <li class="nav-cta"><a class="cta cta-nav" href="#waitlist">Waitlist</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
@@ -760,99 +882,177 @@ footer a:hover { color: #fff; }
   <section class="hero" aria-labelledby="hero-title">
     <!--
       Hero film: hero.mp4 (muted H.264, 1920×1080). Poster: hero-poster.jpg.
-      Shown first, and used alone when prefers-reduced-motion is set.
-      Optional mobile cut: add hero-mobile.mp4, then a source with
-      media="(max-width: 760px) and (prefers-reduced-motion: no-preference)"
-      ahead of the default source. Until that file exists, phones use hero.mp4.
-      Cut: red LED face treatment dissolves into the Miami night skyline,
-      then crossfades with night.mp4 (the skyline held, forward and back).
+      Optional mobile cut: hero-mobile.mp4 is not in the repo; phones use hero.mp4.
+      The page crossfades to night.mp4 near the end of each pass, then returns.
       Footage: Mixkit Free License — clinic 52164, Miami night lights 12028.
-      night.mp4 is adapted from the night half of hero.mp4. No new stock.
     -->
-    <video
-      id="hero-video"
-      class="hero-video"
-      poster="hero-poster.jpg"
-      preload="none"
-      muted
-      autoplay
-      loop
-      playsinline
-      webkit-playsinline
-      disablepictureinpicture
-      disableremoteplayback
-      aria-hidden="true"
-      tabindex="-1">
+    <video id="hero-video" class="hero-video" poster="hero-poster.jpg" preload="none" muted autoplay loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1">
       <source src="hero.mp4" type="video/mp4" media="(prefers-reduced-motion: no-preference)">
     </video>
-    <video
-      id="night-video"
-      class="hero-video"
-      poster="night-poster.jpg"
-      preload="none"
-      muted
-      playsinline
-      webkit-playsinline
-      loop
-      disablepictureinpicture
-      disableremoteplayback
-      aria-hidden="true"
-      tabindex="-1">
-    </video>
+    <video id="night-video" class="hero-video" poster="night-poster.jpg" preload="none" muted playsinline webkit-playsinline loop disablepictureinpicture disableremoteplayback aria-hidden="true" tabindex="-1"></video>
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="hero-content">
-      <p class="eyebrow">Coral Gables · Coming 2028</p>
-      <h1 id="hero-title">Natural results.<br>Precise care.<br>Built the right way.</h1>
-      <p class="deck">Currently in nursing school, building the brand and preparing to inject under a Physician.</p>
+      <p class="eyebrow">Building Luxe · Coral Gables · <span class="nowrap">Coming 2028</span></p>
+      <h1 id="hero-title">Coral Gables.<br>Coming 2028.</h1>
+      <p class="deck">Natural results and precise care, in that order. Mateo is in nursing school. Unit 110 is not open, and no treatment is offered yet.</p>
       <a class="cta" href="#waitlist">Join the waitlist</a>
     </div>
   </section>
 
-  <section class="block approach">
-    <div class="narrow prose" data-reveal>
-      <h2 id="approach">The approach</h2>
-      <p class="lead">Most med spas open first and figure out the standards later. I’m doing the opposite.</p>
-      <p>I’m in nursing school now so that when Luxe Miami Aesthetics opens, every treatment will be done under a Physician’s standing orders — the way it is supposed to be done in Florida.</p>
-      <p>Until then, this is the place to follow the build, learn what good aesthetics actually looks like, and be first in line when we open.</p>
+  <section class="perk-band" id="list" aria-labelledby="list-title">
+    <div class="perk-inner">
+      <div>
+        <h2 id="list-title">The list, held quietly.</h2>
+        <p class="perk-lead">Not a membership and not a discount. A way to stay close while the Coral Gables flagship is built — school first, then a license, then a Physician, then the door.</p>
+        <a class="cta" href="#waitlist">Join the waitlist</a>
+      </div>
+      <div class="perk-grid">
+        <a class="perk-tile" href="#waitlist">
+          <h3>Waitlist priority</h3>
+          <p>First note when a consultation can actually be offered.</p>
+        </a>
+        <a class="perk-tile" href="#waitlist">
+          <h3>Founding updates</h3>
+          <p>News from the build, sent without a promotion.</p>
+        </a>
+        <a class="perk-tile" href="#build">
+          <h3>Build journal</h3>
+          <p>School, the standards, and the room at Unit 110.</p>
+        </a>
+        <a class="perk-tile" href="#location">
+          <h3>Flagship first</h3>
+          <p>Coral Gables in 2028, before any other city.</p>
+        </a>
+      </div>
     </div>
   </section>
 
-  <section class="block story">
-    <div class="narrow prose" data-reveal>
-      <h2 id="story">The story</h2>
-      <p class="lead">Miami after dark, and the quiet of a treatment room. Luxe is meant to feel like both.</p>
-      <p>I’m Mateo Ramirez. I’m in nursing school, building Luxe Miami Aesthetics for Coral Gables — 4203 Ponce de Leon Blvd, Unit 110 — and opening in 2028. The doors are not open. No treatments are offered yet.</p>
-      <p>Most med spas rush to open. I’m building this one in reverse: school, standards, and systems, then the door. When injectables begin, they will be performed under a Physician. That is the Florida path. I am not skipping it.</p>
-      <p>Natural results. Precise care. No shortcuts. The waitlist is how you stay close until then.</p>
-      <p class="story-cta"><a class="cta" href="#waitlist">Join the waitlist</a></p>
+  <section class="section-pad" id="treatments" aria-labelledby="treatments-title">
+    <div class="wide">
+      <div class="section-label">
+        <h2 id="treatments-title">What’s coming</h2>
+        <p>Planned for after RN licensure, injector training, and a Physician. Not available now.</p>
+      </div>
+      <div class="treatment-wrap">
+        <div class="treatment-row" id="treatment-row">
+          <article class="treatment-card">
+            <div class="treatment-card__media">
+              <span class="when">Not offered yet</span>
+              <div>
+                <span class="index">01</span>
+                <h3>Neuromodulators</h3>
+              </div>
+            </div>
+            <p>FDA-approved neuromodulators, for softer lines kept natural. Only under a Physician.</p>
+          </article>
+          <article class="treatment-card">
+            <div class="treatment-card__media">
+              <span class="when">Not offered yet</span>
+              <div>
+                <span class="index">02</span>
+                <h3>Dermal fillers</h3>
+              </div>
+            </div>
+            <p>Subtle volume and contour. FDA-approved fillers only, when treatment is allowed to begin.</p>
+          </article>
+          <article class="treatment-card">
+            <div class="treatment-card__media">
+              <span class="when">Not offered yet</span>
+              <div>
+                <span class="index">03</span>
+                <h3>Facials</h3>
+              </div>
+            </div>
+            <p>Skin, tended slowly. A protocol for the person in the chair, not a trend menu.</p>
+          </article>
+          <article class="treatment-card">
+            <div class="treatment-card__media">
+              <span class="when">Not offered yet</span>
+              <div>
+                <span class="index">04</span>
+                <h3>Consultations</h3>
+              </div>
+            </div>
+            <p>A first conversation. What to expect, said plainly, before anything exists to book.</p>
+          </article>
+        </div>
+        <div class="row-controls" id="treatment-controls">
+          <button type="button" id="treat-prev">Previous</button>
+          <button type="button" id="treat-next">Next</button>
+        </div>
+      </div>
+      <p class="note">These are the services being planned, not a menu you can book. Injectables begin only after RN licensure and formal injector training, under a Physician. Neuromodulators and fillers will be FDA-approved products only.</p>
     </div>
   </section>
 
-  <section class="moment" aria-labelledby="moment-title">
-    <video
-      id="moment-video"
-      class="moment-video"
-      poster="night-poster.jpg"
-      preload="none"
-      muted
-      loop
-      playsinline
-      webkit-playsinline
-      disablepictureinpicture
-      disableremoteplayback
-      aria-hidden="true"
-      tabindex="-1">
-    </video>
-    <div class="moment-shade" aria-hidden="true"></div>
-    <div class="moment-content" data-reveal>
-      <p class="eyebrow" id="moment-title">Miami, after dark</p>
-      <p class="moment-line">The city this practice is being built for.</p>
+  <section class="quote-band" id="standards" aria-roledescription="carousel" aria-label="Standards for the practice being built">
+    <h2>Standards</h2>
+    <div class="quote-stage">
+      <figure class="quote is-active" data-quote>
+        <blockquote>FDA-approved neuromodulators and fillers only — and only once a Physician is part of the practice.</blockquote>
+        <figcaption>How Luxe will work</figcaption>
+      </figure>
+      <figure class="quote" data-quote>
+        <blockquote>The sequence is the standard. Nursing school, an RN license, injector training, a Physician, then the door.</blockquote>
+        <figcaption>The order of the build</figcaption>
+      </figure>
+      <figure class="quote" data-quote>
+        <blockquote>A consultation comes before a treatment. What to expect is said in plain language, with no one to rush.</blockquote>
+        <figcaption>Before anything is offered</figcaption>
+      </figure>
+      <figure class="quote" data-quote>
+        <blockquote>There is no offer on this page. The list is for news. The Coral Gables door is for 2028.</blockquote>
+        <figcaption>Unit 110</figcaption>
+      </figure>
+    </div>
+    <div class="quote-controls">
+      <button type="button" id="quote-prev">Previous</button>
+      <div class="quote-dots" id="quote-dots"></div>
+      <button type="button" id="quote-next">Next</button>
+    </div>
+    <p class="quote-status sr-only" id="quote-status" aria-live="polite"></p>
+    <p class="quote-note">Written for this practice. Not a press mention, an award, or a review.</p>
+  </section>
+
+  <section class="section-pad location" id="location" aria-labelledby="location-title">
+    <div class="wide location-grid">
+      <div class="intro">
+        <h2 class="label" id="location-title">Our location</h2>
+        <p>One address, and it is not open. Unit 110 at 4203 Ponce de Leon Blvd, Coral Gables. Other names may use this building. Luxe is not open, and it is not those practices.</p>
+        <p><a class="cta" href="#waitlist">Join the waitlist</a></p>
+      </div>
+      <article class="location-card">
+        <img src="night-poster.jpg" alt="The Miami skyline at night, the city Luxe is being built for." width="1920" height="1080">
+        <div>
+          <p class="idx">01</p>
+          <h3>Coral Gables</h3>
+          <p>4203 Ponce de Leon Blvd, Unit 110<br>Coral Gables, FL 33146</p>
+          <p class="loc-note">Coming 2028 · Not open</p>
+        </div>
+      </article>
     </div>
   </section>
 
-  <section class="block build">
+  <section class="section-pad about" id="about" aria-labelledby="about-title">
+    <div class="wide about-grid" data-reveal>
+      <figure class="founder-photo">
+        <img src="founder.jpg" alt="Mateo Ramirez on a Miami rooftop at night" width="1500" height="2000">
+      </figure>
+      <div>
+        <p class="kicker">About Luxe</p>
+        <p class="role">Mateo Ramirez · Founder, in nursing school. Not a physician.</p>
+        <h2 id="about-title">Built before it opens.</h2>
+        <p>I’m Mateo Ramirez. I’ve spent years building businesses and learning how to do things properly the first time. Luxe Miami Aesthetics is the next one — facial aesthetics, natural results, and care that doesn’t look like work was done.</p>
+        <p>I am in nursing school. I do not treat anyone. The practice is for 4203 Ponce de Leon Blvd, Unit 110, and for 2028. An RN license, formal injector training, and a Physician come first. When injectables begin, they will be FDA-approved neuromodulators and fillers only.</p>
+        <p>Most studios open and write the rules afterward. This one is being built in reverse, so the first day is already at the standard.</p>
+        <p><a class="cta" href="#waitlist">Join the waitlist</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad build" id="build" aria-labelledby="build-title">
     <div class="narrow" data-reveal>
-      <h2 id="build">Building Luxe</h2>
+      <h2 id="build-title">Building Luxe</h2>
       <p class="lead">The work, in the order it actually happens. The doors are not open. No treatments are offered yet.</p>
       <ol class="timeline">
         <li class="is-now">
@@ -891,148 +1091,112 @@ footer a:hover { color: #fff; }
           </div>
         </li>
       </ol>
-      <p class="note">Until this sequence is finished, Luxe does not treat anyone. When injectables begin, they will be FDA-approved neuromodulators and fillers only, under a Physician.</p>
+      <p class="note">Until this sequence is finished, Luxe does not treat anyone. A future studio, if one is ever built, would be held to that same sequence. It is not something this page can grant.</p>
     </div>
   </section>
 
-  <section class="block services">
-    <div class="wide" data-reveal>
-      <h2 id="services">What’s coming</h2>
-      <ul class="service-list">
-        <li>
-          <span class="idx">01</span>
-          <div>
-            <h3>Neuromodulators</h3>
-            <p>Botox and similar treatments for natural, balanced results</p>
-          </div>
-        </li>
-        <li>
-          <span class="idx">02</span>
-          <div>
-            <h3>Dermal fillers</h3>
-            <p>Subtle volume and contouring</p>
-          </div>
-        </li>
-        <li>
-          <span class="idx">03</span>
-          <div>
-            <h3>Facial treatments</h3>
-            <p>Skin care protocols tailored to you</p>
-          </div>
-        </li>
-        <li>
-          <span class="idx">04</span>
-          <div>
-            <h3>Consultations</h3>
-            <p>Focused on natural outcomes and clear expectations</p>
-          </div>
-        </li>
-        <li>
-          <span class="idx">05</span>
-          <div>
-            <h3>FDA-approved products</h3>
-            <p>FDA-approved neuromodulators and fillers only.</p>
-          </div>
-        </li>
-      </ul>
-      <p class="note">All services available only after RN licensure and formal injector training, under a Physician.</p>
+  <section id="own" aria-labelledby="own-title">
+    <div class="own-hero">
+      <img src="night-poster.jpg" alt="" width="1920" height="1080">
+      <div class="own-card">
+        <p class="kicker">After the flagship</p>
+        <h2 id="own-title">Own a Luxe</h2>
+        <p>Coral Gables comes first, and it is not open. Doors in 2028. Interest in a future studio is a note for after that model is real — not a clinic you can buy today.</p>
+        <a class="cta" href="#franchise-form">Tell us you’re interested</a>
+      </div>
     </div>
-  </section>
-
-  <section class="standards" aria-labelledby="standards">
-    <div class="wide" data-reveal>
-      <h2 id="standards">How we work</h2>
-      <ul class="standards-list">
-        <li>
-          <h3>FDA-approved products only</h3>
-          <p>Neuromodulators and fillers that are FDA-approved. Nothing else.</p>
-        </li>
-        <li>
-          <h3>Under a Physician</h3>
-          <p>When treatment begins, only after RN licensure, and only under a Physician.</p>
-        </li>
-        <li>
-          <h3>A clear consultation first</h3>
-          <p>What to expect, said plainly, before anything begins.</p>
-        </li>
-        <li>
-          <h3>No pressure</h3>
-          <p>The list is for news. Nothing is booked, and nothing is rushed.</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="block band">
-    <div class="narrow prose" data-reveal>
-      <h2 id="why">Why the wait</h2>
-      <p>Florida requires a medical license to inject. I chose nursing school because it is the fastest legitimate route to practice under a Physician, and because the clinical foundation matters.</p>
-      <p>The next two years are for school, hands-on injector training, and building the relationships and systems so the first day we open is already at a high standard.</p>
-    </div>
-  </section>
-
-  <section class="block founder">
-    <div class="wide founder-grid" data-reveal>
-      <figure class="founder-photo">
-        <img src="founder.jpg" alt="Mateo Ramirez on a Miami rooftop at night" width="1500" height="2000">
-      </figure>
-      <div class="founder-copy">
-        <h2 id="founder">Founder</h2>
-        <h3>Mateo Ramirez</h3>
-        <p class="role">Founder, Luxe Miami Aesthetics</p>
-        <p>I’ve spent years building businesses and learning how to do things properly the first time. Luxe Miami Aesthetics is the next one — focused on facial aesthetics, natural results, and the kind of care that doesn’t look like work was done.</p>
+    <div class="section-pad own-panel" id="franchise-form">
+      <div class="wide own-panel-grid" data-reveal>
+        <div class="own-copy">
+          <h2>A note, not an offer.</h2>
+          <p>Franchising is the longer aim of the brand: Coral Gables proven first, then other cities, Colombia included. That is a direction, not a sale. Nothing on this page reserves a city, sets a fee, or starts a franchise relationship.</p>
+          <ul class="own-list">
+            <li>Single-unit or multi-unit interest is welcome. Neither is being signed today.</li>
+            <li>There is no fee, no territory map, and no franchise disclosure here, because a franchise is not being offered.</li>
+            <li>Any later studio would follow the Coral Gables rule: a license, a Physician, and FDA-approved products. This note cannot grant that.</li>
+          </ul>
+        </div>
+        <div>
+          <div id="franchise-form-wrap">
+            <form class="inquiry-form" id="franchise-inquiry" action="https://formspree.io/f/your-form-id" method="POST">
+              <input type="hidden" name="_subject" value="Luxe future-studio interest">
+              <input type="hidden" name="_next" value="https://luxemiamiaesthetics.com/interest.html">
+              <input type="hidden" name="inquiry" value="future-studio-interest">
+              <label class="field" for="franchise-name">Name</label>
+              <input id="franchise-name" name="name" type="text" autocomplete="name">
+              <label class="field" for="franchise-email">Email</label>
+              <input id="franchise-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+              <label class="field" for="franchise-city">City you have in mind</label>
+              <input id="franchise-city" name="city" type="text" autocomplete="address-level2">
+              <label class="field" for="franchise-note">Anything you want us to know</label>
+              <textarea id="franchise-note" name="message" rows="4"></textarea>
+              <button class="cta" type="submit">Tell us you’re interested</button>
+              <p class="form-error" id="franchise-error" role="alert" hidden></p>
+            </form>
+            <p class="fine">Or write directly to <a class="text-link" href="mailto:info@luxemiamiaesthetics.com?subject=Interest%20in%20a%20future%20Luxe%20studio">info@luxemiamiaesthetics.com</a>. The guest waitlist is separate, and it does not reserve a studio.</p>
+          </div>
+          <div class="franchise-confirm" id="franchise-confirm" hidden>
+            <h2 id="franchise-confirm-title" tabindex="-1">We have your note.</h2>
+            <p class="confirm-line">This is interest in a future studio, not a franchise offer. Coral Gables comes first. Nothing is reserved or for sale.</p>
+            <p class="confirm-meta">Flagship first · Coming 2028</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="block faq">
+  <section class="section-pad faq" id="faq" aria-labelledby="faq-title">
     <div class="narrow" data-reveal>
-      <h2 id="faq">FAQ</h2>
+      <h2 id="faq-title">FAQ</h2>
       <div class="faq-list">
         <details>
           <summary>When do you open?</summary>
-          <p>2028, after RN licensure and injector training are complete.</p>
+          <p>2028, in Coral Gables, after RN licensure, injector training, and a Physician’s collaboration are complete.</p>
         </details>
         <details>
           <summary>Are you licensed yet?</summary>
-          <p>Not yet. Currently in nursing school. Treatments will only be offered after full licensure and under a Physician.</p>
+          <p>Not yet. Mateo is in nursing school. He is not a physician. Treatments will be offered only after full licensure and under a Physician.</p>
         </details>
         <details>
           <summary>Where will you be located?</summary>
-          <p>Coral Gables, Florida — 4203 Ponce de Leon Blvd, Unit 110.</p>
+          <p>Coral Gables, Florida — 4203 Ponce de Leon Blvd, Unit 110. That suite is not open.</p>
         </details>
         <details>
-          <summary>What areas will you serve?</summary>
-          <p>Miami and surrounding areas, starting in Coral Gables.</p>
+          <summary>Can I buy a franchise now?</summary>
+          <p>No. A franchise is not being offered. You can leave a note if you want to be remembered when the Coral Gables flagship has a real model to show. No fee, territory, or disclosure is attached to that note. The longer aim includes other cities, Colombia among them, only after the flagship.</p>
+        </details>
+        <details>
+          <summary>What will you serve first?</summary>
+          <p>Miami, starting in Coral Gables. The guest list is for that studio. It is not a reservation for a future city.</p>
         </details>
       </div>
     </div>
   </section>
 
-  <section class="block closing">
+  <section class="section-pad closing" id="contact">
     <div class="wide closing-grid" data-reveal>
       <div>
-        <h2 id="contact">Contact</h2>
-        <p>Questions about the timeline or waitlist?</p>
+        <h2>Stay close</h2>
+        <p>The waitlist is for the Coral Gables timeline, the standards, and first word when a consultation can actually be offered. Nothing is booked from this form.</p>
         <p><a class="text-link" href="mailto:info@luxemiamiaesthetics.com">info@luxemiamiaesthetics.com</a></p>
         <address>
           4203 Ponce de Leon Blvd, Unit 110<br>
           Coral Gables, FL 33146
         </address>
+        <p class="fine"><a class="text-link" href="https://instagram.com/luxemiamiaesthetics" target="_blank" rel="noopener noreferrer">Instagram</a></p>
       </div>
       <div id="waitlist">
         <div id="waitlist-form-wrap">
-          <h2>Stay close</h2>
-          <p>Join the list for updates on the timeline, education, and first access when consultations open.</p>
           <form id="waitlist-form" action="https://formspree.io/f/your-form-id" method="POST">
             <input type="hidden" name="_subject" value="Luxe Miami Aesthetics waitlist">
             <input type="hidden" name="_next" value="https://luxemiamiaesthetics.com/confirmed.html">
+            <input type="hidden" name="inquiry" value="guest-waitlist">
             <label class="field" for="email">Email address</label>
             <div class="form-row">
               <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required>
               <button class="cta" type="submit">Join the waitlist</button>
             </div>
-            <p class="form-error" id="form-error" hidden></p>
+            <p class="form-error" id="form-error" role="alert" hidden></p>
           </form>
         </div>
         <div class="waitlist-confirm" id="waitlist-confirm" hidden>
@@ -1040,97 +1204,109 @@ footer a:hover { color: #fff; }
           <p class="confirm-sub">MIAMI AESTHETICS</p>
           <h2 id="confirm-title" tabindex="-1">You’re on the list.</h2>
           <p class="confirm-line">Natural results. Precise care. Built the right way.</p>
-          <p class="confirm-meta">Coral Gables · Coming 2028</p>
+          <p class="confirm-meta">Coral Gables · Unit 110 · Coming 2028</p>
         </div>
-        <p class="follow"><a class="text-link" href="https://instagram.com/luxemiamiaesthetics" target="_blank" rel="noopener noreferrer">Follow the journey on Instagram</a></p>
       </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="narrow">
-    <div class="footer-brand">
-      <img class="footer-mark" src="logo.png" alt="Luxe" width="497" height="355">
-      <p class="footer-sub">MIAMI AESTHETICS</p>
+  <div class="wide">
+    <div class="footer-grid">
+      <div>
+        <img class="footer-mark" src="logo.png" alt="Luxe" width="497" height="355">
+        <p class="footer-sub">MIAMI AESTHETICS</p>
+        <p style="margin-top:16px">4203 Ponce de Leon Blvd, Unit 110<br>Coral Gables, FL 33146</p>
+        <p style="margin-top:8px"><a href="mailto:info@luxemiamiaesthetics.com">info@luxemiamiaesthetics.com</a></p>
+      </div>
+      <div>
+        <h2>The list</h2>
+        <p>Notes on the 2028 flagship. Not a booking.</p>
+        <p style="margin-top:10px"><a href="#waitlist">Join the waitlist</a></p>
+      </div>
+      <div>
+        <h2>Hours</h2>
+        <dl class="hours">
+          <div><dt>Sunday–Saturday</dt><dd>Not open</dd></div>
+          <div><dt>The door</dt><dd>2028</dd></div>
+          <div><dt>The list</dt><dd>Open for notes</dd></div>
+        </dl>
+      </div>
+      <div>
+        <h2>Visit</h2>
+        <ul>
+          <li><a href="#treatments">What’s coming</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#build">Building Luxe</a></li>
+          <li><a href="#own">Own a Luxe</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="https://instagram.com/luxemiamiaesthetics" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-meta">
-      <p>Coral Gables, Florida</p>
-      <p><a class="text-link" href="mailto:info@luxemiamiaesthetics.com">info@luxemiamiaesthetics.com</a></p>
-    </div>
-    <ul class="footer-links">
-      <li><a href="#approach">The approach</a></li>
-      <li><a href="#story">The story</a></li>
-      <li><a href="#build">The build</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#standards">How we work</a></li>
-      <li><a href="#why">Why the wait</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="https://instagram.com/luxemiamiaesthetics" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-    </ul>
-    <p class="legal">Currently in nursing school.<br>Not yet offering treatments.<br>Injections will be performed only after RN licensure and under a Physician.</p>
+    <p class="legal">Currently in nursing school. Not yet offering treatments. Injections will be performed only after RN licensure and under a Physician. A franchise is not being offered today. No fee, territory, or disclosure is published here.</p>
   </div>
 </footer>
 <script>
 (function () {
   var header = document.querySelector(".site-header");
+  var toggle = document.querySelector(".nav-toggle");
+  var nav = document.getElementById("primary-nav");
   var video = document.getElementById("hero-video");
   var night = document.getElementById("night-video");
-  var moment = document.getElementById("moment-video");
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-  var STORAGE = "luxe-waitlist";
-  var nightTimer = 0;
-  var switching = false;
-  var handedOff = false;
-  var nightOk = false;
-  var heroOnScreen = true;
 
   function syncHeader() {
     if (!header) return;
-    header.classList.toggle("is-top", window.scrollY < 8);
+    header.classList.toggle("is-scrolled", window.scrollY > 8);
   }
   syncHeader();
   window.addEventListener("scroll", syncHeader, { passive: true });
 
-  function showConfirm(moveFocus) {
-    var wrap = document.getElementById("waitlist-form-wrap");
-    var panel = document.getElementById("waitlist-confirm");
-    var title = document.getElementById("confirm-title");
-    if (!panel) return;
-    if (wrap) wrap.hidden = true;
-    panel.hidden = false;
-    if (moveFocus && title && typeof title.focus === "function") {
-      title.focus({ preventScroll: true });
-    }
+  function setMenu(open) {
+    if (!header || !toggle) return;
+    header.classList.toggle("is-open", open);
+    document.body.classList.toggle("nav-open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    var label = toggle.querySelector(".nav-toggle-label");
+    if (label) label.textContent = open ? "Close" : "Menu";
   }
+  if (toggle) {
+    toggle.addEventListener("click", function () {
+      setMenu(!header.classList.contains("is-open"));
+    });
+  }
+  if (nav) {
+    nav.addEventListener("click", function (event) {
+      if (event.target.closest("a")) setMenu(false);
+    });
+  }
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") setMenu(false);
+  });
 
-  function showError() {
-    var el = document.getElementById("form-error");
-    if (!el) return;
-    el.hidden = false;
-    el.textContent = "";
-    el.appendChild(document.createTextNode("We couldn’t add you just yet. Please try again, or write to "));
+  function mailLink() {
     var link = document.createElement("a");
     link.href = "mailto:info@luxemiamiaesthetics.com";
     link.textContent = "info@luxemiamiaesthetics.com";
-    el.appendChild(link);
-    el.appendChild(document.createTextNode("."));
-    if (typeof el.scrollIntoView === "function") el.scrollIntoView({ block: "nearest" });
+    return link;
   }
 
-  try {
-    if (window.sessionStorage && sessionStorage.getItem(STORAGE) === "1") showConfirm(false);
-  } catch (e) {}
-
-  var form = document.getElementById("waitlist-form");
-  if (form) {
+  function bindForm(form, errorId, storageKey, onOk) {
+    if (!form) return;
+    try {
+      if (window.sessionStorage && sessionStorage.getItem(storageKey) === "1") onOk(false);
+    } catch (e) {}
     form.addEventListener("submit", function (event) {
       event.preventDefault();
       var button = form.querySelector('[type="submit"]');
-      var error = document.getElementById("form-error");
+      var error = document.getElementById(errorId);
       if (error) error.hidden = true;
       if (button) {
         button.disabled = true;
+        button.dataset.label = button.dataset.label || button.textContent;
         button.textContent = "One moment";
       }
       window.fetch(form.action, {
@@ -1139,16 +1315,128 @@ footer a:hover { color: #fff; }
         headers: { Accept: "application/json" }
       }).then(function (response) {
         if (!response.ok) throw new Error("form");
-        try { sessionStorage.setItem(STORAGE, "1"); } catch (err) {}
-        showConfirm(true);
+        try { sessionStorage.setItem(storageKey, "1"); } catch (err) {}
+        onOk(true);
       }).catch(function () {
         if (button) {
           button.disabled = false;
-          button.textContent = "Join the waitlist";
+          button.textContent = button.dataset.label || "Try again";
         }
-        showError();
+        if (!error) return;
+        error.hidden = false;
+        error.textContent = "";
+        error.appendChild(document.createTextNode("That didn’t go through. Please try again, or write to "));
+        error.appendChild(mailLink());
+        error.appendChild(document.createTextNode("."));
       });
     });
+  }
+
+  bindForm(document.getElementById("waitlist-form"), "form-error", "luxe-waitlist", function (moveFocus) {
+    var wrap = document.getElementById("waitlist-form-wrap");
+    var panel = document.getElementById("waitlist-confirm");
+    var title = document.getElementById("confirm-title");
+    if (wrap) wrap.hidden = true;
+    if (panel) panel.hidden = false;
+    if (moveFocus && title) title.focus({ preventScroll: true });
+  });
+
+  bindForm(document.getElementById("franchise-inquiry"), "franchise-error", "luxe-franchise", function (moveFocus) {
+    var wrap = document.getElementById("franchise-form-wrap");
+    var panel = document.getElementById("franchise-confirm");
+    var title = document.getElementById("franchise-confirm-title");
+    if (wrap) wrap.hidden = true;
+    if (panel) panel.hidden = false;
+    if (moveFocus && title) title.focus({ preventScroll: true });
+  });
+
+  var quotes = Array.prototype.slice.call(document.querySelectorAll("[data-quote]"));
+  var dotWrap = document.getElementById("quote-dots");
+  var quoteIndex = 0;
+  var quoteTimer = 0;
+  function showQuote(i) {
+    if (!quotes.length) return;
+    quoteIndex = (i + quotes.length) % quotes.length;
+    quotes.forEach(function (quote, n) {
+      var on = n === quoteIndex;
+      quote.classList.toggle("is-active", on);
+      quote.setAttribute("aria-hidden", on ? "false" : "true");
+    });
+    if (dotWrap) {
+      Array.prototype.forEach.call(dotWrap.querySelectorAll("button"), function (dot, n) {
+        dot.setAttribute("aria-current", n === quoteIndex ? "true" : "false");
+      });
+    }
+    var status = document.getElementById("quote-status");
+    if (status) status.textContent = "Standard " + (quoteIndex + 1) + " of " + quotes.length;
+  }
+  if (dotWrap && quotes.length) {
+    quotes.forEach(function (_, n) {
+      var dot = document.createElement("button");
+      dot.type = "button";
+      dot.setAttribute("aria-label", "Show standard " + (n + 1));
+      dot.addEventListener("click", function () { showQuote(n); restartQuotes(); });
+      dotWrap.appendChild(dot);
+    });
+    showQuote(0);
+  }
+  var prevQuote = document.getElementById("quote-prev");
+  var nextQuote = document.getElementById("quote-next");
+  if (prevQuote) prevQuote.addEventListener("click", function () { showQuote(quoteIndex - 1); restartQuotes(); });
+  if (nextQuote) nextQuote.addEventListener("click", function () { showQuote(quoteIndex + 1); restartQuotes(); });
+  function restartQuotes() {
+    window.clearInterval(quoteTimer);
+    if (reduce.matches || quotes.length < 2) return;
+    quoteTimer = window.setInterval(function () { showQuote(quoteIndex + 1); }, 7000);
+  }
+  var quoteBand = document.getElementById("standards");
+  if (quoteBand) {
+    quoteBand.addEventListener("mouseenter", function () { window.clearInterval(quoteTimer); });
+    quoteBand.addEventListener("mouseleave", restartQuotes);
+    quoteBand.addEventListener("focusin", function () { window.clearInterval(quoteTimer); });
+    quoteBand.addEventListener("focusout", restartQuotes);
+  }
+  if (!reduce.matches) restartQuotes();
+
+  var row = document.getElementById("treatment-row");
+  var treatControls = document.getElementById("treatment-controls");
+  function treatStep(dir) {
+    if (!row) return;
+    var card = row.querySelector(".treatment-card");
+    var amount = card ? card.getBoundingClientRect().width + 16 : 280;
+    row.scrollBy({ left: dir * amount, behavior: reduce.matches ? "auto" : "smooth" });
+  }
+  var treatPrev = document.getElementById("treat-prev");
+  var treatNext = document.getElementById("treat-next");
+  if (treatPrev) treatPrev.addEventListener("click", function () { treatStep(-1); });
+  if (treatNext) treatNext.addEventListener("click", function () { treatStep(1); });
+  function syncTreatControls() {
+    if (!row || !treatControls) return;
+    treatControls.hidden = row.scrollWidth <= row.clientWidth + 8;
+  }
+  syncTreatControls();
+  window.addEventListener("resize", syncTreatControls);
+
+  function revealNow(el) {
+    if (!el || el.dataset.revealed === "1") return;
+    el.dataset.revealed = "1";
+    el.style.opacity = "1";
+    el.style.transform = "none";
+  }
+  if (!reduce.matches && "IntersectionObserver" in window) {
+    var revealed = document.querySelectorAll("[data-reveal]");
+    if (revealed.length) {
+      var revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          revealNow(entry.target);
+          revealObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.12 });
+      revealed.forEach(function (el) { revealObserver.observe(el); });
+    }
+  } else {
+    document.querySelectorAll("[data-reveal]").forEach(revealNow);
   }
 
   function stripClip(clip) {
@@ -1161,58 +1449,21 @@ footer a:hover { color: #fff; }
     try { clip.load(); } catch (e) {}
     clip.classList.add("is-hidden");
   }
-
   function halt() {
     window.clearTimeout(nightTimer);
     stripClip(video);
     stripClip(night);
-    stripClip(moment);
   }
-
   if (reduce.matches) {
     halt();
     return;
   }
 
-  if ("IntersectionObserver" in window) {
-    var revealed = document.querySelectorAll("[data-reveal]");
-      function revealNow(el) {
-        if (!el || el.dataset.revealed === "1") return;
-        el.dataset.revealed = "1";
-        el.classList.add("is-in");
-        if (typeof el.animate === "function") {
-          el.animate(
-            [{ opacity: 0, transform: "translateY(12px)" }, { opacity: 1, transform: "none" }],
-            { duration: 1000, easing: "ease", fill: "forwards" }
-          );
-        }
-        el.style.opacity = "1";
-        el.style.transform = "none";
-      }
-      if (revealed.length) {
-      var revealObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          revealNow(entry.target);
-          revealObserver.unobserve(entry.target);
-        });
-      }, { threshold: 0, rootMargin: "0px 0px -48px 0px" });
-      revealed.forEach(function (el) { revealObserver.observe(el); });
-      document.addEventListener("focusin", function (event) {
-        var block = event.target.closest ? event.target.closest("[data-reveal]") : null;
-        revealNow(block);
-      });
-      if (window.location.hash) {
-        var hashed = document.querySelector(window.location.hash);
-        if (hashed && hashed.closest) revealNow(hashed.closest("[data-reveal]"));
-      }
-    }
-  } else {
-    document.querySelectorAll("[data-reveal]").forEach(function (el) {
-      el.style.opacity = "1";
-      el.style.transform = "none";
-    });
-  }
+  var nightTimer = 0;
+  var switching = false;
+  var handedOff = false;
+  var nightOk = false;
+  var heroOnScreen = true;
 
   function arm(clip) {
     if (!clip || clip.dataset.armed === "1") return;
@@ -1220,49 +1471,19 @@ footer a:hover { color: #fff; }
     var source = document.createElement("source");
     source.src = "night.mp4";
     source.type = "video/mp4";
-    source.addEventListener("error", function () { clip.classList.add("is-hidden"); });
     clip.appendChild(source);
     clip.muted = true;
     clip.defaultMuted = true;
     clip.playsInline = true;
     clip.load();
   }
-
-  function playClip(clip, allowOffscreen) {
-    if (!clip) return;
-    if (!allowOffscreen && clip !== moment && !heroOnScreen) return;
+  function playClip(clip) {
+    if (!clip || !heroOnScreen) return;
     clip.muted = true;
     var pending = clip.play();
     if (pending && typeof pending.catch === "function") pending.catch(function () {});
   }
-
-  if (moment && "IntersectionObserver" in window) {
-    var momentSeen = false;
-    var momentObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          moment.dataset.inview = "1";
-          if (!momentSeen) {
-            momentSeen = true;
-            arm(moment);
-            moment.addEventListener("playing", function () { moment.classList.add("is-ready"); });
-            moment.addEventListener("error", function () { moment.classList.add("is-hidden"); });
-            moment.addEventListener("canplay", function () {
-              if (moment.dataset.inview === "1") playClip(moment, true);
-            });
-          }
-          playClip(moment, true);
-        } else if (momentSeen) {
-          moment.dataset.inview = "0";
-          moment.pause();
-        }
-      });
-    }, { threshold: 0.2, rootMargin: "180px 0px" });
-    momentObserver.observe(moment.parentElement || moment);
-  }
-
   if (!video) return;
-
   video.muted = true;
   video.defaultMuted = true;
   video.playsInline = true;
@@ -1271,23 +1492,19 @@ footer a:hover { color: #fff; }
     arm(night);
   });
   video.addEventListener("error", function () { video.classList.add("is-hidden"); });
-  var heroSource = video.querySelector("source");
-  if (heroSource) heroSource.addEventListener("error", function () { video.classList.add("is-hidden"); });
-
   if (night) {
     night.addEventListener("canplay", function () {
       nightOk = isFinite(night.duration) && night.duration > 1;
     });
     night.addEventListener("error", function () { nightOk = false; });
   }
-
   function toNight() {
     if (!night || !nightOk || switching || handedOff) return;
     handedOff = true;
     switching = true;
     video.loop = false;
     night.currentTime = 0;
-    playClip(night, false);
+    playClip(night);
     night.classList.add("is-front");
     window.setTimeout(function () {
       video.classList.remove("is-front");
@@ -1298,7 +1515,6 @@ footer a:hover { color: #fff; }
       nightTimer = window.setTimeout(toHero, hold);
     }, 1700);
   }
-
   function toHero() {
     if (!night || switching) return;
     switching = true;
@@ -1306,17 +1522,14 @@ footer a:hover { color: #fff; }
       try { video.currentTime = 0; } catch (e) {}
     }
     video.classList.add("is-front");
-    playClip(video, false);
-    window.requestAnimationFrame(function () {
-      night.classList.remove("is-front");
-    });
+    playClip(video);
+    window.requestAnimationFrame(function () { night.classList.remove("is-front"); });
     window.setTimeout(function () {
       night.pause();
       switching = false;
       handedOff = false;
     }, 1700);
   }
-
   video.addEventListener("timeupdate", function () {
     if (!nightOk || handedOff || switching) return;
     var at = (isFinite(video.duration) && video.duration > 4) ? Math.max(1, video.duration - 3.3) : 9;
@@ -1325,12 +1538,11 @@ footer a:hover { color: #fff; }
   video.addEventListener("ended", function () {
     if (!nightOk) {
       try { video.currentTime = 0; } catch (e) {}
-      playClip(video, false);
+      playClip(video);
       return;
     }
     if (!handedOff) toNight();
   });
-
   if ("IntersectionObserver" in window) {
     var heroObserver = new IntersectionObserver(function (entries) {
       heroOnScreen = entries[0].isIntersecting;
@@ -1339,14 +1551,12 @@ footer a:hover { color: #fff; }
         if (night) night.pause();
         return;
       }
-      playClip(night && night.classList.contains("is-front") ? night : video, true);
+      playClip(night && night.classList.contains("is-front") ? night : video);
     }, { threshold: 0.12 });
     var heroSection = video.closest("section");
     if (heroSection) heroObserver.observe(heroSection);
   }
-
-  playClip(video, true);
-
+  playClip(video);
   if (typeof reduce.addEventListener === "function") {
     reduce.addEventListener("change", function (event) {
       if (event.matches) halt();
