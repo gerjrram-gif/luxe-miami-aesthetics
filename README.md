@@ -14,4 +14,4 @@ Footage is Mixkit Free License: clinic clip 52164 and Miami night lights clip 12
 
 Replace `hero.mp4` and `hero-poster.jpg` in the site root and keep those names. To use a mobile cut, add `hero-mobile.mp4` and a `<source>` with `media="(max-width: 760px) and (prefers-reduced-motion: no-preference)"` ahead of the default source in `index.html`.
 
-The header pairs `logo-mark.png` (the script “luxe,” knocked out so it stays legible on the film) with the readable name “Luxe Miami Aesthetics.” The footer uses the same mark.
+The header wordmark is two lines: “Luxe” and, under it, “Miami Aesthetics.” The footer still uses `logo-mark.png`, the script “luxe” knocked out so it stays legible on cream.

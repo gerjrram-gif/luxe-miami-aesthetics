@@ -104,22 +104,29 @@ a { color: inherit; }
 .wordmark {
   display: flex;
   align-items: center;
-  gap: 10px;
   min-width: 0;
-  color: #f7f4ef;
+  color: #fff;
   text-decoration: none;
 }
-.wordmark img { height: 38px; width: auto; flex: 0 0 auto; }
 .wordmark-name {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.02rem;
   font-weight: 500;
-  line-height: 1.05;
-  letter-spacing: -0.015em;
   color: #fff;
+  line-height: 1;
 }
-@media (max-width: 719px) {
-  .wordmark-name { max-width: 8.6rem; }
+.wordmark-luxe {
+  font-size: 1.45rem;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+}
+.wordmark-place {
+  font-size: 0.92rem;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
 }
 .header-actions {
   display: flex;
@@ -438,9 +445,8 @@ footer {
 
 @media (min-width: 720px) {
   .header-inner { width: min(1180px, calc(100% - 56px)); }
-  .wordmark { gap: 12px; }
-  .wordmark img { height: 48px; }
-  .wordmark-name { font-size: 1.45rem; white-space: nowrap; }
+  .wordmark-luxe { font-size: 1.7rem; }
+  .wordmark-place { font-size: 1.05rem; }
   .form-row { flex-direction: row; align-items: center; }
   .form-row input { flex: 1; }
   .form-row .cta { flex: 0 0 auto; }
@@ -459,9 +465,8 @@ footer {
 }
 @media (max-width: 380px) {
   .cta-nav { padding: 0 12px; font-size: 0.78rem; }
-  .wordmark { gap: 8px; }
-  .wordmark img { height: 34px; }
-  .wordmark-name { font-size: 0.92rem; }
+  .wordmark-luxe { font-size: 1.28rem; }
+  .wordmark-place { font-size: 0.82rem; }
 }
 @media (max-height: 700px) {
   .hero h1 { font-size: clamp(2rem, 6vh, 3.1rem); }
@@ -486,8 +491,10 @@ footer {
 <header class="site-header" id="top">
   <div class="header-inner">
     <a class="wordmark" href="#top">
-      <img src="logo-mark.png" alt="" width="232" height="171">
-      <span class="wordmark-name">Luxe Miami Aesthetics</span>
+      <span class="wordmark-name">
+        <span class="wordmark-luxe">Luxe</span>
+        <span class="wordmark-place">Miami Aesthetics</span>
+      </span>
     </a>
     <div class="header-actions">
       <nav aria-label="Primary">
