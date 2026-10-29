@@ -14,4 +14,4 @@ Footage is Mixkit Free License: clinic clip 52164 and Miami night lights clip 12
 
 Replace `hero.mp4` and `hero-poster.jpg` in the site root and keep those names. To use a mobile cut, add `hero-mobile.mp4` and a `<source>` with `media="(max-width: 760px) and (prefers-reduced-motion: no-preference)"` ahead of the default source in `index.html`.
 
-The header and footer use `logo.png`, Mateo’s official mark: a red rounded tile, black script “luxe,” and white “MIAMI AESTHETICS” underneath.
+The header and footer use `logo.png`, Mateo’s official mark: a red tile, black script “luxe,” and white “MIAMI AESTHETICS.” The tile edges are feathered so the mark sits in the page instead of reading as a hard sticker.
