@@ -15,7 +15,7 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500
 .container { max-width: 680px; margin: 0 auto; padding: 0 28px; }
 .hero-logo { padding: 72px 20px 48px; text-align: center; background: linear-gradient(180deg, var(--red) 0%, #d20500 65%, #faf8f7 100%); }
 .logo-wrap { display: inline-block; margin-bottom: 36px; }
-.logo-img { height: 150px; width: auto; border-radius: 18px; filter: drop-shadow(0 10px 24px rgba(0,0,0,0.18)); }
+.logo-wrap svg { height: 190px; width: auto; border-radius: 26px; filter: drop-shadow(0 10px 24px rgba(0,0,0,0.18)); }
 .hero-copy h1 { font-size: clamp(2.3rem, 6vw, 3.6rem); line-height: 1.05; margin-bottom: 14px; color: var(--text); font-weight: 500; }
 .hero-copy .sub { font-size: 1.05rem; color: var(--muted); max-width: 440px; margin: 0 auto 28px; font-weight: 400; }
 .badge { display: inline-block; background: var(--red); color: white; padding: 6px 16px; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 20px; border-radius: 30px; font-weight: 500; }
@@ -39,7 +39,11 @@ footer strong { color: white; font-weight: 500; }
 <body>
 <section class="hero-logo">
 <div class="logo-wrap">
-<img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwgHBgoICAgLCgoLDhgQDg0NDh0VFhEYIx8lJCIfIiEmKzcvJik0KSEiMEExNDk7Pj4+JS5ESUM8SDc9Pjv/2wBDAQoLCw4NDhwQEBw7KCIoOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozv/wAARCAAeAYgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9/KKK/I//AILR/wDBaP4q+A/irq37H/7H/iz+wf7B32fjbxtp08E1zcXMkBWSxs5F3/ZfI8wrJMCtytzGUQw+QzTeXm+b4TJcJ9YxF7Xskt2+yPt+AOAM/wDEfP1lWVJKSTlOcnaEIKycpWTe7SSSbbfa7X1D+33/AMFvP2XP2JtSk+H3hiH/AIWT44j8xbnQfDmrwpaaXJFciGWC/ux5n2acbZ8QrHLIGhAkWJZEc/lj+0R/wXY/4KLftBWcui2vxTs/AOl3FnFDc2Hw7sWsHd45jKJlu5HlvInb5UYRTojIm0rhpN/x5RX41mvF2cZnNpTdOH8sXb73u/y8j/RXgbwC8POC8NBzw0cViFZurWiparVOMHeELPay5trybSZr+O/iB48+KXiu68d/E3xtq/iPXL7Z9u1nXtSlvLu42RrGm+aVmd9qIiDJOFUAcAVkUUV8zKUpScpO7Z+00qVKhSjTpxUYxSSSVkktEklsl0QUUUUiwooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKt+H/EGveE9esfFXhXW7zTNU0y8iu9N1LT7l4bi0uI3DxyxSIQ0bqwDKykEEAggiqlFNNp3RMoxnFxkrp7o+rP2d/+C1f/AAUW/Z2vYltfjzeeNNLW8lubnRviIG1dLl3hEQDXMjC8jRcK6xxTogdclSHkD/pZ+wV/wcE/s9ftHXtl8Nf2mNOs/hh4rezdm1u+1SNfD168UMbORcTMrWTyN57JDNuQLGqfaJJHVD+E9FfRZZxVnOWTXLUc4/yy1Xyb1XyPyHjTwM8OuNMPP2mDjQrtaVaKUJJ62ckrRn58yba0TWjX9cFFfhn/AMEif+C0fxV+Avjzwt+zL+0r4s/tz4YXn2XQ9G1LU54IZvCO6UrDM1zJs8yyTzAkizOfIhjQxMqw+TL+5lfsmSZ5hM9wvtaN01pKL3T/AFXZ9fJ3R/nZ4leGef8Ahjna" alt="Luxe Miami Aesthetics" class="logo-img">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230">
+<rect width="400" height="230" rx="28" fill="#e10600"/>
+<text x="200" y="140" text-anchor="middle" font-family="'Brush Script MT', 'Segoe Script', cursive" font-size="110" fill="#1a1a1a">luxe</text>
+<text x="200" y="185" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#ffffff" letter-spacing="6">MIAMI AESTHETICS</text>
+</svg>
 </div>
 <div class="hero-copy">
 <div class="badge">Coming 2028</div>
