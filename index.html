@@ -10,7 +10,7 @@
 <meta property="og:url" content="https://luxemiamiaesthetics.com">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://luxemiamiaesthetics.com/hero-poster.jpg">
-<meta property="og:image:alt" content="Red LED facial treatment, the poster frame for the Luxe Miami Aesthetics hero film.">
+<meta property="og:image:alt" content="A red LED facial treatment dissolving into the Miami skyline at night, the poster for the Luxe Miami Aesthetics hero.">
 <meta name="theme-color" content="#070b14">
 <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch.png">
@@ -31,7 +31,7 @@
   --red: #e10600;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+html { scroll-behavior: smooth; scroll-padding-top: 120px; }
 body {
   margin: 0;
   font-family: Inter, system-ui, sans-serif;
@@ -94,20 +94,40 @@ a { color: inherit; }
 .header-inner {
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
-  min-height: 64px;
+  min-height: 76px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding-top: env(safe-area-inset-top);
+  padding: 8px 0;
+  padding-top: calc(8px + env(safe-area-inset-top));
 }
 .wordmark {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 3px;
+  flex: 0 1 auto;
+  min-width: 0;
+  color: #fff;
+  line-height: 1;
   text-decoration: none;
-  flex: 0 0 auto;
 }
-.wordmark img { height: 46px; width: auto; }
+.wordmark img {
+  height: 42px;
+  width: auto;
+  max-width: 100%;
+  display: block;
+}
+.wordmark-sub {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #fff;
+  line-height: 1;
+  white-space: nowrap;
+}
 .header-actions {
   display: flex;
   align-items: center;
@@ -226,7 +246,9 @@ a { color: inherit; }
 .narrow { width: min(680px, calc(100% - 48px)); margin: 0 auto; }
 .wide { width: min(1040px, calc(100% - 48px)); margin: 0 auto; }
 .approach, .founder, .closing { background: var(--cream); }
-.services, .faq { background: var(--paper); }
+.story, .services, .faq { background: var(--paper); }
+.story .prose .lead { max-width: 18em; }
+.story-cta { margin-top: 28px; }
 .band h2 { margin-left: auto; margin-right: auto; }
 h2 {
   margin: 0 0 22px;
@@ -302,26 +324,27 @@ h2 {
 }
 .band .prose p + p { margin-top: 18px; }
 
-.founder { text-align: center; }
-.monogram {
-  width: 104px;
-  height: 104px;
-  margin: 8px auto 20px;
-  border: 1px solid rgba(26, 22, 20, 0.45);
-  border-radius: 50%;
+.founder-grid {
   display: grid;
-  place-items: center;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.85rem;
-  letter-spacing: 0.08em;
-  color: var(--ink);
+  gap: 32px;
+  align-items: center;
 }
+.founder-photo {
+  margin: 0;
+}
+.founder-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.founder-copy { text-align: left; }
+.founder h2 { margin-bottom: 12px; }
 .founder h3 {
   margin: 0 0 6px;
   font-size: 2rem;
 }
 .role { color: var(--muted); margin-bottom: 18px; }
-.founder .narrow p:last-child { max-width: 38rem; margin-left: auto; margin-right: auto; }
+.founder-copy p:last-child { max-width: 38rem; }
 
 .faq-list { margin-top: 12px; border-top: 1px solid var(--line); }
 .faq-list details { border-bottom: 1px solid var(--line); }
@@ -383,24 +406,31 @@ address {
 
 footer {
   padding: 72px 0 calc(40px + env(safe-area-inset-bottom));
-  background: #efe6db;
+  background: #070b14;
   text-align: center;
-  color: #2c2622;
+  color: #f4f0ea;
+}
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
 }
 .footer-mark {
-  height: 92px;
+  height: 84px;
   width: auto;
-  margin: 0 auto 8px;
-  filter: brightness(0);
+  margin: 0;
 }
 .footer-sub {
   margin: 0;
+  font-family: Inter, system-ui, sans-serif;
   font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #fff;
+  line-height: 1;
 }
-.footer-meta { margin-top: 22px; color: var(--body); }
+.footer-meta { margin-top: 22px; color: rgba(244, 240, 234, 0.88); }
 .footer-meta p + p { margin-top: 8px; }
 .footer-links {
   display: flex;
@@ -411,18 +441,22 @@ footer {
   padding: 0;
   list-style: none;
 }
-.footer-links a { color: var(--ink); text-underline-offset: 0.16em; font-size: 0.92rem; }
+footer a { color: #f4f0ea; }
+footer a:hover { color: #fff; }
+.footer-links a { text-underline-offset: 0.16em; font-size: 0.92rem; }
 .legal {
-  max-width: 36rem;
-  margin: 28px auto 0;
-  font-size: 0.98rem;
-  line-height: 1.65;
-  color: #2a2420;
+  max-width: 34rem;
+  margin: 16px auto 0;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  font-weight: 400;
+  color: #c9c3bc;
 }
 
 @media (min-width: 720px) {
   .header-inner { width: min(1180px, calc(100% - 56px)); }
   .wordmark img { height: 52px; }
+  .wordmark-sub { font-size: 0.7rem; letter-spacing: 0.14em; }
   .form-row { flex-direction: row; align-items: center; }
   .form-row input { flex: 1; }
   .form-row .cta { flex: 0 0 auto; }
@@ -438,10 +472,16 @@ footer {
   .service-list li { border-bottom: 0; border-top: 1px solid var(--line); }
   .closing-grid { grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
   .hero-content { padding-bottom: 72px; }
+  .founder-grid {
+    grid-template-columns: minmax(240px, 0.82fr) 1.15fr;
+    gap: 72px;
+    align-items: center;
+  }
 }
 @media (max-width: 380px) {
   .cta-nav { padding: 0 12px; font-size: 0.78rem; }
-  .wordmark img { height: 40px; }
+  .wordmark img { height: 36px; }
+  .wordmark-sub { font-size: 0.56rem; letter-spacing: 0.08em; }
 }
 @media (max-height: 700px) {
   .hero h1 { font-size: clamp(2rem, 6vh, 3.1rem); }
@@ -465,13 +505,15 @@ footer {
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header" id="top">
   <div class="header-inner">
-    <a class="wordmark" href="#top" aria-label="Luxe Miami Aesthetics">
-      <img src="logo-mark.png" alt="" width="232" height="171">
+    <a class="wordmark" href="#top">
+      <img src="logo.png" alt="Luxe" width="497" height="355">
+      <span class="wordmark-sub">Miami Aesthetics</span>
     </a>
     <div class="header-actions">
       <nav aria-label="Primary">
         <ul class="nav-links">
           <li><a href="#approach">The approach</a></li>
+          <li><a href="#story">The story</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="https://instagram.com/luxemiamiaesthetics" target="_blank" rel="noopener noreferrer">Instagram</a></li>
@@ -490,6 +532,7 @@ footer {
       Optional mobile cut: add hero-mobile.mp4, then a source with
       media="(max-width: 760px) and (prefers-reduced-motion: no-preference)"
       ahead of the default source. Until that file exists, phones use hero.mp4.
+      Cut: red LED face treatment dissolves into the Miami night skyline.
       Footage: Mixkit Free License — clinic 52164, Miami night lights 12028.
     -->
     <video
@@ -523,6 +566,17 @@ footer {
       <p class="lead">Most med spas open first and figure out the standards later. I’m doing the opposite.</p>
       <p>I’m in nursing school now so that when Luxe Miami Aesthetics opens, every treatment will be done by a licensed registered nurse working under a physician’s standing orders — the way it is supposed to be done in Florida.</p>
       <p>Until then, this is the place to follow the build, learn what good aesthetics actually looks like, and be first in line when we open.</p>
+    </div>
+  </section>
+
+  <section class="block story">
+    <div class="narrow prose">
+      <h2 id="story">The story</h2>
+      <p class="lead">Miami after dark, and the quiet of a treatment room. Luxe is meant to feel like both.</p>
+      <p>I’m Mateo Ramirez. I’m in nursing school, building Luxe Miami Aesthetics for Coral Gables — 4203 Ponce de Leon Blvd, Unit 110 — and opening in 2028. The doors are not open. No treatments are offered yet.</p>
+      <p>Most med spas rush to open. I’m building this one in reverse: school, standards, and systems, then the door. When injectables begin, a licensed registered nurse will perform them under a physician’s supervision. That is the Florida path. I am not skipping it.</p>
+      <p>Natural results. Precise care. No shortcuts. The waitlist is how you stay close until then.</p>
+      <p class="story-cta"><a class="cta" href="#waitlist">Join the waitlist</a></p>
     </div>
   </section>
 
@@ -572,12 +626,16 @@ footer {
   </section>
 
   <section class="block founder">
-    <div class="narrow">
-      <h2 id="founder">Founder</h2>
-      <div class="monogram" aria-hidden="true">MR</div>
-      <h3>Mateo Ramirez</h3>
-      <p class="role">Founder, Luxe Miami Aesthetics</p>
-      <p>I’ve spent years building businesses and learning how to do things properly the first time. Luxe Miami Aesthetics is the next one — focused on facial aesthetics, natural results, and the kind of care that doesn’t look like work was done.</p>
+    <div class="wide founder-grid">
+      <figure class="founder-photo">
+        <img src="founder.jpg" alt="Mateo Ramirez on a Miami rooftop at night" width="1500" height="2000">
+      </figure>
+      <div class="founder-copy">
+        <h2 id="founder">Founder</h2>
+        <h3>Mateo Ramirez</h3>
+        <p class="role">Founder, Luxe Miami Aesthetics</p>
+        <p>I’ve spent years building businesses and learning how to do things properly the first time. Luxe Miami Aesthetics is the next one — focused on facial aesthetics, natural results, and the kind of care that doesn’t look like work was done.</p>
+      </div>
     </div>
   </section>
 
@@ -634,14 +692,17 @@ footer {
 
 <footer>
   <div class="narrow">
-    <img class="footer-mark" src="logo-mark.png" alt="Luxe" width="232" height="171">
-    <p class="footer-sub">Miami Aesthetics</p>
+    <div class="footer-brand">
+      <img class="footer-mark" src="logo.png" alt="Luxe" width="497" height="355">
+      <p class="footer-sub">Miami Aesthetics</p>
+    </div>
     <div class="footer-meta">
       <p>Coral Gables, Florida</p>
       <p><a class="text-link" href="mailto:info@luxemiamiaesthetics.com">info@luxemiamiaesthetics.com</a></p>
     </div>
     <ul class="footer-links">
       <li><a href="#approach">The approach</a></li>
+      <li><a href="#story">The story</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#why">Why the wait</a></li>
       <li><a href="#faq">FAQ</a></li>
