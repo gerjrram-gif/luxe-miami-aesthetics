@@ -13,13 +13,13 @@
 body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
 h1, h2, h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; }
 .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
-header { padding: 48px 0 36px; text-align: center; background: linear-gradient(180deg, var(--red) 0%, #c70500 100%); }
-.logo-wrap { display: inline-block; }
-.logo-wrap svg { height: 180px; width: auto; border-radius: 24px; filter: drop-shadow(0 8px 20px rgba(0,0,0,0.2)); }
-.hero { padding: 70px 0 60px; text-align: center; background: linear-gradient(160deg, #fff 0%, #fff8f7 60%, #f8f0ee 100%); }
-.hero h1 { font-size: clamp(2.6rem, 7vw, 4.2rem); line-height: 1.02; margin-bottom: 14px; }
-.hero .sub { font-size: 1.12rem; color: var(--muted); max-width: 480px; margin: 0 auto 28px; }
-.badge { display: inline-block; background: var(--red); color: white; padding: 7px 18px; font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 22px; border-radius: 30px; }
+.hero-logo { padding: 60px 20px 40px; text-align: center; background: linear-gradient(180deg, var(--red) 0%, #d20500 70%, #fff8f7 100%); }
+.logo-wrap { display: inline-block; margin-bottom: 28px; }
+.logo-wrap svg { height: 200px; width: auto; border-radius: 28px; filter: drop-shadow(0 12px 28px rgba(0,0,0,0.22)); }
+.hero-copy { background: transparent; padding-bottom: 20px; }
+.hero-copy h1 { font-size: clamp(2.4rem, 6.5vw, 3.8rem); line-height: 1.02; margin-bottom: 12px; color: var(--text); }
+.hero-copy .sub { font-size: 1.1rem; color: var(--muted); max-width: 460px; margin: 0 auto 24px; }
+.badge { display: inline-block; background: var(--red); color: white; padding: 7px 18px; font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 18px; border-radius: 30px; }
 .cta { display: inline-block; background: var(--red); color: white; padding: 14px 32px; text-decoration: none; font-weight: 500; margin: 6px; border-radius: 40px; }
 .cta.secondary { background: transparent; color: var(--red); border: 1.5px solid var(--red); }
 section { padding: 70px 0; }
@@ -38,7 +38,7 @@ footer strong { color: white; }
 </style>
 </head>
 <body>
-<header>
+<section class="hero-logo">
 <div class="logo-wrap">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230">
 <rect width="400" height="230" rx="28" fill="#e10600"/>
@@ -46,9 +46,7 @@ footer strong { color: white; }
 <text x="200" y="185" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#ffffff" letter-spacing="6">MIAMI AESTHETICS</text>
 </svg>
 </div>
-</header>
-<section class="hero">
-<div class="container">
+<div class="hero-copy">
 <div class="badge">Coming 2028</div>
 <h1>Natural results.<br>Precise care.<br>Built the right way.</h1>
 <p class="sub">Currently in nursing school, building the brand and preparing to inject under physician supervision.</p>
