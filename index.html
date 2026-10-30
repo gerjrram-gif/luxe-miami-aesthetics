@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luxe Miami Aesthetics — Coming 2028 | Coral Gables</title>
-<meta name="description" content="Luxe Miami Aesthetics is being built for Coral Gables. Doors in 2028. No treatments yet. Join the waitlist.">
+<title>Luxe Miami Aesthetics — Palm Beach 2027 · Coral Gables 2028</title>
+<meta name="description" content="A Palm Beach office is planned for 2027 at 240 Royal Palm Wy. The Coral Gables flagship, Unit 110, is coming 2028. Neither is open. No treatments yet.">
 <link rel="canonical" href="https://luxemiamiaesthetics.com/">
-<meta property="og:title" content="Luxe Miami Aesthetics — Coming 2028">
-<meta property="og:description" content="Natural results. Precise care. Built the right way. Coral Gables, Unit 110, coming 2028.">
+<meta property="og:title" content="Luxe Miami Aesthetics — Palm Beach 2027 · Coral Gables 2028">
+<meta property="og:description" content="Palm Beach office opening 2027. Coral Gables flagship coming 2028. Neither is open. No treatments yet.">
 <meta property="og:url" content="https://luxemiamiaesthetics.com">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://luxemiamiaesthetics.com/spa/hero-bw.jpg">
@@ -26,7 +26,7 @@
   "name": "Luxe Miami Aesthetics",
   "url": "https://luxemiamiaesthetics.com",
   "email": "info@luxemiamiaesthetics.com",
-  "description": "A Coral Gables aesthetics practice being built for a 2028 opening. Not currently offering treatments.",
+  "description": "A Palm Beach office planned for 2027 and a Coral Gables flagship coming 2028. Not currently offering treatments.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "4203 Ponce de Leon Blvd, Unit 110",
@@ -34,7 +34,33 @@
     "addressRegion": "FL",
     "postalCode": "33146",
     "addressCountry": "US"
-  }
+  },
+  "location": [
+    {
+      "@type": "Place",
+      "name": "Luxe Palm Beach office",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "240 Royal Palm Wy",
+        "addressLocality": "Palm Beach",
+        "addressRegion": "FL",
+        "postalCode": "33480",
+        "addressCountry": "US"
+      }
+    },
+    {
+      "@type": "Place",
+      "name": "Luxe Coral Gables flagship",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "4203 Ponce de Leon Blvd, Unit 110",
+        "addressLocality": "Coral Gables",
+        "addressRegion": "FL",
+        "postalCode": "33146",
+        "addressCountry": "US"
+      }
+    }
+  ]
 }
 </script>
 <style>
@@ -402,7 +428,7 @@ body.nav-open { overflow: hidden; }
 .treatment-card__media h3 {
   margin: 0;
   color: #fff;
-  font-size: clamp(1.85rem, 2.4vw, 2.3rem);
+  font-size: clamp(1.55rem, 2.1vw, 2.15rem);
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
 }
 .treatment-card > p {
@@ -431,6 +457,51 @@ body.nav-open { overflow: hidden; }
   margin: 26px 0 0;
   max-width: 44rem;
   color: var(--body);
+}
+
+.atelier {
+  background: #2c1614;
+  color: var(--cream);
+  padding: clamp(72px, 10vw, 120px) 0;
+}
+.atelier .kicker { color: var(--champagne); }
+.atelier h2 {
+  margin: 0 0 14px;
+  max-width: 14ch;
+  color: var(--cream);
+  font-size: clamp(2.8rem, 7vw, 4.6rem);
+}
+.atelier-lead {
+  max-width: 36rem;
+  color: rgba(254, 251, 245, 0.82);
+}
+.atelier-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 28px;
+}
+.atelier-grid article {
+  padding: 22px 20px 20px;
+  border: 1px solid rgba(194, 166, 141, 0.55);
+  background: rgba(254, 251, 245, 0.04);
+}
+.atelier-grid h3 {
+  margin: 0 0 8px;
+  color: var(--cream);
+  font-size: clamp(1.6rem, 2.4vw, 2rem);
+}
+.atelier-grid p { color: rgba(254, 251, 245, 0.78); }
+.atelier-actions { margin-top: 28px; }
+.atelier .cta {
+  background: var(--cream);
+  color: #2c1614;
+}
+.atelier .cta:hover { background: var(--champagne); color: #2c1614; }
+.atelier-fine {
+  margin-top: 12px;
+  max-width: 28rem;
+  font-size: 0.86rem;
+  color: rgba(254, 251, 245, 0.62);
 }
 
 .quote-band {
@@ -507,15 +578,74 @@ html.js .quote.is-active { display: block; }
 }
 .location .intro p + p, .about p + p, .own-copy p + p, .closing p + p { margin-top: 14px; }
 .location .cta, .about .cta { margin-top: 22px; }
-.location-card { background: var(--paper); }
-.location-card img {
+.location-row {
+  display: grid;
+  gap: 16px;
+  margin-top: 8px;
+}
+.location-card { background: var(--paper); min-width: 0; }
+.location-card > img {
   width: 100%;
   height: auto;
   aspect-ratio: 3 / 4;
   object-fit: cover;
   object-position: center;
 }
-.location-card div { padding: 18px 18px 22px; }
+.loc-stage {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #e4d3bf;
+}
+.loc-map {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.loc-paper {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 9%;
+  bottom: 11%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 7% 7% 3%;
+  color: #2a241c;
+  background-color: #f6f0e6;
+  background-image: radial-gradient(rgba(90, 62, 32, 0.05) 0.7px, transparent 0.7px);
+  background-size: 5px 5px;
+  box-shadow: 0 14px 32px rgba(42, 28, 16, 0.18);
+}
+.loc-paper-kicker,
+.loc-paper-place {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.64rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.loc-paper-brand {
+  margin: 8px 0 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.7rem, 2.4vw, 2.3rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+.loc-paper-place { margin-top: 8px; color: #6e6256; }
+.loc-paper img {
+  width: 100%;
+  height: auto;
+  margin-top: auto;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+.loc-copy { padding: 18px 18px 22px; }
 .location-card h3 {
   margin: 6px 0 8px;
   font-size: 2rem;
@@ -797,11 +927,13 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
   }
   .timeline li::before { top: 1.15rem; }
   .footer-grid { grid-template-columns: 1.2fr 0.8fr 0.9fr 0.9fr; gap: 32px; }
+  .location-row { grid-template-columns: 1fr 1fr; align-items: start; }
+  .atelier-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (min-width: 980px) {
   .treatment-row {
     grid-auto-flow: unset;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     overflow: visible;
   }
   .row-controls { display: none; }
@@ -891,7 +1023,8 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
       <ul class="nav-links">
         <li><a href="#list">The list</a></li>
         <li><a href="#treatments">Treatments</a></li>
-        <li><a href="#location">Location</a></li>
+        <li><a href="#atelier">Atelier</a></li>
+        <li><a href="#location">Locations</a></li>
         <li class="nav-spacer" aria-hidden="true"></li>
         <li><a href="#about">About</a></li>
         <li><a href="#own">Franchise</a></li>
@@ -909,7 +1042,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
     <div class="hero-content">
       <p class="eyebrow">Building Luxe · Coral Gables · <span class="nowrap">Coming 2028</span></p>
       <h1 id="hero-title">Coral Gables.<br>Coming 2028.</h1>
-      <p class="deck">Natural results and precise care, in that order. Mateo is in nursing school. Unit 110 is not open, and no treatment is offered yet.</p>
+      <p class="deck">Natural results and precise care, in that order. Mateo is in nursing school. A Palm Beach office is planned for 2027. Unit 110, the flagship, is coming 2028. Neither is open, and no treatment is offered yet.</p>
       <a class="cta" href="#waitlist">Join the waitlist</a>
     </div>
   </section>
@@ -936,7 +1069,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
         </a>
         <a class="perk-tile" href="#location">
           <h3>Flagship first</h3>
-          <p>Coral Gables in 2028, before any other city.</p>
+          <p>Coral Gables, Unit 110, is the flagship. Coming 2028.</p>
         </a>
       </div>
     </div>
@@ -991,13 +1124,91 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
             </div>
             <p>A first conversation. What to expect, said plainly, before anything exists to book.</p>
           </article>
+          <article class="treatment-card">
+            <div class="treatment-card__media">
+              <img src="spa/card-laser.jpg" alt="Black-and-white close-up of smooth skin, a still for laser hair removal." width="1024" height="1024">
+              <div>
+                <span class="index">05</span>
+                <h3>Laser hair removal</h3>
+              </div>
+            </div>
+            <p>Long-term hair reduction, so shaving is not the whole plan. After licensure, with a Physician in place.</p>
+          </article>
+          <article class="treatment-card">
+            <div class="treatment-card__media">
+              <img src="spa/card-sculptra.jpg" alt="Black-and-white close-up of a cheek and jaw, a still for Sculptra." width="1024" height="1024">
+              <div>
+                <span class="index">06</span>
+                <h3>Sculptra</h3>
+              </div>
+            </div>
+            <p>Collagen, encouraged slowly, for subtle volume over time. Only under a Physician, once treatment may begin.</p>
+          </article>
+          <article class="treatment-card">
+            <div class="treatment-card__media">
+              <img src="spa/card-micro.jpg" alt="Black-and-white macro of skin texture, a still for microneedling." width="1024" height="1024">
+              <div>
+                <span class="index">07</span>
+                <h3>Microneedling</h3>
+              </div>
+            </div>
+            <p>Texture and tone, refined in small passes. A protocol for later, not a visit you can book.</p>
+          </article>
+          <article class="treatment-card">
+            <div class="treatment-card__media">
+              <img src="spa/card-peel.jpg" alt="Black-and-white close-up of a luminous cheek, a still for chemical peels." width="1024" height="1024">
+              <div>
+                <span class="index">08</span>
+                <h3>Chemical peels</h3>
+              </div>
+            </div>
+            <p>Smoother, brighter skin, planned with a light hand. Not a treatment on the books today.</p>
+          </article>
+          <article class="treatment-card">
+            <div class="treatment-card__media">
+              <img src="spa/card-prp.jpg" alt="Black-and-white close-up of a collarbone and shoulder, a still for PRP." width="1024" height="1024">
+              <div>
+                <span class="index">09</span>
+                <h3>PRP injections</h3>
+              </div>
+            </div>
+            <p>The body’s own healing, directed toward glow, texture, and tone. Only under a Physician, after licensure.</p>
+          </article>
         </div>
         <div class="row-controls" id="treatment-controls">
           <button type="button" id="treat-prev">Previous</button>
           <button type="button" id="treat-next">Next</button>
         </div>
       </div>
-      <p class="note">These are the services being planned, not a menu you can book. Injectables begin only after RN licensure and formal injector training, under a Physician. Neuromodulators and fillers will be FDA-approved products only.</p>
+      <p class="note">These are the services being planned, not a menu you can book. Injectables — neuromodulators, fillers, Sculptra, and PRP — begin only after RN licensure and formal injector training, under a Physician. Neuromodulators and fillers will be FDA-approved products only. Laser hair removal, microneedling, and peels wait on that same door.</p>
+    </div>
+  </section>
+
+  <section class="atelier" id="atelier" aria-labelledby="atelier-title">
+    <div class="wide">
+      <p class="kicker">Membership</p>
+      <h2 id="atelier-title">The Atelier</h2>
+      <p class="atelier-lead">A circle for the day a Luxe door can truly open. It cannot be joined today. No fee, no rate, and no visit is attached to this page.</p>
+      <div class="atelier-grid">
+        <article>
+          <h3>First notice</h3>
+          <p>Word when The Atelier can be joined. The waitlist is a note, not a place held.</p>
+        </article>
+        <article>
+          <h3>Skin, in time</h3>
+          <p>Facials, peels, and texture work, planned for members. Nothing here can be booked.</p>
+        </article>
+        <article>
+          <h3>A longer stay</h3>
+          <p>Time in the chair without a promotion. The standard comes before any privilege.</p>
+        </article>
+        <article>
+          <h3>Under a Physician</h3>
+          <p>Injectables only after licensure and a Physician. No price is published today.</p>
+        </article>
+      </div>
+      <p class="atelier-actions"><a class="cta" href="#waitlist">Learn more</a></p>
+      <p class="atelier-fine">Learn more opens the waitlist. It does not start a membership.</p>
     </div>
   </section>
 
@@ -1017,7 +1228,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
         <figcaption>Before anything is offered</figcaption>
       </figure>
       <figure class="quote" data-quote>
-        <blockquote>There is no offer on this page. The list is for news. The Coral Gables door is for 2028.</blockquote>
+        <blockquote>There is no offer on this page. The list is for news. Palm Beach is planned for 2027. The Coral Gables flagship is for 2028.</blockquote>
         <figcaption>Unit 110</figcaption>
       </figure>
     </div>
@@ -1031,21 +1242,40 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
   </section>
 
   <section class="section-pad location" id="location" aria-labelledby="location-title">
-    <div class="wide location-grid">
-      <div class="intro">
-        <h2 class="label" id="location-title">Our location</h2>
-        <p>One address, and it is not open. Unit 110 at 4203 Ponce de Leon Blvd, Coral Gables. Other names may use this building. Luxe is not open, and it is not those practices.</p>
-        <p><a class="cta" href="#waitlist">Join the waitlist</a></p>
+    <div class="wide">
+      <div class="section-label">
+        <h2 class="label" id="location-title">Our locations</h2>
+        <p>Two addresses, and neither is open. Coral Gables, Unit 110, is the flagship, coming 2028. A Palm Beach office is planned for 240 Royal Palm Wy, opening 2027. Other names may use these buildings. Luxe is not open, and it is not those practices.</p>
       </div>
-      <article class="location-card">
-        <img src="spa/location-interior.jpg" alt="A burgundy tiled corridor, the kind of interior planned for Coral Gables. The suite is not open." width="864" height="1152">
-        <div>
-          <p class="idx">01</p>
-          <h3>Coral Gables</h3>
-          <p>4203 Ponce de Leon Blvd, Unit 110<br>Coral Gables, FL 33146</p>
-          <p class="loc-note">Coming 2028 · Not open</p>
-        </div>
-      </article>
+      <div class="location-row">
+        <article class="location-card">
+          <img src="spa/location-interior.jpg" alt="A burgundy tiled corridor, the kind of interior planned for the Coral Gables flagship. The suite is not open." width="864" height="1152">
+          <div class="loc-copy">
+            <p class="idx">01 · Flagship</p>
+            <h3>Coral Gables</h3>
+            <p>4203 Ponce de Leon Blvd, Unit 110<br>Coral Gables, FL 33146</p>
+            <p class="loc-note">Coming 2028 · Not open</p>
+          </div>
+        </article>
+        <article class="location-card">
+          <div class="loc-stage">
+            <img class="loc-map" src="spa/florida-map.jpg" alt="" width="864" height="1152">
+            <div class="loc-paper">
+              <p class="loc-paper-kicker">Opening 2027</p>
+              <p class="loc-paper-brand">Luxe</p>
+              <p class="loc-paper-place">Palm Beach, Florida</p>
+              <img src="spa/palm-beach-line.jpg" alt="Line drawing of a small Palm Beach clinic with an arched door and two palms. Not a photograph of 240 Royal Palm Wy." width="1024" height="1024">
+            </div>
+          </div>
+          <div class="loc-copy">
+            <p class="idx">02</p>
+            <h3>Palm Beach</h3>
+            <p>240 Royal Palm Wy<br>Palm Beach, FL 33480</p>
+            <p class="loc-note">Opening 2027 · Not open</p>
+          </div>
+        </article>
+      </div>
+      <p style="margin-top:22px"><a class="cta" href="#waitlist">Join the waitlist</a></p>
     </div>
   </section>
 
@@ -1059,7 +1289,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
         <p class="role">Mateo Ramirez · Founder, in nursing school. Not a physician.</p>
         <h2 id="about-title">Built before it opens.</h2>
         <p>I’m Mateo Ramirez. I’ve spent years building businesses and learning how to do things properly the first time. Luxe Miami Aesthetics is the next one — facial aesthetics, natural results, and care that doesn’t look like work was done.</p>
-        <p>I am in nursing school. I do not treat anyone. The practice is for 4203 Ponce de Leon Blvd, Unit 110, and for 2028. An RN license, formal injector training, and a Physician come first. When injectables begin, they will be FDA-approved neuromodulators and fillers only.</p>
+        <p>I am in nursing school. I do not treat anyone. The flagship is 4203 Ponce de Leon Blvd, Unit 110, coming 2028. A Palm Beach office is planned at 240 Royal Palm Wy, opening 2027. Neither is open. An RN license, formal injector training, and a Physician come first. When injectables begin, they will be FDA-approved neuromodulators and fillers only.</p>
         <p>Most studios open and write the rules afterward. This one is being built in reverse, so the first day is already at the standard.</p>
         <p><a class="cta" href="#waitlist">Join the waitlist</a></p>
       </div>
@@ -1100,10 +1330,17 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
           </div>
         </li>
         <li>
+          <p class="when">2027</p>
+          <div>
+            <h3>Palm Beach office</h3>
+            <p>240 Royal Palm Wy, Palm Beach. Opening 2027. Not open, and not a clinic for sale.</p>
+          </div>
+        </li>
+        <li>
           <p class="when">2028</p>
           <div>
-            <h3>Doors open</h3>
-            <p>Coral Gables, 4203 Ponce de Leon Blvd, Unit 110. Not before.</p>
+            <h3>Flagship door</h3>
+            <p>Coral Gables, 4203 Ponce de Leon Blvd, Unit 110. Coming 2028. The flagship. Not before the license and a Physician.</p>
           </div>
         </li>
       </ol>
@@ -1113,11 +1350,11 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
 
   <section id="own" aria-labelledby="own-title">
     <div class="own-hero">
-      <img src="spa/own-palm-beach.jpg" alt="Palm Beach luxury clinic exterior: cream stucco, a burgundy awning, and antique-gold lanterns." width="1280" height="720">
+      <img src="spa/own-palm-beach.jpg" alt="A cream clinic exterior with a burgundy awning and gold lanterns, a still for the future Palm Beach office. Not a photograph of 240 Royal Palm Wy." width="1280" height="720">
       <div class="own-card">
-        <p class="kicker">After the flagship</p>
+        <p class="kicker">A future office</p>
         <h2 id="own-title">Own a Luxe</h2>
-        <p>Coral Gables comes first, and it is not open. Doors in 2028. Interest in a future studio is a note for after that model is real — not a clinic you can buy today.</p>
+        <p>Coral Gables, Unit 110, remains the flagship. Coming 2028. It is not open. A Palm Beach office is planned at 240 Royal Palm Wy, opening 2027. That address is not open, and it is not a clinic you can buy.</p>
         <a class="cta" href="#franchise-form">Tell us you’re interested</a>
       </div>
     </div>
@@ -1125,7 +1362,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
       <div class="wide own-panel-grid" data-reveal>
         <div class="own-copy">
           <h2>A note, not an offer.</h2>
-          <p>Franchising is the longer aim of the brand: Coral Gables proven first, then other cities, Colombia included. That is a direction, not a sale. Nothing on this page reserves a city, sets a fee, or starts a franchise relationship.</p>
+          <p>The Palm Beach office at 240 Royal Palm Wy is a future Luxe address, opening 2027. It is not a franchise and not for sale. Coral Gables, Unit 110, remains the flagship, coming 2028. Franchising is a longer aim — other cities, Colombia included — and nothing on this page reserves a city, sets a fee, or starts a franchise relationship.</p>
           <ul class="own-list">
             <li>Single-unit or multi-unit interest is welcome. Neither is being signed today.</li>
             <li>There is no fee, no territory map, and no franchise disclosure here, because a franchise is not being offered.</li>
@@ -1153,8 +1390,8 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
           </div>
           <div class="franchise-confirm" id="franchise-confirm" hidden>
             <h2 id="franchise-confirm-title" tabindex="-1">We have your note.</h2>
-            <p class="confirm-line">This is interest in a future studio, not a franchise offer. Coral Gables comes first. Nothing is reserved or for sale.</p>
-            <p class="confirm-meta">Flagship first · Coming 2028</p>
+            <p class="confirm-line">This is interest in a future studio, not a franchise offer. Coral Gables remains the flagship. The Palm Beach office is not for sale. Nothing is reserved.</p>
+            <p class="confirm-meta">Flagship coming 2028 · Palm Beach opening 2027</p>
           </div>
         </div>
       </div>
@@ -1167,7 +1404,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
       <div class="faq-list">
         <details>
           <summary>When do you open?</summary>
-          <p>2028, in Coral Gables, after RN licensure, injector training, and a Physician’s collaboration are complete.</p>
+          <p>A Palm Beach office is planned for 2027, at 240 Royal Palm Wy. The Coral Gables flagship, Unit 110, is coming 2028. Neither is open. Treatments wait on RN licensure, injector training, and a Physician.</p>
         </details>
         <details>
           <summary>Are you licensed yet?</summary>
@@ -1175,15 +1412,19 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
         </details>
         <details>
           <summary>Where will you be located?</summary>
-          <p>Coral Gables, Florida — 4203 Ponce de Leon Blvd, Unit 110. That suite is not open.</p>
+          <p>Coral Gables, the flagship — 4203 Ponce de Leon Blvd, Unit 110, coming 2028. Palm Beach — 240 Royal Palm Wy, Palm Beach, FL 33480, opening 2027. Neither address is open.</p>
         </details>
         <details>
           <summary>Can I buy a franchise now?</summary>
-          <p>No. A franchise is not being offered. You can leave a note if you want to be remembered when the Coral Gables flagship has a real model to show. No fee, territory, or disclosure is attached to that note. The longer aim includes other cities, Colombia among them, only after the flagship.</p>
+          <p>No. A franchise is not being offered. The Palm Beach office at 240 Royal Palm Wy is a future Luxe address, opening 2027, not a clinic for sale. You can leave a note if you want to be remembered when the Coral Gables flagship has a real model to show. No fee, territory, or disclosure is attached to that note. The longer aim includes other cities, Colombia among them.</p>
         </details>
         <details>
           <summary>What will you serve first?</summary>
-          <p>Miami, starting in Coral Gables. The guest list is for that studio. It is not a reservation for a future city.</p>
+          <p>South Florida: a Palm Beach office planned for 2027, and the Coral Gables flagship coming 2028. The guest list is for those timelines. It is not a reservation, and it is not a franchise.</p>
+        </details>
+        <details>
+          <summary>Can I join The Atelier now?</summary>
+          <p>No. The Atelier is the name of a future membership. It is not open. No fee and no rate are published. The waitlist is a note for when a consultation can be offered.</p>
         </details>
       </div>
     </div>
@@ -1193,11 +1434,17 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
     <div class="wide closing-grid" data-reveal>
       <div>
         <h2>Stay close</h2>
-        <p>The waitlist is for the Coral Gables timeline, the standards, and first word when a consultation can actually be offered. Nothing is booked from this form.</p>
+        <p>The waitlist is for the Palm Beach and Coral Gables timelines, the standards, and first word when a consultation can actually be offered. Nothing is booked from this form.</p>
         <p><a class="text-link" href="mailto:info@luxemiamiaesthetics.com">info@luxemiamiaesthetics.com</a></p>
         <address>
+          240 Royal Palm Wy<br>
+          Palm Beach, FL 33480<br>
+          Opening 2027 · Not open
+        </address>
+        <address>
           4203 Ponce de Leon Blvd, Unit 110<br>
-          Coral Gables, FL 33146
+          Coral Gables, FL 33146<br>
+          Flagship · Coming 2028 · Not open
         </address>
         <p class="fine"><a class="text-link" href="https://instagram.com/luxemiamiaesthetics" target="_blank" rel="noopener noreferrer">Instagram</a></p>
       </div>
@@ -1220,7 +1467,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
           <p class="confirm-sub">MIAMI AESTHETICS</p>
           <h2 id="confirm-title" tabindex="-1">You’re on the list.</h2>
           <p class="confirm-line">Natural results. Precise care. Built the right way.</p>
-          <p class="confirm-meta">Coral Gables · Unit 110 · Coming 2028</p>
+          <p class="confirm-meta">Palm Beach opening 2027 · Flagship coming 2028</p>
         </div>
       </div>
     </div>
@@ -1233,19 +1480,21 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
       <div>
         <img class="footer-mark" src="logo.png" alt="Luxe" width="497" height="355">
         <p class="footer-sub">MIAMI AESTHETICS</p>
-        <p style="margin-top:16px">4203 Ponce de Leon Blvd, Unit 110<br>Coral Gables, FL 33146</p>
+        <p style="margin-top:16px">240 Royal Palm Wy<br>Palm Beach, FL 33480<br>Opening 2027</p>
+        <p style="margin-top:8px">4203 Ponce de Leon Blvd, Unit 110<br>Coral Gables, FL 33146<br>Flagship · Coming 2028</p>
         <p style="margin-top:8px"><a href="mailto:info@luxemiamiaesthetics.com">info@luxemiamiaesthetics.com</a></p>
       </div>
       <div>
         <h2>The list</h2>
-        <p>Notes on the 2028 flagship. Not a booking.</p>
+        <p>Notes on Palm Beach and the 2028 flagship. Not a booking.</p>
         <p style="margin-top:10px"><a href="#waitlist">Join the waitlist</a></p>
       </div>
       <div>
         <h2>Hours</h2>
         <dl class="hours">
           <div><dt>Sunday–Saturday</dt><dd>Not open</dd></div>
-          <div><dt>The door</dt><dd>2028</dd></div>
+          <div><dt>Palm Beach</dt><dd>Opening 2027</dd></div>
+          <div><dt>The flagship</dt><dd>Coming 2028</dd></div>
           <div><dt>The list</dt><dd>Open for notes</dd></div>
         </dl>
       </div>
@@ -1253,7 +1502,8 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
         <h2>Visit</h2>
         <ul>
           <li><a href="#treatments">What’s coming</a></li>
-          <li><a href="#location">Location</a></li>
+          <li><a href="#location">Locations</a></li>
+          <li><a href="#atelier">The Atelier</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#build">Building Luxe</a></li>
           <li><a href="#own">Own a Luxe</a></li>
@@ -1262,7 +1512,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
         </ul>
       </div>
     </div>
-    <p class="legal">Currently in nursing school. Not yet offering treatments. Injections will be performed only after RN licensure and under a Physician. A franchise is not being offered today. No fee, territory, or disclosure is published here.</p>
+    <p class="legal">Currently in nursing school. Not yet offering treatments. Injections will be performed only after RN licensure and under a Physician. Palm Beach, 240 Royal Palm Wy, is planned for 2027 and is not open. The Coral Gables flagship is coming 2028 and is not open. The Atelier is not being offered. A franchise is not being offered today. No fee, territory, or disclosure is published here.</p>
   </div>
 </footer>
 <script>
