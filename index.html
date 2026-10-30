@@ -207,10 +207,11 @@ footer .wordmark-sub { color: var(--gold-soft); }
 .nav-links {
   list-style: none;
   margin: 0;
-  padding: 6px 0 18px;
+  padding: 6px 0 0;
   display: grid;
   gap: 2px;
 }
+.nav-links + .nav-links { padding-bottom: 18px; }
 .nav-links a {
   display: inline-flex;
   align-items: center;
@@ -545,6 +546,165 @@ footer .wordmark-sub { color: var(--gold-soft); }
   max-width: 28rem;
   font-size: 0.86rem;
   color: rgba(254, 251, 245, 0.62);
+}
+.atelier-grid a {
+  color: var(--gold-soft);
+  text-underline-offset: 0.18em;
+}
+.atelier-grid a:hover { color: var(--cream); }
+
+.products { background: #dce4ea; color: var(--ink); }
+.products-campaign {
+  display: grid;
+  background: #1a0c14;
+  color: #f7f1e6;
+}
+.products-campaign__media {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  background: #140810;
+  overflow: hidden;
+}
+.products-campaign__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center center;
+}
+.products-campaign__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 36px 24px 42px;
+}
+.products-campaign .kicker { color: #c4a574; }
+.products-campaign h2 {
+  margin: 0 0 14px;
+  max-width: 11ch;
+  color: #f7f1e6;
+  font-size: clamp(3.1rem, 8vw, 5.6rem);
+}
+.products-deck {
+  max-width: 28rem;
+  margin: 0 0 18px;
+  color: rgba(247, 241, 230, 0.92);
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+.products-actions { margin: 4px 0 14px; }
+.products-campaign .cta {
+  background: transparent;
+  color: #f7f1e6;
+  box-shadow: inset 0 0 0 1px rgba(196, 165, 116, 0.9);
+}
+.products-campaign .cta:hover {
+  background: #c4a574;
+  color: #1a0c14;
+}
+.products-fine {
+  max-width: 28rem;
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: rgba(247, 241, 230, 0.86);
+}
+.products-campaign :focus-visible { outline-color: #fff; }
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 2px 11px 0;
+  border: 1px solid rgba(107, 30, 46, 0.38);
+  border-radius: 999px;
+  background: rgba(254, 251, 245, 0.78);
+  color: #6b1e2e;
+  font-family: "Cormorant SC", "Cormorant Garamond", Georgia, serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1;
+}
+.products-campaign .pill {
+  border-color: rgba(196, 165, 116, 0.8);
+  background: rgba(26, 12, 20, 0.35);
+  color: #f7f1e6;
+}
+.products-shelf { padding-bottom: clamp(64px, 9vw, 108px); }
+.products-shelf .section-label { margin-bottom: 28px; }
+.products-shelf .kicker { color: #7a6240; }
+.product-row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(240px, 82%);
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+  scrollbar-color: rgba(28, 18, 20, 0.35) transparent;
+}
+.product-card {
+  scroll-snap-align: start;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.product-card__media {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #dce4ea;
+}
+.product-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-top: 14px;
+}
+.product-card__index {
+  margin: 0 0 4px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  color: #7a6240;
+}
+.product-card h3 {
+  margin: 0 0 8px;
+  font-size: clamp(1.5rem, 2vw, 1.9rem);
+  color: var(--ink);
+}
+.product-card__body > p {
+  color: var(--body);
+  font-size: 0.95rem;
+}
+.product-card__status { margin-top: auto; padding-top: 14px; }
+.products .row-controls button { border-color: rgba(28, 18, 20, 0.38); }
+.products .row-controls button:hover { border-color: var(--ink); background: rgba(254, 251, 245, 0.45); }
+@media (min-width: 720px) {
+  .product-row { grid-auto-columns: calc((100% - 18px) / 2); }
+}
+@media (min-width: 1100px) {
+  .products-campaign {
+    grid-template-columns: minmax(300px, 1fr) minmax(440px, 760px);
+    align-items: stretch;
+  }
+  .products-campaign__media { order: 2; }
+  .products-campaign__copy {
+    order: 1;
+    justify-content: flex-end;
+    padding: clamp(56px, 7vw, 96px) clamp(36px, 5vw, 80px) clamp(56px, 7vw, 88px);
+  }
+  .product-row { grid-auto-columns: calc((100% - 54px) / 4); }
+}
+@media (min-width: 980px) {
+  .products .row-controls { display: flex; }
+  .products .row-controls[hidden] { display: none; }
 }
 
 .quote-band {
@@ -1010,7 +1170,6 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
     width: min(1180px, calc(100% - 48px));
   }
   .nav-toggle, .cta-mobile { display: none; }
-  .site-nav { display: block; }
   .wordmark {
     position: absolute;
     left: 50%;
@@ -1020,24 +1179,37 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
   }
   .wordmark .script-name { font-size: 2.65rem; }
   .wordmark .wordmark-sub { font-size: 0.66rem; letter-spacing: 0.34em; }
+  .site-nav {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 208px minmax(0, 1fr);
+    align-items: center;
+    min-height: 88px;
+  }
   .nav-links {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 16px;
+    justify-content: flex-start;
+    gap: 12px;
     min-height: 88px;
     padding: 0;
   }
+  .site-nav .nav-links:first-child { grid-column: 1; }
+  .site-nav .nav-links:last-child { grid-column: 3; justify-content: flex-end; padding: 0; }
   .nav-links a {
     min-height: 0;
     font-family: Inter, system-ui, sans-serif;
-    font-size: 0.74rem;
+    font-size: 0.66rem;
     font-weight: 500;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
+    white-space: nowrap;
   }
-  .nav-spacer { display: block; flex: 0 0 196px; width: 196px; }
-  .nav-cta a.cta { letter-spacing: 0.12em; }
+  .nav-cta a.cta { letter-spacing: 0.1em; }
+}
+@media (min-width: 1320px) {
+  .site-nav { grid-template-columns: minmax(0, 1fr) 228px minmax(0, 1fr); }
+  .nav-links { gap: 16px; }
+  .nav-links a { font-size: 0.72rem; letter-spacing: 0.12em; }
 }
 @media (max-width: 719px) {
   .hero .eyebrow { letter-spacing: 0.14em; font-size: 0.68rem; }
@@ -1099,8 +1271,10 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
         <li><a href="#list">The list</a></li>
         <li><a href="#treatments">Treatments</a></li>
         <li><a href="#atelier">Atelier</a></li>
+        <li><a href="#products">Products</a></li>
+      </ul>
+      <ul class="nav-links">
         <li><a href="#location">Locations</a></li>
-        <li class="nav-spacer" aria-hidden="true"></li>
         <li><a href="#about">About</a></li>
         <li><a href="#own">Franchise</a></li>
         <li><a href="#standards">Standards</a></li>
@@ -1275,7 +1449,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
         </article>
         <article>
           <h3>Skin, in time</h3>
-          <p>Members only. Facials, peels, and texture work, with a curated shelf of professional-grade formulations from Paris, Madrid, and South Korea. By member appointment, once the practice can receive anyone. Nothing here can be booked today.</p>
+          <p>Members only. Facials, peels, and texture work, with a curated shelf of professional-grade formulations from Paris, Madrid, and South Korea. By member appointment, once the practice can receive anyone. Nothing here can be booked today. <a href="#products">The shelf</a>.</p>
         </article>
         <article>
           <h3>A longer stay</h3>
@@ -1288,6 +1462,128 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
       </div>
       <p class="atelier-actions"><a class="cta" href="#waitlist">Learn more</a></p>
       <p class="atelier-fine">Learn more opens the waitlist. It does not start a membership.</p>
+    </div>
+  </section>
+
+  <section class="products" id="products" aria-labelledby="products-title">
+    <div class="products-campaign">
+      <div class="products-campaign__media">
+        <img src="spa/products/LX-B06-nuit-de-velours-campaign.jpg" alt="Nuit de Velours extrait: an amber glass flacon with a faceted gold stopper on purple velvet, with frost, pale orchids, and a gold ribbon." width="864" height="1152">
+      </div>
+      <div class="products-campaign__copy">
+        <p class="kicker">Products</p>
+        <h2 id="products-title">Nuit de Velours</h2>
+        <p class="products-deck">A signature extrait, worn close to the skin. Heavy glass, a faceted gold stopper, and a velvet cord, set on frost and a gold ribbon.</p>
+        <p><span class="pill">Members only</span></p>
+        <p class="products-actions"><a class="cta" href="#waitlist">Join the waitlist</a></p>
+        <p class="products-fine">The house scent, for members of The Atelier. By member appointment, when a door can open. Nothing on this shelf is for sale.</p>
+      </div>
+    </div>
+    <div class="products-shelf section-pad">
+      <div class="wide">
+        <div class="section-label">
+          <p class="kicker">The shelf</p>
+          <h3 class="label">Eight pieces for members</h3>
+          <p>Color, powder, scent, and a candle for The Atelier. A curated shelf from Paris, Madrid, and South Korea. Members only, and by member appointment. Nothing on this page is for sale.</p>
+        </div>
+        <div class="treatment-wrap" role="region" aria-roledescription="carousel" aria-label="Atelier product shelf">
+          <div class="product-row" id="product-row" tabindex="0">
+            <article class="product-card">
+              <div class="product-card__media">
+                <img src="spa/products/LX-B01-signet-rouge.jpg" alt="Signet Rouge lipstick in antique gold with a velvet band, the cap set beside it, and an ivory box." width="1024" height="1024" loading="lazy">
+              </div>
+              <div class="product-card__body">
+                <p class="product-card__index">01</p>
+                <h3>Signet Rouge</h3>
+                <p>A refillable lipstick. A keepsake case, then a shade from the Luxe wardrobe.</p>
+                <p class="product-card__status"><span class="pill">By member appointment</span></p>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-card__media">
+                <img src="spa/products/LX-B02-brickell-pearls.jpg" alt="Brickell Pearls compact open to tinted powder pearls, with a velvet puff, a gold brush, and a velvet box." width="1024" height="1024" loading="lazy">
+              </div>
+              <div class="product-card__body">
+                <p class="product-card__index">02</p>
+                <h3>Brickell Pearls</h3>
+                <p>Softly tinted pearls of setting powder, a last veil of finish.</p>
+                <p class="product-card__status"><span class="pill">Taking shape</span></p>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-card__media">
+                <img src="spa/products/LX-B03-miel-de-mar.jpg" alt="Miel de Mar lip oil in a faceted glass vial with a gold cap, the wand beside it, and an ivory box with a gold seal." width="1024" height="1024" loading="lazy">
+              </div>
+              <div class="product-card__body">
+                <p class="product-card__index">03</p>
+                <h3>Miel de Mar</h3>
+                <p>A honey-tint lip oil. A sheer, glossy wash of color in a glass wand.</p>
+                <p class="product-card__status"><span class="pill">In the works</span></p>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-card__media">
+                <img src="spa/products/LX-B04-quatre-palmes.jpg" alt="Quatre Palmes eyeshadow quad open to four pans, with an ivory sleeve and a closed velvet compact." width="1024" height="1024" loading="lazy">
+              </div>
+              <div class="product-card__body">
+                <p class="product-card__index">04</p>
+                <h3>Quatre Palmes</h3>
+                <p>Four pans of eyeshadow in one compact, from matte to metallic.</p>
+                <p class="product-card__status"><span class="pill">On the horizon</span></p>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-card__media">
+                <img src="spa/products/LX-B05-causeway-bronze.jpg" alt="Causeway Bronze compact open to a wave-pressed powder, with a velvet pouch and a gold brush." width="1024" height="1024" loading="lazy">
+              </div>
+              <div class="product-card__body">
+                <p class="product-card__index">05</p>
+                <h3>Causeway Bronze</h3>
+                <p>A sunlit bronzing powder in an ivory compact, with a warm finish.</p>
+                <p class="product-card__status"><span class="pill">Taking shape</span></p>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-card__media">
+                <img src="spa/products/LX-B06-nuit-de-velours.jpg" alt="Nuit de Velours extrait on a pale ground: faceted amber glass, a gold stopper, a house seal, and a velvet cord." width="1024" height="1024" loading="lazy">
+              </div>
+              <div class="product-card__body">
+                <p class="product-card__index">06</p>
+                <h3>Nuit de Velours</h3>
+                <p>The house extrait, in heavy glass with a velvet cord.</p>
+                <p class="product-card__status"><span class="pill">Members only</span></p>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-card__media">
+                <img src="spa/products/LX-B07-la-veilleuse.jpg" alt="La Veilleuse candle lit in a velvet and gold vessel, with its lid, a tag, and a linen box." width="1024" height="1024" loading="lazy">
+              </div>
+              <div class="product-card__body">
+                <p class="product-card__index">07</p>
+                <h3>La Veilleuse</h3>
+                <p>A made-to-order Atelier candle. Vessel, scent, and a monogram, chosen by the member.</p>
+                <p class="product-card__status"><span class="pill">By member appointment</span></p>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-card__media">
+                <img src="spa/products/LX-B08-agua-de-seda.jpg" alt="Agua de Seda in a frosted glass dropper bottle with a velvet bulb and gold collar, beside an open ivory box." width="1024" height="1024" loading="lazy">
+              </div>
+              <div class="product-card__body">
+                <p class="product-card__index">08</p>
+                <h3>Agua de Seda</h3>
+                <p>A watery-light oil in frosted glass. A silky texture, for a quiet ritual.</p>
+                <p class="product-card__status"><span class="pill">In the works</span></p>
+              </div>
+            </article>
+          </div>
+          <div class="row-controls" id="product-controls">
+            <button type="button" id="product-prev" aria-controls="product-row">Previous</button>
+            <button type="button" id="product-next" aria-controls="product-row">Next</button>
+          </div>
+        </div>
+        <p class="note">Members only. These pieces follow The Atelier. No visit and no purchase is attached to this page.</p>
+      </div>
     </div>
   </section>
 
@@ -1583,8 +1879,9 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
         <h2>Visit</h2>
         <ul>
           <li><a href="#treatments">In the works</a></li>
-          <li><a href="#location">Locations</a></li>
           <li><a href="#atelier">The Atelier</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#location">Locations</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#build">Building Luxe Miami Aesthetics</a></li>
           <li><a href="#own">Own a Luxe</a></li>
@@ -1593,7 +1890,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
         </ul>
       </div>
     </div>
-    <p class="legal">Currently in nursing school. Not yet offering treatments. Injections will be performed only after RN licensure and under a Physician. Treatments are still ahead. Palm Beach, 240 Royal Palm Wy, and Coral Gables, Unit 110, are addresses for the practice taking shape. Neither door is open. There is no public shop. The Atelier is not being offered. A franchise is not being offered today. No fee, territory, or disclosure is published here.</p>
+    <p class="legal">Currently in nursing school. Not yet offering treatments. Injections will be performed only after RN licensure and under a Physician. Treatments are still ahead. Palm Beach, 240 Royal Palm Wy, and Coral Gables, Unit 110, are addresses for the practice taking shape. Neither door is open. There is no public shop. The Products shelf is for members. Nothing on it is for sale. The Atelier is not being offered. A franchise is not being offered today. No fee, territory, or disclosure is published here.</p>
   </div>
 </footer>
 <script>
@@ -1743,24 +2040,28 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
   }
   if (!reduce.matches) restartQuotes();
 
-  var row = document.getElementById("treatment-row");
-  var treatControls = document.getElementById("treatment-controls");
-  function treatStep(dir) {
-    if (!row) return;
-    var card = row.querySelector(".treatment-card");
-    var amount = card ? card.getBoundingClientRect().width + 16 : 280;
-    row.scrollBy({ left: dir * amount, behavior: reduce.matches ? "auto" : "smooth" });
+  function bindScroller(rowId, controlsId, prevId, nextId, cardSelector, gap) {
+    var row = document.getElementById(rowId);
+    var controls = document.getElementById(controlsId);
+    function step(dir) {
+      if (!row) return;
+      var card = row.querySelector(cardSelector);
+      var amount = card ? card.getBoundingClientRect().width + gap : 280;
+      row.scrollBy({ left: dir * amount, behavior: reduce.matches ? "auto" : "smooth" });
+    }
+    var prev = document.getElementById(prevId);
+    var next = document.getElementById(nextId);
+    if (prev) prev.addEventListener("click", function () { step(-1); });
+    if (next) next.addEventListener("click", function () { step(1); });
+    function sync() {
+      if (!row || !controls) return;
+      controls.hidden = row.scrollWidth <= row.clientWidth + 8;
+    }
+    sync();
+    window.addEventListener("resize", sync);
   }
-  var treatPrev = document.getElementById("treat-prev");
-  var treatNext = document.getElementById("treat-next");
-  if (treatPrev) treatPrev.addEventListener("click", function () { treatStep(-1); });
-  if (treatNext) treatNext.addEventListener("click", function () { treatStep(1); });
-  function syncTreatControls() {
-    if (!row || !treatControls) return;
-    treatControls.hidden = row.scrollWidth <= row.clientWidth + 8;
-  }
-  syncTreatControls();
-  window.addEventListener("resize", syncTreatControls);
+  bindScroller("treatment-row", "treatment-controls", "treat-prev", "treat-next", ".treatment-card", 16);
+  bindScroller("product-row", "product-controls", "product-prev", "product-next", ".product-card", 18);
 
   function revealNow(el) {
     if (!el || el.dataset.revealed === "1") return;
