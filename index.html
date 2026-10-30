@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://luxemiamiaesthetics.com/spa/hero-bw.jpg">
 <meta property="og:image:alt" content="Black-and-white editorial portrait, the homepage frame for Luxe Miami Aesthetics.">
-<meta name="theme-color" content="#fefbf5">
+<meta name="theme-color" content="#f7f2ea">
 <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch.png">
 <link rel="preload" as="image" href="spa/hero-bw.jpg" fetchpriority="high">
@@ -65,20 +65,24 @@
 </script>
 <style>
 :root {
-  --ink: #000000;
-  --body: #000000;
-  --muted: #878787;
-  --cream: #fefbf5;
-  --paper: #fdf7ee;
-  --white: #ffffff;
-  --line: #dddddd;
-  --btn: #000000;
-  --btn-text: #fefbf5;
-  --btn-hover: #633631;
-  --bronze: #b27860;
-  --champagne: #c2a68d;
-  --sand: #ede1d5;
-  --error: #eb001b;
+  --ink: #1c1214;
+  --body: #2c1e20;
+  --muted: #6f5a50;
+  --cream: #f7f2ea;
+  --paper: #f3ebe2;
+  --white: #fffdfb;
+  --line: #e3d4c3;
+  --btn: #6b2434;
+  --btn-text: #f7f2ea;
+  --btn-hover: #4a1522;
+  --velvet: #6b2434;
+  --velvet-deep: #3a121c;
+  --gold: #7a6240;
+  --gold-soft: #c6b48c;
+  --bronze: #7a6240;
+  --champagne: #c6b48c;
+  --sand: #eadfce;
+  --error: #8e1d32;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 96px; }
@@ -134,7 +138,7 @@ body.nav-open { overflow: hidden; }
   border-bottom: 1px solid transparent;
   padding-top: env(safe-area-inset-top);
 }
-.site-header.is-scrolled { border-bottom-color: #f0f0f0; }
+.site-header.is-scrolled { border-bottom-color: rgba(122, 98, 64, 0.35); }
 .header-inner {
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
@@ -231,10 +235,15 @@ body.nav-open { overflow: hidden; }
 .cta:disabled { opacity: 0.72; cursor: default; }
 .cta-nav { min-height: 38px; padding: 0 14px; font-size: 0.68rem; }
 .hero .cta {
-  background: var(--cream);
-  color: var(--ink);
+  background: var(--velvet);
+  color: var(--cream);
+  box-shadow: 0 0 0 1px rgba(198, 180, 140, 0.72);
 }
-.hero .cta:hover { background: var(--white); color: var(--ink); }
+.hero .cta:hover {
+  background: var(--btn-hover);
+  color: var(--cream);
+  box-shadow: 0 0 0 1px rgba(217, 199, 163, 0.9);
+}
 
 .hero {
   position: relative;
@@ -242,7 +251,7 @@ body.nav-open { overflow: hidden; }
   display: flex;
   align-items: flex-end;
   color: #fff;
-  background: #141210;
+  background: var(--velvet-deep);
   overflow: hidden;
 }
 .hero-still {
@@ -262,7 +271,8 @@ body.nav-open { overflow: hidden; }
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(12, 10, 8, 0.04) 0%, rgba(12, 10, 8, 0) 34%, rgba(12, 10, 8, 0.42) 68%, rgba(12, 10, 8, 0.74) 100%);
+    linear-gradient(90deg, rgba(32, 10, 16, 0.5) 0%, rgba(32, 10, 16, 0.22) 38%, rgba(32, 10, 16, 0) 62%),
+    linear-gradient(180deg, rgba(58, 18, 28, 0.04) 0%, rgba(42, 12, 20, 0.12) 36%, rgba(42, 12, 20, 0.58) 68%, rgba(28, 8, 12, 0.84) 100%);
 }
 .hero-content {
   position: relative;
@@ -279,7 +289,11 @@ body.nav-open { overflow: hidden; }
   letter-spacing: 0.18em;
   text-transform: uppercase;
 }
-.hero .eyebrow { color: rgba(255, 255, 255, 0.86); }
+.kicker { color: var(--gold); }
+.hero .eyebrow {
+  color: #f3e6c8;
+  text-shadow: 0 1px 12px rgba(28, 8, 12, 0.65);
+}
 .hero h1 {
   margin: 0 0 16px;
   font-size: clamp(3rem, 10vw, 5.4rem);
@@ -406,7 +420,7 @@ body.nav-open { overflow: hidden; }
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(18, 14, 12, 0.08) 0%, rgba(18, 14, 12, 0.02) 28%, rgba(18, 14, 12, 0.02) 52%, rgba(18, 14, 12, 0.72) 100%);
+    linear-gradient(180deg, rgba(58, 18, 28, 0.1) 0%, rgba(58, 18, 28, 0.02) 28%, rgba(28, 12, 16, 0.02) 52%, rgba(42, 12, 20, 0.74) 100%);
 }
 .treatment-card__media > div { position: relative; z-index: 2; }
 .when, .idx {
@@ -460,11 +474,11 @@ body.nav-open { overflow: hidden; }
 }
 
 .atelier {
-  background: #2c1614;
+  background: var(--velvet-deep);
   color: var(--cream);
   padding: clamp(72px, 10vw, 120px) 0;
 }
-.atelier .kicker { color: var(--champagne); }
+.atelier .kicker { color: var(--gold-soft); }
 .atelier h2 {
   margin: 0 0 14px;
   max-width: 14ch;
@@ -482,7 +496,7 @@ body.nav-open { overflow: hidden; }
 }
 .atelier-grid article {
   padding: 22px 20px 20px;
-  border: 1px solid rgba(194, 166, 141, 0.55);
+  border: 1px solid rgba(198, 180, 140, 0.5);
   background: rgba(254, 251, 245, 0.04);
 }
 .atelier-grid h3 {
@@ -494,9 +508,9 @@ body.nav-open { overflow: hidden; }
 .atelier-actions { margin-top: 28px; }
 .atelier .cta {
   background: var(--cream);
-  color: #2c1614;
+  color: var(--velvet-deep);
 }
-.atelier .cta:hover { background: var(--champagne); color: #2c1614; }
+.atelier .cta:hover { background: var(--gold-soft); color: var(--velvet-deep); }
 .atelier-fine {
   margin-top: 12px;
   max-width: 28rem;
@@ -664,6 +678,7 @@ html.js .quote.is-active { display: block; }
   font-size: clamp(2.4rem, 5vw, 3.8rem);
 }
 .role { color: var(--muted); margin-bottom: 12px; }
+.founder-photo { margin: 0; }
 .founder-photo img { width: 100%; height: auto; }
 
 .build { background: var(--cream); }
@@ -692,7 +707,7 @@ html.js .quote.is-active { display: block; }
   top: 14px;
   bottom: 14px;
   width: 1px;
-  background: var(--line);
+  background: var(--gold-soft);
 }
 .timeline li {
   position: relative;
@@ -736,7 +751,7 @@ html.js .quote.is-active { display: block; }
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(254, 251, 245, 0.02), rgba(254, 251, 245, 0.18));
+  background: linear-gradient(180deg, rgba(42, 12, 20, 0.05), rgba(42, 12, 20, 0.2));
 }
 .own-card {
   position: relative;
@@ -746,9 +761,10 @@ html.js .quote.is-active { display: block; }
   padding: 28px 24px 26px;
   background: var(--cream);
   color: var(--ink);
-  border: 1px solid var(--sand);
+  border: 1px solid rgba(122, 98, 64, 0.28);
+  border-top: 2px solid var(--gold);
 }
-.own-card .kicker { color: var(--bronze); }
+.own-card .kicker, .about .kicker { color: var(--gold); }
 .own-card h2 {
   margin: 0 0 12px;
   color: var(--ink);
@@ -867,20 +883,20 @@ address { font-style: normal; color: var(--body); line-height: 1.7; }
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--gold);
 }
 
 footer {
-  background: var(--paper);
-  color: var(--ink);
-  border-top: 1px solid var(--sand);
+  background: var(--velvet-deep);
+  color: var(--cream);
+  border-top: 0;
   padding: 56px 0 calc(28px + env(safe-area-inset-bottom));
 }
 .footer-grid {
   display: grid;
   gap: 28px;
 }
-.footer-mark { height: 72px; width: auto; filter: brightness(0); }
+.footer-mark { height: 72px; width: auto; }
 .footer-sub {
   margin-top: 6px;
   font-size: 0.52rem;
@@ -893,23 +909,23 @@ footer {
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--gold-soft);
 }
-.footer-grid p, .footer-grid li, .footer-grid a { color: var(--ink); }
+.footer-grid p, .footer-grid li, .footer-grid a { color: var(--cream); }
 .footer-grid ul { list-style: none; margin: 0; padding: 0; }
 .footer-grid li + li { margin-top: 6px; }
 .hours { margin: 0; }
 .hours div { display: grid; gap: 2px; padding: 8px 0; }
 .hours dt, .hours dd { margin: 0; }
-.hours dt { color: var(--muted); }
+.hours dt { color: rgba(247, 242, 234, 0.66); }
 .legal {
   max-width: 40rem;
   margin: 28px 0 0;
   font-size: 0.75rem;
   line-height: 1.45;
-  color: var(--muted);
+  color: rgba(247, 242, 234, 0.72);
 }
-footer a:hover { color: var(--btn-hover); }
+footer a:hover { color: var(--gold-soft); }
 
 html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
 
@@ -980,6 +996,21 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
   .nav-spacer { display: block; flex: 0 0 132px; width: 132px; }
   .nav-cta a.cta { letter-spacing: 0.12em; }
 }
+@media (max-width: 719px) {
+  .own-hero {
+    min-height: 0;
+    display: block;
+  }
+  .own-hero img {
+    position: relative;
+    height: 64vw;
+    object-position: center 40%;
+  }
+  .own-card {
+    width: auto;
+    margin: 16px 16px 28px;
+  }
+}
 @media (max-width: 380px) {
   .wordmark img { height: 30px; }
   .wordmark-sub { letter-spacing: 0.12em; }
@@ -991,12 +1022,12 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
   html.js [data-reveal], .hero-content { animation: none; opacity: 1; transform: none; }
 }
 @media (prefers-contrast: more) {
-  .hero-shade { background: rgba(0, 0, 0, 0.55); }
+  .hero-shade { background: rgba(42, 12, 20, 0.62); }
   .treatment-card__media::after {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.35) 42%, rgba(0, 0, 0, 0.82) 100%);
   }
 }
-::selection { background: #ede1d5; color: #000000; }
+::selection { background: #e7d3c0; color: #1c1214; }
 </style>
 <script>
 (function () {
@@ -1282,7 +1313,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
   <section class="section-pad about" id="about" aria-labelledby="about-title">
     <div class="wide about-grid" data-reveal>
       <figure class="founder-photo">
-        <img src="spa/about-lifestyle.jpg" alt="A warm lifestyle portrait against pale stone. Not a photograph of Mateo Ramirez." width="864" height="1152">
+        <img src="founder.jpg" alt="Mateo Ramirez, founder of Luxe Miami Aesthetics, on a Miami terrace at night." width="1500" height="2000">
       </figure>
       <div>
         <p class="kicker">About Luxe</p>
