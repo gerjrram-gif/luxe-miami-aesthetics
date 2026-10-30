@@ -360,7 +360,7 @@ body.nav-open { overflow: hidden; }
   color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 16px 16px 18px;
 }
 .treatment-card__media img {
@@ -380,9 +380,8 @@ body.nav-open { overflow: hidden; }
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(18, 14, 12, 0.58) 0%, rgba(18, 14, 12, 0.05) 32%, rgba(18, 14, 12, 0.02) 54%, rgba(18, 14, 12, 0.72) 100%);
+    linear-gradient(180deg, rgba(18, 14, 12, 0.08) 0%, rgba(18, 14, 12, 0.02) 28%, rgba(18, 14, 12, 0.02) 52%, rgba(18, 14, 12, 0.72) 100%);
 }
-.treatment-card__media .when,
 .treatment-card__media > div { position: relative; z-index: 2; }
 .when, .idx {
   font-family: Inter, system-ui, sans-serif;
@@ -390,13 +389,6 @@ body.nav-open { overflow: hidden; }
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-}
-.treatment-card__media .when {
-  align-self: flex-start;
-  padding: 6px 9px 5px;
-  background: rgba(254, 251, 245, 0.94);
-  color: #1a1614;
-  line-height: 1.2;
 }
 .treatment-card__media .index {
   display: block;
@@ -961,8 +953,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
         <div class="treatment-row" id="treatment-row">
           <article class="treatment-card">
             <div class="treatment-card__media">
-              <img src="spa/card-neuro.jpg" alt="Black-and-white close-up of an eye. A reference still for neuromodulator care, which is not offered yet." width="1024" height="1024">
-              <span class="when">Not offered yet</span>
+              <img src="spa/card-neuro.jpg" alt="Black-and-white close-up of an eye, a still for neuromodulator care." width="1024" height="1024">
               <div>
                 <span class="index">01</span>
                 <h3>Neuromodulators</h3>
@@ -972,8 +963,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
           </article>
           <article class="treatment-card">
             <div class="treatment-card__media">
-              <img src="spa/card-filler.jpg" alt="Black-and-white close-up of lips. A reference still for dermal filler care, which is not offered yet." width="1024" height="1024">
-              <span class="when">Not offered yet</span>
+              <img src="spa/card-filler.jpg" alt="Black-and-white close-up of lips, a still for dermal filler care." width="1024" height="1024">
               <div>
                 <span class="index">02</span>
                 <h3>Dermal fillers</h3>
@@ -983,8 +973,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
           </article>
           <article class="treatment-card">
             <div class="treatment-card__media">
-              <img src="spa/card-facial.jpg" alt="Black-and-white close-up of a shoulder in a spa wrap beside treatment equipment. Facials are not offered yet." width="1024" height="1024">
-              <span class="when">Not offered yet</span>
+              <img src="spa/card-facial.jpg" alt="Black-and-white close-up of a shoulder in a spa wrap beside treatment equipment." width="1024" height="1024">
               <div>
                 <span class="index">03</span>
                 <h3>Facials</h3>
@@ -994,8 +983,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
           </article>
           <article class="treatment-card">
             <div class="treatment-card__media">
-              <img src="spa/card-consult.jpg" alt="Black-and-white close-up of a neck and collarbone. A reference still for consultations, which are not offered yet." width="1024" height="1024">
-              <span class="when">Not offered yet</span>
+              <img src="spa/card-consult.jpg" alt="Black-and-white close-up of a neck and collarbone, a still for consultations." width="1024" height="1024">
               <div>
                 <span class="index">04</span>
                 <h3>Consultations</h3>
@@ -1125,7 +1113,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
 
   <section id="own" aria-labelledby="own-title">
     <div class="own-hero">
-      <img src="night-poster.jpg" alt="" width="1920" height="1080">
+      <img src="spa/own-golden-hour.jpg" alt="Golden-hour Coral Gables waterfront: cream Mediterranean houses, burgundy bougainvillea, and calm water." width="1280" height="720">
       <div class="own-card">
         <p class="kicker">After the flagship</p>
         <h2 id="own-title">Own a Luxe</h2>
