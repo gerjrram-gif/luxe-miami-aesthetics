@@ -180,16 +180,6 @@ body.nav-open { overflow: hidden; }
   line-height: 0.8;
   color: var(--logo);
 }
-.script-name .reg {
-  font-family: Inter, system-ui, sans-serif;
-  font-weight: 400;
-  font-size: 0.14em;
-  letter-spacing: 0;
-  line-height: 0;
-  margin-left: 0.04em;
-  vertical-align: super;
-  color: inherit;
-}
 .wordmark-sub {
   font-family: "Cormorant SC", "Cormorant Garamond", Georgia, serif;
   font-size: 0.62rem;
@@ -702,6 +692,24 @@ footer .wordmark-sub { color: var(--gold-soft); }
   font-size: 0.95rem;
 }
 .product-card__status { margin-top: auto; padding-top: 14px; }
+.sku-notify { margin-top: 12px; }
+.sku-notify .field { margin: 0 0 6px; }
+.sku-notify input[type="email"] {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  border-radius: 999px;
+  min-height: 44px;
+  padding: 0 14px;
+}
+.sku-notify .cta { width: 100%; margin-top: 8px; }
+.sku-notify-confirm {
+  margin: 12px 0 0;
+  color: var(--body);
+  font-size: 0.95rem;
+}
 .products .row-controls button { border-color: rgba(28, 18, 20, 0.38); }
 .products .row-controls button:hover { border-color: var(--ink); background: rgba(254, 251, 245, 0.45); }
 @media (min-width: 720px) {
@@ -1280,7 +1288,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
       <span class="nav-toggle-label">Menu</span>
     </button>
     <a class="wordmark" href="#top">
-      <span class="script-name">luxe<sup class="reg">®</sup></span>
+      <span class="script-name">luxe</span>
       <span class="wordmark-sub">Miami Aesthetics</span>
     </a>
     <a class="cta cta-nav cta-mobile" href="#waitlist">Waitlist</a>
@@ -1308,7 +1316,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="hero-content">
       <div class="hero-mark">
-        <p class="script-name">luxe<sup class="reg">®</sup></p>
+        <p class="script-name">luxe</p>
         <p class="wordmark-sub">Miami Aesthetics</p>
       </div>
       <p class="eyebrow">Miami, Palm Beach on the horizon</p>
@@ -1508,90 +1516,218 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
           <div class="product-row" id="product-row" tabindex="0">
             <article class="product-card">
               <div class="product-card__media">
-                <img src="spa/products/LX-B01-signet-rouge.jpg" alt="Signet Rouge lipstick in antique gold with a velvet band, the cap set beside it, and an ivory box." width="1024" height="1024" loading="lazy">
+                <img src="spa/products/LX-B01-signet-rouge.jpg" alt="Signet Rouge: a closed antique-gold cylinder with a burgundy velvet band lettered luxe Miami, and a gold lid embossed with leaves, an orchid, and a burgundy heart." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
                 <p class="product-card__index">01</p>
                 <h3>Signet Rouge</h3>
                 <p>A refillable lipstick. A keepsake case, then a shade from the Luxe wardrobe.</p>
                 <p class="product-card__status"><span class="pill">By member appointment</span></p>
+                <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-B01">
+                  <input type="hidden" name="_subject" value="Luxe shelf interest — LX-B01 Signet Rouge">
+                  <input type="hidden" name="_next" value="https://luxemiamiaesthetics.com/confirmed.html">
+                  <input type="hidden" name="_captcha" value="false">
+                  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                  <input type="hidden" name="inquiry" value="product-notify">
+                  <input type="hidden" name="sku" value="LX-B01">
+                  <input type="hidden" name="product" value="Signet Rouge">
+                  <div class="sku-notify-fields">
+                    <label class="field" for="notify-b01">Email for Signet Rouge</label>
+                    <input id="notify-b01" name="email" type="email" autocomplete="email" inputmode="email" required>
+                    <button class="cta" type="submit">Notify me</button>
+                    <p class="form-error" id="notify-b01-error" role="alert" hidden></p>
+                  </div>
+                  <p class="sku-notify-confirm" tabindex="-1" hidden>We’ll write when Signet Rouge is ready. Nothing is reserved.</p>
+                </form>
               </div>
             </article>
             <article class="product-card">
               <div class="product-card__media">
-                <img src="spa/products/LX-B02-brickell-pearls.jpg" alt="Brickell Pearls compact open to tinted powder pearls, with a velvet puff, a gold brush, and a velvet box." width="1024" height="1024" loading="lazy">
+                <img src="spa/products/LX-B02-brickell-pearls.jpg" alt="Brickell Pearls: an open cream compact filled with pink and ivory powder pearls, a gold band lettered luxe Miami, and a lid medallion with an orchid and a burgundy heart." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
                 <p class="product-card__index">02</p>
                 <h3>Brickell Pearls</h3>
                 <p>Softly tinted pearls of setting powder, a last veil of finish.</p>
                 <p class="product-card__status"><span class="pill">Taking shape</span></p>
+                <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-B02">
+                  <input type="hidden" name="_subject" value="Luxe shelf interest — LX-B02 Brickell Pearls">
+                  <input type="hidden" name="_next" value="https://luxemiamiaesthetics.com/confirmed.html">
+                  <input type="hidden" name="_captcha" value="false">
+                  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                  <input type="hidden" name="inquiry" value="product-notify">
+                  <input type="hidden" name="sku" value="LX-B02">
+                  <input type="hidden" name="product" value="Brickell Pearls">
+                  <div class="sku-notify-fields">
+                    <label class="field" for="notify-b02">Email for Brickell Pearls</label>
+                    <input id="notify-b02" name="email" type="email" autocomplete="email" inputmode="email" required>
+                    <button class="cta" type="submit">Notify me</button>
+                    <p class="form-error" id="notify-b02-error" role="alert" hidden></p>
+                  </div>
+                  <p class="sku-notify-confirm" tabindex="-1" hidden>We’ll write when Brickell Pearls is ready. Nothing is reserved.</p>
+                </form>
               </div>
             </article>
             <article class="product-card">
               <div class="product-card__media">
-                <img src="spa/products/LX-B03-miel-de-mar.jpg" alt="Miel de Mar lip oil in a faceted glass vial with a gold cap, the wand beside it, and an ivory box with a gold seal." width="1024" height="1024" loading="lazy">
+                <img src="spa/products/LX-B03-miel-de-mar.jpg" alt="Miel de Mar: a tall fluted glass vial of amber lip oil under a gold cap, with a burgundy velvet heart on the lid and luxe Miami on the collar." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
                 <p class="product-card__index">03</p>
                 <h3>Miel de Mar</h3>
                 <p>A honey-tint lip oil. A sheer, glossy wash of color in a glass wand.</p>
                 <p class="product-card__status"><span class="pill">In the works</span></p>
+                <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-B03">
+                  <input type="hidden" name="_subject" value="Luxe shelf interest — LX-B03 Miel de Mar">
+                  <input type="hidden" name="_next" value="https://luxemiamiaesthetics.com/confirmed.html">
+                  <input type="hidden" name="_captcha" value="false">
+                  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                  <input type="hidden" name="inquiry" value="product-notify">
+                  <input type="hidden" name="sku" value="LX-B03">
+                  <input type="hidden" name="product" value="Miel de Mar">
+                  <div class="sku-notify-fields">
+                    <label class="field" for="notify-b03">Email for Miel de Mar</label>
+                    <input id="notify-b03" name="email" type="email" autocomplete="email" inputmode="email" required>
+                    <button class="cta" type="submit">Notify me</button>
+                    <p class="form-error" id="notify-b03-error" role="alert" hidden></p>
+                  </div>
+                  <p class="sku-notify-confirm" tabindex="-1" hidden>We’ll write when Miel de Mar is ready. Nothing is reserved.</p>
+                </form>
               </div>
             </article>
             <article class="product-card">
               <div class="product-card__media">
-                <img src="spa/products/LX-B04-quatre-palmes.jpg" alt="Quatre Palmes eyeshadow quad open to four pans, with an ivory sleeve and a closed velvet compact." width="1024" height="1024" loading="lazy">
+                <img src="spa/products/LX-B04-quatre-palmes.jpg" alt="Quatre Palmes: a closed burgundy velvet box embossed with palm trees, a gold clasp with an orchid and a burgundy heart, and luxe Miami in gold script." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
                 <p class="product-card__index">04</p>
                 <h3>Quatre Palmes</h3>
                 <p>Four pans of eyeshadow in one compact, from matte to metallic.</p>
                 <p class="product-card__status"><span class="pill">On the horizon</span></p>
+                <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-B04">
+                  <input type="hidden" name="_subject" value="Luxe shelf interest — LX-B04 Quatre Palmes">
+                  <input type="hidden" name="_next" value="https://luxemiamiaesthetics.com/confirmed.html">
+                  <input type="hidden" name="_captcha" value="false">
+                  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                  <input type="hidden" name="inquiry" value="product-notify">
+                  <input type="hidden" name="sku" value="LX-B04">
+                  <input type="hidden" name="product" value="Quatre Palmes">
+                  <div class="sku-notify-fields">
+                    <label class="field" for="notify-b04">Email for Quatre Palmes</label>
+                    <input id="notify-b04" name="email" type="email" autocomplete="email" inputmode="email" required>
+                    <button class="cta" type="submit">Notify me</button>
+                    <p class="form-error" id="notify-b04-error" role="alert" hidden></p>
+                  </div>
+                  <p class="sku-notify-confirm" tabindex="-1" hidden>We’ll write when Quatre Palmes is ready. Nothing is reserved.</p>
+                </form>
               </div>
             </article>
             <article class="product-card">
               <div class="product-card__media">
-                <img src="spa/products/LX-B05-causeway-bronze.jpg" alt="Causeway Bronze compact open to a wave-pressed powder, with a velvet pouch and a gold brush." width="1024" height="1024" loading="lazy">
+                <img src="spa/products/LX-B05-causeway-bronze.jpg" alt="Causeway Bronze: an open cream compact of bronze powder pressed into waves, a gold band lettered luxe Miami, and a lid medallion with an orchid and a burgundy heart." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
                 <p class="product-card__index">05</p>
                 <h3>Causeway Bronze</h3>
                 <p>A sunlit bronzing powder in an ivory compact, with a warm finish.</p>
                 <p class="product-card__status"><span class="pill">Taking shape</span></p>
+                <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-B05">
+                  <input type="hidden" name="_subject" value="Luxe shelf interest — LX-B05 Causeway Bronze">
+                  <input type="hidden" name="_next" value="https://luxemiamiaesthetics.com/confirmed.html">
+                  <input type="hidden" name="_captcha" value="false">
+                  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                  <input type="hidden" name="inquiry" value="product-notify">
+                  <input type="hidden" name="sku" value="LX-B05">
+                  <input type="hidden" name="product" value="Causeway Bronze">
+                  <div class="sku-notify-fields">
+                    <label class="field" for="notify-b05">Email for Causeway Bronze</label>
+                    <input id="notify-b05" name="email" type="email" autocomplete="email" inputmode="email" required>
+                    <button class="cta" type="submit">Notify me</button>
+                    <p class="form-error" id="notify-b05-error" role="alert" hidden></p>
+                  </div>
+                  <p class="sku-notify-confirm" tabindex="-1" hidden>We’ll write when Causeway Bronze is ready. Nothing is reserved.</p>
+                </form>
               </div>
             </article>
             <article class="product-card">
               <div class="product-card__media">
-                <img src="spa/products/LX-B06-nuit-de-velours.jpg" alt="Nuit de Velours extrait on a pale ground: faceted amber glass, a gold stopper, a house seal, and a velvet cord." width="1024" height="1024" loading="lazy">
+                <img src="spa/products/LX-B06-nuit-de-velours.jpg" alt="Nuit de Velours: a faceted amber glass flacon with a gold stopper, a burgundy velvet ribbon, and a gold orchid charm with a burgundy heart, on a pale ground." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
                 <p class="product-card__index">06</p>
                 <h3>Nuit de Velours</h3>
                 <p>The house extrait, in heavy glass with a velvet cord.</p>
                 <p class="product-card__status"><span class="pill">Members only</span></p>
+                <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-B06">
+                  <input type="hidden" name="_subject" value="Luxe shelf interest — LX-B06 Nuit de Velours">
+                  <input type="hidden" name="_next" value="https://luxemiamiaesthetics.com/confirmed.html">
+                  <input type="hidden" name="_captcha" value="false">
+                  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                  <input type="hidden" name="inquiry" value="product-notify">
+                  <input type="hidden" name="sku" value="LX-B06">
+                  <input type="hidden" name="product" value="Nuit de Velours">
+                  <div class="sku-notify-fields">
+                    <label class="field" for="notify-b06">Email for Nuit de Velours</label>
+                    <input id="notify-b06" name="email" type="email" autocomplete="email" inputmode="email" required>
+                    <button class="cta" type="submit">Notify me</button>
+                    <p class="form-error" id="notify-b06-error" role="alert" hidden></p>
+                  </div>
+                  <p class="sku-notify-confirm" tabindex="-1" hidden>We’ll write when Nuit de Velours is ready. Nothing is reserved.</p>
+                </form>
               </div>
             </article>
             <article class="product-card">
               <div class="product-card__media">
-                <img src="spa/products/LX-B07-la-veilleuse.jpg" alt="La Veilleuse candle lit in a velvet and gold vessel, with its lid, a tag, and a linen box." width="1024" height="1024" loading="lazy">
+                <img src="spa/products/LX-B07-la-veilleuse.jpg" alt="La Veilleuse: a cream candle vessel with a brushed gold lid, a small gold seal, and luxe Miami in gold script." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
                 <p class="product-card__index">07</p>
                 <h3>La Veilleuse</h3>
                 <p>A made-to-order Atelier candle. Vessel, scent, and a monogram, chosen by the member.</p>
                 <p class="product-card__status"><span class="pill">By member appointment</span></p>
+                <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-B07">
+                  <input type="hidden" name="_subject" value="Luxe shelf interest — LX-B07 La Veilleuse">
+                  <input type="hidden" name="_next" value="https://luxemiamiaesthetics.com/confirmed.html">
+                  <input type="hidden" name="_captcha" value="false">
+                  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                  <input type="hidden" name="inquiry" value="product-notify">
+                  <input type="hidden" name="sku" value="LX-B07">
+                  <input type="hidden" name="product" value="La Veilleuse">
+                  <div class="sku-notify-fields">
+                    <label class="field" for="notify-b07">Email for La Veilleuse</label>
+                    <input id="notify-b07" name="email" type="email" autocomplete="email" inputmode="email" required>
+                    <button class="cta" type="submit">Notify me</button>
+                    <p class="form-error" id="notify-b07-error" role="alert" hidden></p>
+                  </div>
+                  <p class="sku-notify-confirm" tabindex="-1" hidden>We’ll write when La Veilleuse is ready. Nothing is reserved.</p>
+                </form>
               </div>
             </article>
             <article class="product-card">
               <div class="product-card__media">
-                <img src="spa/products/LX-B08-agua-de-seda.jpg" alt="Agua de Seda in a frosted glass dropper bottle with a velvet bulb and gold collar, beside an open ivory box." width="1024" height="1024" loading="lazy">
+                <img src="spa/products/LX-B08-agua-de-seda.jpg" alt="Agua de Seda: a frosted glass dropper bottle with a burgundy velvet bulb, gold rope collars, and a small gold medallion, with luxe Miami on the glass." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
                 <p class="product-card__index">08</p>
                 <h3>Agua de Seda</h3>
                 <p>A watery-light oil in frosted glass. A silky texture, for a quiet ritual.</p>
                 <p class="product-card__status"><span class="pill">In the works</span></p>
+                <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-B08">
+                  <input type="hidden" name="_subject" value="Luxe shelf interest — LX-B08 Agua de Seda">
+                  <input type="hidden" name="_next" value="https://luxemiamiaesthetics.com/confirmed.html">
+                  <input type="hidden" name="_captcha" value="false">
+                  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                  <input type="hidden" name="inquiry" value="product-notify">
+                  <input type="hidden" name="sku" value="LX-B08">
+                  <input type="hidden" name="product" value="Agua de Seda">
+                  <div class="sku-notify-fields">
+                    <label class="field" for="notify-b08">Email for Agua de Seda</label>
+                    <input id="notify-b08" name="email" type="email" autocomplete="email" inputmode="email" required>
+                    <button class="cta" type="submit">Notify me</button>
+                    <p class="form-error" id="notify-b08-error" role="alert" hidden></p>
+                  </div>
+                  <p class="sku-notify-confirm" tabindex="-1" hidden>We’ll write when Agua de Seda is ready. Nothing is reserved.</p>
+                </form>
               </div>
             </article>
           </div>
@@ -1600,7 +1736,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
             <button type="button" id="product-next" aria-controls="product-row">Next</button>
           </div>
         </div>
-        <p class="note">Members only. These pieces follow The Atelier. No visit and no purchase is attached to this page.</p>
+        <p class="note">Members only. These pieces follow The Atelier. No visit and no purchase is attached to this page. Notify me sends a note about that piece. It does not reserve it.</p>
       </div>
     </div>
   </section>
@@ -1655,7 +1791,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
             <img class="loc-map" src="spa/florida-map.jpg" alt="" width="864" height="1152">
             <div class="loc-paper">
               <p class="loc-paper-kicker">Taking Shape</p>
-              <p class="script-name">luxe<sup class="reg">®</sup></p>
+              <p class="script-name">luxe</p>
               <p class="loc-paper-place">Palm Beach, Florida</p>
               <img src="spa/palm-beach-line.jpg" alt="Line drawing of a small Palm Beach clinic with an arched door and two palms. Not a photograph of 240 Royal Palm Wy." width="1024" height="1024">
             </div>
@@ -1766,9 +1902,11 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
         </div>
         <div>
           <div id="franchise-form-wrap">
-            <form class="inquiry-form" id="franchise-inquiry" action="https://formspree.io/f/your-form-id" method="POST">
+            <form class="inquiry-form" id="franchise-inquiry" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST">
               <input type="hidden" name="_subject" value="Luxe future-studio interest">
               <input type="hidden" name="_next" value="https://luxemiamiaesthetics.com/interest.html">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
               <input type="hidden" name="inquiry" value="future-studio-interest">
               <label class="field" for="franchise-name">Name</label>
               <input id="franchise-name" name="name" type="text" autocomplete="name">
@@ -1845,9 +1983,11 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
       </div>
       <div id="waitlist">
         <div id="waitlist-form-wrap">
-          <form id="waitlist-form" action="https://formspree.io/f/your-form-id" method="POST">
+          <form id="waitlist-form" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST">
             <input type="hidden" name="_subject" value="Luxe Miami Aesthetics waitlist">
             <input type="hidden" name="_next" value="https://luxemiamiaesthetics.com/confirmed.html">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
             <input type="hidden" name="inquiry" value="guest-waitlist">
             <label class="field" for="email">Email address</label>
             <div class="form-row">
@@ -1858,7 +1998,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
           </form>
         </div>
         <div class="waitlist-confirm" id="waitlist-confirm" hidden>
-          <p class="script-name">luxe<sup class="reg">®</sup></p>
+          <p class="script-name">luxe</p>
           <p class="confirm-sub">Miami Aesthetics</p>
           <h2 id="confirm-title" tabindex="-1">You’re on the list.</h2>
           <p class="confirm-line">Natural results. Precise care. Built the right way.</p>
@@ -1873,7 +2013,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
   <div class="wide">
     <div class="footer-grid">
       <div>
-        <p class="script-name">luxe<sup class="reg">®</sup></p>
+        <p class="script-name">luxe</p>
         <p class="wordmark-sub">Miami Aesthetics</p>
         <p style="margin-top:16px">240 Royal Palm Wy<br>Palm Beach, FL 33480<br>Taking shape</p>
         <p style="margin-top:8px">4203 Ponce de Leon Blvd, Unit 110<br>Coral Gables, FL 33146<br>Miami, Palm Beach on the horizon</p>
@@ -1954,6 +2094,17 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
     return link;
   }
 
+  function ajaxEndpoint(action) {
+    try {
+      var url = new URL(action, window.location.href);
+      if (url.hostname === "formsubmit.co" && url.pathname.indexOf("/ajax/") !== 0) {
+        url.pathname = "/ajax" + url.pathname;
+        return url.toString();
+      }
+    } catch (err) {}
+    return action;
+  }
+
   function bindForm(form, errorId, storageKey, onOk) {
     if (!form) return;
     try {
@@ -1962,19 +2113,29 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
     form.addEventListener("submit", function (event) {
       event.preventDefault();
       var button = form.querySelector('[type="submit"]');
-      var error = document.getElementById(errorId);
+      var error = errorId ? document.getElementById(errorId) : null;
       if (error) error.hidden = true;
       if (button) {
         button.disabled = true;
         button.dataset.label = button.dataset.label || button.textContent;
         button.textContent = "One moment";
       }
-      window.fetch(form.action, {
+      var payload = {};
+      new FormData(form).forEach(function (value, key) {
+        payload[key] = value;
+      });
+      window.fetch(ajaxEndpoint(form.action), {
         method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" }
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify(payload)
       }).then(function (response) {
         if (!response.ok) throw new Error("form");
+        return response.json();
+      }).then(function (data) {
+        if (data && (data.success === false || data.success === "false")) throw new Error("form");
         try { sessionStorage.setItem(storageKey, "1"); } catch (err) {}
         onOk(true);
       }).catch(function () {
@@ -2008,6 +2169,20 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
     if (wrap) wrap.hidden = true;
     if (panel) panel.hidden = false;
     if (moveFocus && title) title.focus({ preventScroll: true });
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll("form.sku-notify"), function (form) {
+    var sku = form.getAttribute("data-sku") || "sku";
+    var error = form.querySelector(".form-error");
+    bindForm(form, error ? error.id : "", "luxe-notify-" + sku, function (moveFocus) {
+      var fields = form.querySelector(".sku-notify-fields");
+      var done = form.querySelector(".sku-notify-confirm");
+      if (fields) fields.hidden = true;
+      if (done) {
+        done.hidden = false;
+        if (moveFocus) done.focus({ preventScroll: true });
+      }
+    });
   });
 
   var quotes = Array.prototype.slice.call(document.querySelectorAll("[data-quote]"));
