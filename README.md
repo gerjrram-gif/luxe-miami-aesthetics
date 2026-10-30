@@ -16,7 +16,7 @@ With JavaScript, a successful signup stays on the homepage and shows the matchin
 
 ## Photography
 
-The homepage frame is the static black-and-white portrait `spa/hero-bw.jpg`. It is also the Open Graph image. `hero.mp4`, `night.mp4`, `hero-poster.jpg`, and `night-poster.jpg` stay in the repo and are not used on the hero or on Own a Luxe. The Own a Luxe band is `spa/own-golden-hour.jpg`, an original golden-hour photograph made for Luxe: a calm Coral Gables waterfront, cream Mediterranean houses, burgundy bougainvillea, antique-gold light. It is not a night skyline and not an asset from the reference medspa.
+The homepage frame is the static black-and-white portrait `spa/hero-bw.jpg`. It is also the Open Graph image. `hero.mp4`, `night.mp4`, `hero-poster.jpg`, and `night-poster.jpg` stay in the repo and are not used on the hero or on Own a Luxe. The Own a Luxe band is `spa/own-palm-beach.jpg`, an original photograph made for Luxe: a quiet Palm Beach clinic exterior, cream stucco, a burgundy awning, antique-gold lanterns, and royal palms. It was made for this site and is not an asset from the reference medspa.
 
 What’s coming uses four square black-and-white macros in `spa/`. About uses `spa/about-lifestyle.jpg`, a warm lifestyle portrait. That photo is not Mateo. `founder.jpg` stays in the repo. The Coral Gables card uses `spa/location-interior.jpg`, a burgundy tiled corridor in a 3:4 frame. These photographs were made for Luxe. They are not pictures of Unit 110, and they are not assets from the reference medspa.
 
