@@ -450,8 +450,9 @@ footer .wordmark-sub { color: var(--gold-soft); }
   inset: 0;
   z-index: 1;
   pointer-events: none;
+  /* Dusk starts higher so the index, which sits above the title, is on the same ground. Top of the portrait stays clear. */
   background:
-    linear-gradient(180deg, rgba(58, 18, 28, 0.04) 0%, rgba(58, 18, 28, 0) 42%, rgba(28, 12, 16, 0.1) 74%, rgba(42, 12, 20, 0.5) 100%);
+    linear-gradient(180deg, rgba(58, 18, 28, 0) 0%, rgba(58, 18, 28, 0) 52%, rgba(32, 10, 16, 0.18) 68%, rgba(32, 10, 16, 0.5) 84%, rgba(24, 8, 12, 0.66) 100%);
 }
 .treatment-card__media > div { position: relative; z-index: 2; }
 .when, .idx {
@@ -461,13 +462,30 @@ footer .wordmark-sub { color: var(--gold-soft); }
   letter-spacing: 0.22em;
 }
 .treatment-card__media .index {
-  display: block;
+  display: inline-block;
+  position: relative;
+  z-index: 0;
   margin-bottom: 6px;
   font-family: Inter, system-ui, sans-serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  color: rgba(211, 186, 190, 0.96);
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  line-height: 1.15;
+  color: rgba(211, 186, 190, 0.98);
+  text-shadow:
+    0 0 1px rgba(42, 12, 20, 0.95),
+    0 1px 2px rgba(32, 8, 14, 0.82);
+}
+.treatment-card__media .index::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -12px;
+  right: -14px;
+  top: -7px;
+  bottom: -6px;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(32, 10, 16, 0.72) 0%, rgba(32, 10, 16, 0.4) 46%, rgba(32, 10, 16, 0) 72%);
 }
 .treatment-card__media h3 {
   margin: 0;
