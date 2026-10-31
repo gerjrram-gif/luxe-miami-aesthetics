@@ -511,19 +511,22 @@ footer .wordmark-sub { color: var(--gold-soft); }
 
 .products { background: #dce4ea; color: var(--ink); }
 .products-campaign {
+  background: #f7f2ea;
+  color: var(--ink);
+  border-top: 1px solid rgba(198, 180, 140, 0.95);
+  border-bottom: 1px solid rgba(198, 180, 140, 0.95);
+  padding: clamp(36px, 6vw, 84px) 0;
+}
+.products-campaign__frame {
   display: grid;
-  background: #1a0c14;
-  color: #f7f1e6;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center;
 }
 .products-campaign__media {
   position: relative;
-  aspect-ratio: 3 / 4;
-  background: #140810;
+  aspect-ratio: 2600 / 1900;
+  background: #f3eee6;
   overflow: hidden;
-}
-.products-campaign--gratitude .products-campaign__media {
-  aspect-ratio: 1600 / 1169;
-  background: #e6e0d6;
 }
 .products-campaign__media img {
   position: absolute;
@@ -537,77 +540,40 @@ footer .wordmark-sub { color: var(--gold-soft); }
 .products-campaign__copy {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 36px 24px 42px;
+  align-items: flex-start;
+  justify-content: center;
 }
-.products-campaign .kicker { color: #c4a574; }
+.products-campaign .kicker { color: #7a6240; }
+.products-rule {
+  width: 48px;
+  height: 1px;
+  margin: 2px 0 18px;
+  background: #c6b48c;
+}
 .products-campaign h2 {
   margin: 0 0 14px;
-  max-width: 11ch;
-  color: #f7f1e6;
-  font-size: clamp(3.1rem, 8vw, 5.6rem);
-}
-.products-campaign--gratitude h2 {
-  max-width: 8.2em;
-  font-size: clamp(2.45rem, 5.6vw, 4.15rem);
-  line-height: 0.98;
+  max-width: 11em;
+  color: #6b1e2e;
+  font-weight: 500;
+  font-size: clamp(2.35rem, 4.4vw, 3.55rem);
+  line-height: 1.02;
 }
 .products-deck {
-  max-width: 28rem;
+  max-width: 26rem;
   margin: 0 0 18px;
-  color: rgba(247, 241, 230, 0.92);
-  font-size: 1.02rem;
-  line-height: 1.6;
+  color: var(--body);
+  font-size: 1.05rem;
+  line-height: 1.55;
 }
 .products-deck em { font-style: italic; }
-.products-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 18px;
-  margin: 4px 0 14px;
-}
-.products-house {
-  max-width: 28rem;
-  margin: 0 0 10px;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.2rem;
-  line-height: 1.35;
-  color: #f7f1e6;
-}
-.products-campaign .cta {
-  background: transparent;
-  color: #f7f1e6;
-  box-shadow: inset 0 0 0 1px rgba(196, 165, 116, 0.9);
-}
-.products-campaign .cta:hover {
-  background: #c4a574;
-  color: #1a0c14;
-}
-.products-campaign a.cta-text {
-  min-height: 44px;
-  padding: 0 2px;
-  background: transparent;
-  box-shadow: none;
-  color: #f7f1e6;
-  text-decoration: underline;
-  text-underline-offset: 0.28em;
-  text-decoration-thickness: 1px;
-}
-.products-campaign a.cta-text:hover {
-  background: transparent;
-  color: #c4a574;
-}
+.products-actions { margin: 18px 0 14px; }
 .products-fine {
-  max-width: 28rem;
+  max-width: 26rem;
   margin: 0;
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   line-height: 1.5;
-  color: rgba(247, 241, 230, 0.86);
+  color: var(--muted);
 }
-.products-fine a { text-underline-offset: 0.18em; }
-.products-fine a:hover { color: #c4a574; }
-.products-campaign :focus-visible { outline-color: #fff; }
 .pill {
   display: inline-flex;
   align-items: center;
@@ -624,9 +590,9 @@ footer .wordmark-sub { color: var(--gold-soft); }
   line-height: 1;
 }
 .products-campaign .pill {
-  border-color: rgba(196, 165, 116, 0.8);
-  background: rgba(26, 12, 20, 0.35);
-  color: #f7f1e6;
+  border-color: rgba(198, 180, 140, 0.95);
+  background: transparent;
+  color: #6b1e2e;
 }
 .products-shelf { padding-bottom: clamp(64px, 9vw, 108px); }
 .products-shelf .section-label { margin-bottom: 28px; }
@@ -656,37 +622,6 @@ footer .wordmark-sub { color: var(--gold-soft); }
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-.product-card__media--quiet {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  background:
-    radial-gradient(circle at 50% 42%, rgba(196, 165, 116, 0.22), transparent 48%),
-    #f6f1ea;
-  text-align: center;
-}
-.product-card__quiet-mark {
-  margin: 0;
-  font-family: "Allura", cursive;
-  font-size: 4.4rem;
-  line-height: 0.85;
-  color: #6b1e2e;
-}
-.product-card__quiet-rule {
-  width: 42px;
-  height: 1px;
-  background: #c4a574;
-}
-.product-card__quiet-kicker {
-  margin: 0;
-  font-family: "Cormorant SC", "Cormorant Garamond", Georgia, serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  color: #7a6240;
 }
 .product-card__body {
   display: flex;
@@ -871,15 +806,9 @@ footer .wordmark-sub { color: var(--gold-soft); }
   .product-row { grid-auto-columns: calc((100% - 18px) / 2); }
 }
 @media (min-width: 1100px) {
-  .products-campaign {
-    grid-template-columns: minmax(300px, 1fr) minmax(440px, 760px);
-    align-items: stretch;
-  }
-  .products-campaign__media { order: 2; }
-  .products-campaign__copy {
-    order: 1;
-    justify-content: flex-end;
-    padding: clamp(56px, 7vw, 96px) clamp(36px, 5vw, 80px) clamp(56px, 7vw, 88px);
+  .products-campaign__frame {
+    grid-template-columns: minmax(420px, 1.15fr) minmax(280px, 0.72fr);
+    column-gap: clamp(40px, 5vw, 80px);
   }
   .product-row { grid-auto-columns: calc((100% - 54px) / 4); }
 }
@@ -1662,63 +1591,36 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
 
   <section class="products" id="products" aria-labelledby="products-title">
     <div class="products-campaign products-campaign--gratitude">
-      <div class="products-campaign__media">
-        <img src="spa/products/LX-06-gratitude-folded-mock.jpg" alt="Gratitude card and seal set: a folded ivory card with gold foil reading with gratitude, a burgundy luxe seal, a gold monogram seal, and an envelope closed with a gold wax seal." width="1600" height="1169">
-      </div>
-      <div class="products-campaign__copy">
-        <p class="kicker">Products</p>
-        <h2 id="products-title">Gratitude card &amp; seal set</h2>
-        <p class="products-deck">Folded ivory card with gold foil <em>with gratitude</em>, seals, and envelope — a quiet thank-you.</p>
-        <p><span class="pill">Waitlist open</span></p>
-        <p class="products-actions"><a class="cta" href="#lx-06">Join the waitlist</a><a class="cta cta-text" href="#product-shelf">Explore the collection</a></p>
-        <p class="products-house">Luxe™ Atelier · Proceeds support Spa 1, Coral Gables.</p>
-        <p class="products-fine">The house is still being built, with Spa 1 aimed at 2028. Products will help support that opening. For-profit — you would receive the set. Not a donation. Nothing is for sale today. <a href="#lx-06-terms">Spa 1 waitlist terms</a>.</p>
+      <div class="products-campaign__frame wide">
+        <div class="products-campaign__media">
+          <img src="spa/products/LX-06-gratitude-folded-set-hero.jpg" alt="Gratitude card and seal set: a folded ivory card with gold foil reading with gratitude, a burgundy luxe seal, a gold monogram seal, and an envelope closed with a gold wax seal." width="2600" height="1900">
+        </div>
+        <div class="products-campaign__copy">
+          <p class="kicker">Products</p>
+          <span class="products-rule" aria-hidden="true"></span>
+          <h2 id="products-title">Gratitude card &amp; seal set</h2>
+          <p class="products-deck">Folded ivory card with gold foil <em>with gratitude</em>, seals, and envelope — a quiet thank-you.</p>
+          <p><span class="pill">Waitlist open</span></p>
+          <p class="products-actions"><a class="cta" href="#lx-06">Join the waitlist</a></p>
+          <p class="products-fine">Luxe™ Atelier · Proceeds support Spa 1, Coral Gables. Nothing is for sale today.</p>
+        </div>
       </div>
     </div>
     <div class="products-shelf section-pad" id="product-shelf">
       <div class="wide">
         <div class="section-label">
           <p class="kicker">The shelf</p>
-          <h3 class="label">Candles, then beauty concepts</h3>
-          <p>Two candle concepts sit with the Gratitude set. Color, powder, and scent follow. Luxe™ is still being built, with Spa 1 in Coral Gables aimed at 2028. Proceeds support that opening. For-profit, not a donation. Nothing on this page is for sale today.</p>
+          <h3 class="label">A candle, then beauty concepts</h3>
+          <p>La Veilleuse sits with the Gratitude set. Color, powder, and scent follow. Luxe™ is still being built, with Spa 1 in Coral Gables aimed at 2028. Proceeds support that opening. For-profit, not a donation. Nothing on this page is for sale today.</p>
         </div>
         <div class="treatment-wrap" role="region" aria-roledescription="carousel" aria-label="Product shelf">
           <div class="product-row" id="product-row" tabindex="0">
-            <article class="product-card">
-              <div class="product-card__media product-card__media--quiet">
-                <p class="product-card__quiet-mark">luxe</p>
-                <span class="product-card__quiet-rule" aria-hidden="true"></span>
-                <p class="product-card__quiet-kicker">Candle concept</p>
-              </div>
-              <div class="product-card__body">
-                <p class="product-card__index">01</p>
-                <h3>Biscayne Dusk</h3>
-                <p>A candle concept for the house. Vessel and scent are still taking shape. Nothing ships from this card.</p>
-                <p class="product-card__status"><span class="pill">Taking shape</span></p>
-                <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-02">
-                  <input type="hidden" name="_subject" value="Luxe shelf interest — LX-02 Biscayne Dusk">
-                  <input type="hidden" name="_next" value="https://luxemiamiaesthetics.com/confirmed.html">
-                  <input type="hidden" name="_captcha" value="false">
-                  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-                  <input type="hidden" name="inquiry" value="product-notify">
-                  <input type="hidden" name="sku" value="LX-02">
-                  <input type="hidden" name="product" value="Biscayne Dusk">
-                  <div class="sku-notify-fields">
-                    <label class="field" for="notify-lx02">Email for Biscayne Dusk</label>
-                    <input id="notify-lx02" name="email" type="email" autocomplete="email" inputmode="email" required>
-                    <button class="cta" type="submit">Notify me</button>
-                    <p class="form-error" id="notify-lx02-error" role="alert" hidden></p>
-                  </div>
-                  <p class="sku-notify-confirm" tabindex="-1" hidden>We’ll write when Biscayne Dusk is ready. Nothing is reserved.</p>
-                </form>
-              </div>
-            </article>
             <article class="product-card">
               <div class="product-card__media">
                 <img src="spa/products/LX-B07-la-veilleuse.jpg" alt="La Veilleuse: a cream candle vessel with a brushed gold lid, a small gold seal, and luxe Miami in gold script." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
-                <p class="product-card__index">02</p>
+                <p class="product-card__index">01</p>
                 <h3>La Veilleuse</h3>
                 <p>An Atelier candle concept. Vessel, scent, and a monogram, still taking shape.</p>
                 <p class="product-card__status"><span class="pill">Taking shape</span></p>
@@ -1745,7 +1647,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 <img src="spa/products/LX-B01-signet-rouge.jpg" alt="Signet Rouge: a closed antique-gold cylinder with a burgundy velvet band lettered luxe Miami, and a gold lid embossed with leaves, an orchid, and a burgundy heart." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
-                <p class="product-card__index">03</p>
+                <p class="product-card__index">02</p>
                 <h3>Signet Rouge</h3>
                 <p>A refillable lipstick. A keepsake case, then a shade from the Luxe wardrobe.</p>
                 <p class="product-card__status"><span class="pill">By member appointment</span></p>
@@ -1772,7 +1674,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 <img src="spa/products/LX-B02-brickell-pearls.jpg" alt="Brickell Pearls: an open cream compact filled with pink and ivory powder pearls, a gold band lettered luxe Miami, and a lid medallion with an orchid and a burgundy heart." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
-                <p class="product-card__index">04</p>
+                <p class="product-card__index">03</p>
                 <h3>Brickell Pearls</h3>
                 <p>Softly tinted pearls of setting powder, a last veil of finish.</p>
                 <p class="product-card__status"><span class="pill">Taking shape</span></p>
@@ -1799,7 +1701,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 <img src="spa/products/LX-B03-miel-de-mar.jpg" alt="Miel de Mar: a tall fluted glass vial of amber lip oil under a gold cap, with a burgundy velvet heart on the lid and luxe Miami on the collar." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
-                <p class="product-card__index">05</p>
+                <p class="product-card__index">04</p>
                 <h3>Miel de Mar</h3>
                 <p>A honey-tint lip oil. A sheer, glossy wash of color in a glass wand.</p>
                 <p class="product-card__status"><span class="pill">In the works</span></p>
@@ -1826,7 +1728,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 <img src="spa/products/LX-B04-quatre-palmes.jpg" alt="Quatre Palmes: a closed burgundy velvet box embossed with palm trees, a gold clasp with an orchid and a burgundy heart, and luxe Miami in gold script." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
-                <p class="product-card__index">06</p>
+                <p class="product-card__index">05</p>
                 <h3>Quatre Palmes</h3>
                 <p>Four pans of eyeshadow in one compact, from matte to metallic.</p>
                 <p class="product-card__status"><span class="pill">On the horizon</span></p>
@@ -1853,7 +1755,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 <img src="spa/products/LX-B05-causeway-bronze.jpg" alt="Causeway Bronze: an open cream compact of bronze powder pressed into waves, a gold band lettered luxe Miami, and a lid medallion with an orchid and a burgundy heart." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
-                <p class="product-card__index">07</p>
+                <p class="product-card__index">06</p>
                 <h3>Causeway Bronze</h3>
                 <p>A sunlit bronzing powder in an ivory compact, with a warm finish.</p>
                 <p class="product-card__status"><span class="pill">Taking shape</span></p>
@@ -1880,7 +1782,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 <img src="spa/products/LX-B06-nuit-de-velours.jpg" alt="Nuit de Velours: a faceted amber glass flacon with a gold stopper, a burgundy velvet ribbon, and a gold orchid charm with a burgundy heart, on a pale ground." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
-                <p class="product-card__index">08</p>
+                <p class="product-card__index">07</p>
                 <h3>Nuit de Velours</h3>
                 <p>The house extrait, in heavy glass with a velvet cord.</p>
                 <p class="product-card__status"><span class="pill">Members only</span></p>
@@ -1907,7 +1809,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 <img src="spa/products/LX-B08-agua-de-seda.jpg" alt="Agua de Seda: a frosted glass dropper bottle with a burgundy velvet bulb, gold rope collars, and a small gold medallion, with luxe Miami on the glass." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
-                <p class="product-card__index">09</p>
+                <p class="product-card__index">08</p>
                 <h3>Agua de Seda</h3>
                 <p>A watery-light oil in frosted glass. A silky texture, for a quiet ritual.</p>
                 <p class="product-card__status"><span class="pill">In the works</span></p>
