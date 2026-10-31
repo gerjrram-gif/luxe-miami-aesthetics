@@ -660,6 +660,142 @@ footer .wordmark-sub { color: var(--gold-soft); }
 }
 .products .row-controls button { border-color: rgba(28, 18, 20, 0.38); }
 .products .row-controls button:hover { border-color: var(--ink); background: rgba(254, 251, 245, 0.45); }
+
+.lx06 {
+  background: var(--paper);
+  color: var(--ink);
+  padding: clamp(72px, 10vw, 120px) 0;
+  border-top: 1px solid var(--sand);
+}
+.lx06-grid { display: grid; gap: 28px; align-items: start; }
+.lx06-media { display: grid; gap: 12px; align-content: start; }
+.lx06-set, .lx06-seals, .lx06-media img {
+  width: 100%;
+  height: auto;
+  background: #f6f1ea;
+}
+@media (max-width: 979px) {
+  .lx06-grid {
+    grid-template-areas: "set" "intro" "form" "seals";
+  }
+  .lx06-media { display: contents; }
+  .lx06-set { grid-area: set; }
+  .lx06-seals { grid-area: seals; }
+  .lx06-intro { grid-area: intro; }
+  .lx06-formcol { grid-area: form; }
+}
+.lx06 h2 {
+  margin: 0 0 14px;
+  max-width: 16em;
+  color: var(--ink);
+  font-size: clamp(2.15rem, 4vw, 3.15rem);
+}
+.lx06-body {
+  max-width: 36rem;
+  color: var(--ink);
+  font-size: 1.05rem;
+}
+.lx06-house {
+  max-width: 36rem;
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid var(--sand);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.28rem;
+  line-height: 1.35;
+  color: var(--ink);
+}
+.lx06-perk, .lx06-teaser {
+  max-width: 38rem;
+  margin-top: 16px;
+  color: var(--body);
+  font-size: 0.95rem;
+}
+.lx06-teaser { color: var(--muted); font-size: 0.9rem; }
+.lx06-terms {
+  max-width: 40rem;
+  margin-top: 20px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.lx06-terms summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: "Cormorant SC", "Cormorant Garamond", Georgia, serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+}
+.lx06-terms summary::-webkit-details-marker { display: none; }
+.lx06-terms summary::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 1.5px solid var(--muted);
+  border-bottom: 1.5px solid var(--muted);
+  transform: rotate(45deg) translateY(-2px);
+  flex: 0 0 auto;
+}
+.lx06-terms[open] summary::after { transform: rotate(225deg) translateY(-1px); }
+.lx06-terms p {
+  margin: 0 0 16px;
+  color: var(--body);
+  font-size: 0.92rem;
+}
+.lx06 a { text-underline-offset: 0.18em; }
+.lx06 .inquiry-form { margin-top: 8px; }
+.choice-set {
+  margin: 16px 0 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.choice-set legend {
+  padding: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+.choice-options { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 8px; }
+.check-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 14px;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.45;
+  text-transform: none;
+  color: var(--body);
+}
+.choice-options .check-row { margin-top: 0; }
+.check-row input {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.28em;
+  flex: 0 0 auto;
+  accent-color: var(--btn);
+}
+@media (min-width: 980px) {
+  .lx06-grid {
+    grid-template-columns: minmax(280px, 1.05fr) minmax(320px, 0.95fr);
+    grid-template-areas: "media intro" "media form";
+    column-gap: 64px;
+    row-gap: 0;
+  }
+  .lx06-media { grid-area: media; }
+  .lx06-intro { grid-area: intro; }
+  .lx06-formcol { grid-area: form; }
+}
 @media (min-width: 720px) {
   .product-row { grid-auto-columns: calc((100% - 18px) / 2); }
 }
@@ -988,6 +1124,20 @@ html.js .quote.is-active { display: block; }
   padding: 12px 16px;
   resize: vertical;
 }
+.inquiry-form input[type="checkbox"],
+.inquiry-form input[type="radio"] {
+  display: inline-block;
+  width: 1.1rem;
+  height: 1.1rem;
+  min-height: 0;
+  margin-top: 0.28em;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  accent-color: var(--btn);
+  flex: 0 0 auto;
+}
 .inquiry-form .cta { align-self: flex-start; margin-top: 18px; }
 .form-error {
   margin: 12px 0 0;
@@ -1245,6 +1395,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
         <li><a href="#treatments">Treatments</a></li>
         <li><a href="#atelier">Atelier</a></li>
         <li><a href="#products">Products</a></li>
+        <li><a href="#lx-06">Gratitude</a></li>
       </ul>
       <ul class="nav-links">
         <li><a href="#location">Locations</a></li>
@@ -1688,6 +1839,78 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
     </div>
   </section>
 
+  <section class="lx06" id="lx-06" aria-labelledby="lx-06-title">
+    <div class="wide lx06-grid">
+      <div class="lx06-media">
+        <img class="lx06-set" src="spa/products/LX-06-gratitude-set.jpg" alt="Gratitude card &amp; seal set" width="1600" height="1145">
+        <img class="lx06-seals" src="spa/products/LX-06-gratitude-seals.jpg" alt="Gratitude seals" width="1400" height="893" loading="lazy">
+      </div>
+      <div class="lx06-intro">
+        <h2 id="lx-06-title">LX-06 Gratitude card &amp; seal set — waitlist</h2>
+        <p class="lx06-body">Taking shape. Join for first word when the set is in stock. Not a purchase.</p>
+        <p class="lx06-house">Proceeds support opening Spa 1 in Coral Gables — goal $1M by 2028.</p>
+        <p class="lx06-perk">LX-06 buyers receive Spa 1 consult-waitlist priority when Luxe™ may lawfully offer injectables. Not available today. No date guaranteed. Not a medical offer.</p>
+        <p class="lx06-teaser">Taking shape: LX-06 buyers receive Spa 1 consult-waitlist priority when care may lawfully begin. Not a medical offer; no treatment date guaranteed.</p>
+      </div>
+      <div class="lx06-formcol">
+        <details class="lx06-terms" id="lx-06-terms">
+          <summary>Terms</summary>
+          <p><strong>Spa 1 consult-waitlist priority, terms.</strong> This is a for-profit product purchase: you receive the LX-06 set. Not a donation. The included code gives <strong>waitlist priority only</strong> for future injectable <strong>consults</strong> at Spa 1 (Coral Gables). <strong>It is not a medical offer, booking, or prepaid service, and has no cash value.</strong> Luxe Miami Aesthetics is not yet open and does not provide medical services today. Our founder's nursing licensure, injector training, and a Physician collaboration are still ahead. <strong>No consult or treatment date is guaranteed</strong>, and Spa 1 may not open. Purchase creates no obligation to provide treatment. Any treatment would follow a clinical evaluation and happen only if clinically appropriate. One code, one person. Full terms: <a class="lx06-terms-jump" href="#lx-06-terms">this notice</a>.</p>
+        </details>
+        <div id="lx06-form-wrap">
+          <form class="inquiry-form" id="lx06-form" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST">
+            <input type="hidden" name="_subject" value="Luxe LX-06 Gratitude waitlist">
+            <input type="hidden" name="_next" value="https://luxemiamiaesthetics.com/confirmed.html">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="inquiry" value="lx-06-gratitude-waitlist">
+            <input type="hidden" name="product" value="LX-06 Gratitude card &amp; seal set">
+            <input type="hidden" name="sku" value="LX-06">
+            <label class="field" for="lx06-name">Full name</label>
+            <input id="lx06-name" name="name" type="text" autocomplete="name">
+            <label class="field" for="lx06-email">Email</label>
+            <input id="lx06-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+            <label class="field" for="lx06-instagram">Instagram handle, optional</label>
+            <input id="lx06-instagram" name="instagram" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+            <div class="check-row">
+              <input id="lx06-interest" name="interested_lx06" type="checkbox" value="Yes" checked>
+              <label for="lx06-interest">Interested in the LX-06 Gratitude set?</label>
+            </div>
+            <fieldset class="choice-set">
+              <legend>Interested in candles later?</legend>
+              <div class="choice-options">
+                <label class="check-row">
+                  <input name="interested_candles" type="radio" value="Yes">
+                  Yes
+                </label>
+                <label class="check-row">
+                  <input name="interested_candles" type="radio" value="No">
+                  No
+                </label>
+              </div>
+            </fieldset>
+            <div class="check-row">
+              <input id="lx06-consent" name="consent" type="checkbox" value="Yes" required>
+              <label for="lx06-consent">I agree to be contacted about Luxe™ products and the <a class="lx06-terms-jump" href="#lx-06-terms">Spa 1 waitlist terms</a>.</label>
+            </div>
+            <div class="check-row">
+              <input id="lx06-age" name="age_18" type="checkbox" value="Yes" required>
+              <label for="lx06-age">I am 18 or older.</label>
+            </div>
+            <button class="cta" type="submit">Join the waitlist</button>
+            <p class="form-error" id="lx06-error" role="alert" hidden></p>
+          </form>
+          <p class="fine">Or write directly to <a class="text-link" href="mailto:info@luxemiamiaesthetics.com?subject=LX-06%20Gratitude%20waitlist">info@luxemiamiaesthetics.com</a>. This note is not a purchase.</p>
+        </div>
+        <div class="waitlist-confirm" id="lx06-confirm" hidden>
+          <h2 id="lx06-confirm-title" tabindex="-1">You’re on the LX-06 list.</h2>
+          <p class="confirm-line">We’ll write with first word. This is not a purchase.</p>
+          <p class="confirm-meta">Taking Shape · On the Horizon</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="quote-band" id="standards" aria-roledescription="carousel" aria-label="Standards for the practice being built">
     <h2>Standards</h2>
     <div class="quote-stage">
@@ -1973,6 +2196,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
           <li><a href="#treatments">In the works</a></li>
           <li><a href="#atelier">The Atelier</a></li>
           <li><a href="#products">Products</a></li>
+          <li><a href="#lx-06">Gratitude</a></li>
           <li><a href="#location">Locations</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#build">Building Luxe Miami Aesthetics</a></li>
@@ -2118,6 +2342,38 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
       }
     });
   });
+
+  bindForm(document.getElementById("lx06-form"), "lx06-error", "luxe-lx06", function (moveFocus) {
+    var wrap = document.getElementById("lx06-form-wrap");
+    var panel = document.getElementById("lx06-confirm");
+    var title = document.getElementById("lx06-confirm-title");
+    if (wrap) wrap.hidden = true;
+    if (panel) panel.hidden = false;
+    if (moveFocus && title) title.focus({ preventScroll: true });
+  });
+
+  function openLx06Terms() {
+    var details = document.getElementById("lx-06-terms");
+    if (details) details.open = true;
+  }
+  if (location.hash === "#lx-06-terms") openLx06Terms();
+  Array.prototype.forEach.call(document.querySelectorAll("a.lx06-terms-jump"), function (link) {
+    link.addEventListener("click", openLx06Terms);
+  });
+  function settleLx06Hash() {
+    var id = (location.hash || "").replace("#", "");
+    if (id !== "lx-06" && id !== "lx-06-terms") return;
+    if (id === "lx-06-terms") openLx06Terms();
+    var el = document.getElementById(id);
+    if (!el) return;
+    var header = document.querySelector(".site-header");
+    var offset = (header ? header.offsetHeight : 72) + 16;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: Math.max(0, top), behavior: "instant" });
+  }
+  window.addEventListener("load", settleLx06Hash);
+  window.addEventListener("hashchange", settleLx06Hash);
+  window.setTimeout(settleLx06Hash, 60);
 
   var quotes = Array.prototype.slice.call(document.querySelectorAll("[data-quote]"));
   var dotWrap = document.getElementById("quote-dots");
