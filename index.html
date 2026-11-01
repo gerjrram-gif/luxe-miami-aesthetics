@@ -646,6 +646,35 @@ footer .wordmark-sub { color: var(--gold-soft); }
   font-size: 0.95rem;
 }
 .product-card__status { margin-top: auto; padding-top: 14px; }
+.product-card__action { margin-top: 12px; }
+.product-card__action .cta { width: 100%; }
+.product-card--live {
+  background: #f7f2ea;
+  border: 1px solid rgba(198, 180, 140, 0.95);
+}
+.product-card--live .product-card__media { background: #f3eee6; }
+.product-card--live .product-card__body { padding: 14px 14px 16px; }
+.product-card--live h3 { color: #6b1e2e; }
+.product-card--parked .product-card__media img {
+  filter: grayscale(0.55);
+  opacity: 0.82;
+}
+.product-card--parked h3,
+.product-card--parked .product-card__body > p { color: var(--muted); }
+.product-card--parked .pill {
+  border-color: rgba(28, 18, 20, 0.22);
+  background: transparent;
+  color: var(--muted);
+}
+.product-card--parked .sku-notify .cta {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid rgba(28, 18, 20, 0.28);
+}
+.product-card--parked .sku-notify .cta:hover {
+  background: rgba(254, 251, 245, 0.7);
+  color: var(--ink);
+}
 .sku-notify { margin-top: 12px; }
 .sku-notify .field { margin: 0 0 6px; }
 .sku-notify input[type="email"] {
@@ -701,6 +730,12 @@ footer .wordmark-sub { color: var(--gold-soft); }
   color: var(--ink);
   font-size: 1.05rem;
 }
+.lx06-truth {
+  max-width: 36rem;
+  margin-top: 12px;
+  color: var(--body);
+  font-size: 0.95rem;
+}
 .lx06-house {
   max-width: 36rem;
   margin-top: 22px;
@@ -711,13 +746,12 @@ footer .wordmark-sub { color: var(--gold-soft); }
   line-height: 1.35;
   color: var(--ink);
 }
-.lx06-perk, .lx06-teaser {
+.lx06-perk {
   max-width: 38rem;
   margin-top: 16px;
   color: var(--body);
   font-size: 0.95rem;
 }
-.lx06-teaser { color: var(--muted); font-size: 0.9rem; }
 .lx06-terms {
   max-width: 40rem;
   margin-top: 20px;
@@ -1602,7 +1636,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
           <p class="products-deck">Folded ivory card with gold foil <em>with gratitude</em>, seals, and envelope — a quiet thank-you.</p>
           <p><span class="pill">Waitlist open</span></p>
           <p class="products-actions"><a class="cta" href="#lx-06">Join the waitlist</a></p>
-          <p class="products-fine">Luxe™ Atelier · Proceeds support Spa 1, Coral Gables. Nothing is for sale today.</p>
+          <p class="products-fine">Luxe™ Atelier</p>
         </div>
       </div>
     </div>
@@ -1610,17 +1644,29 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
       <div class="wide">
         <div class="section-label">
           <p class="kicker">The shelf</p>
-          <h3 class="label">A candle, then beauty concepts</h3>
-          <p>La Veilleuse sits with the Gratitude set. Color, powder, and scent follow. Luxe™ is still being built, with Spa 1 in Coral Gables aimed at 2028. Proceeds support that opening. For-profit, not a donation. Nothing on this page is for sale today.</p>
+          <h3 class="label">Gratitude, then pieces taking shape</h3>
+          <p>LX-06 Gratitude is the card and seal set on the list. Color, powder, scent, and a candle follow, still taking shape.</p>
         </div>
         <div class="treatment-wrap" role="region" aria-roledescription="carousel" aria-label="Product shelf">
           <div class="product-row" id="product-row" tabindex="0">
-            <article class="product-card">
+            <article class="product-card product-card--live">
+              <div class="product-card__media">
+                <img src="spa/products/LX-06-gratitude-set.jpg" alt="Gratitude card and seal set: an ivory card, seals, and an envelope." width="1600" height="1145" loading="lazy">
+              </div>
+              <div class="product-card__body">
+                <p class="product-card__index">LX-06</p>
+                <h3>Gratitude</h3>
+                <p>The card and seal set.</p>
+                <p class="product-card__status"><span class="pill">Waitlist open</span></p>
+                <p class="product-card__action"><a class="cta" href="#lx-06">Join the waitlist</a></p>
+              </div>
+            </article>
+            <article class="product-card product-card--parked">
               <div class="product-card__media">
                 <img src="spa/products/LX-B07-la-veilleuse.jpg" alt="La Veilleuse: a faceted glass candle of cream wax under a brushed gold lid, with a cream band lettered luxe Miami." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
-                <p class="product-card__index">01</p>
+                <p class="product-card__index">LX-B07</p>
                 <h3>La Veilleuse</h3>
                 <p>An Atelier candle concept. Vessel, scent, and a monogram, still taking shape.</p>
                 <p class="product-card__status"><span class="pill">Taking shape</span></p>
@@ -1642,15 +1688,15 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 </form>
               </div>
             </article>
-            <article class="product-card">
+            <article class="product-card product-card--parked">
               <div class="product-card__media">
                 <img src="spa/products/LX-B01-signet-rouge.jpg" alt="Signet Rouge: an open antique-gold lipstick with a rose-red bullet and a burgundy velvet band lettered luxe Miami." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
-                <p class="product-card__index">02</p>
+                <p class="product-card__index">LX-B01</p>
                 <h3>Signet Rouge</h3>
                 <p>A refillable lipstick. A keepsake case, then a shade from the Luxe wardrobe.</p>
-                <p class="product-card__status"><span class="pill">By member appointment</span></p>
+                <p class="product-card__status"><span class="pill">Taking shape</span></p>
                 <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-B01">
                   <input type="hidden" name="_subject" value="Luxe shelf interest — LX-B01 Signet Rouge">
                   <input type="hidden" name="_next" value="https://luxemiamiaesthetics.com/confirmed.html">
@@ -1669,12 +1715,12 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 </form>
               </div>
             </article>
-            <article class="product-card">
+            <article class="product-card product-card--parked">
               <div class="product-card__media">
                 <img src="spa/products/LX-B02-brickell-pearls.jpg" alt="Brickell Pearls: an open gold compact of pink and ivory powder pearls with a cream puff, and a lid lettered luxe Miami." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
-                <p class="product-card__index">03</p>
+                <p class="product-card__index">LX-B02</p>
                 <h3>Brickell Pearls</h3>
                 <p>Softly tinted pearls of setting powder, a last veil of finish.</p>
                 <p class="product-card__status"><span class="pill">Taking shape</span></p>
@@ -1696,15 +1742,15 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 </form>
               </div>
             </article>
-            <article class="product-card">
+            <article class="product-card product-card--parked">
               <div class="product-card__media">
                 <img src="spa/products/LX-B03-miel-de-mar.jpg" alt="Miel de Mar: a glass vial of coral lip oil under an ornate gold cap, with a cream label lettered luxe Miami." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
-                <p class="product-card__index">04</p>
+                <p class="product-card__index">LX-B03</p>
                 <h3>Miel de Mar</h3>
                 <p>A honey-tint lip oil. A sheer, glossy wash of color in a glass wand.</p>
-                <p class="product-card__status"><span class="pill">In the works</span></p>
+                <p class="product-card__status"><span class="pill">Taking shape</span></p>
                 <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-B03">
                   <input type="hidden" name="_subject" value="Luxe shelf interest — LX-B03 Miel de Mar">
                   <input type="hidden" name="_next" value="https://luxemiamiaesthetics.com/confirmed.html">
@@ -1723,15 +1769,15 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 </form>
               </div>
             </article>
-            <article class="product-card">
+            <article class="product-card product-card--parked">
               <div class="product-card__media">
                 <img src="spa/products/LX-B04-quatre-palmes.jpg" alt="Quatre Palmes: an open gold compact of four warm and burgundy eyeshadows beside a closed burgundy velvet box lettered luxe Miami." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
-                <p class="product-card__index">05</p>
+                <p class="product-card__index">LX-B04</p>
                 <h3>Quatre Palmes</h3>
                 <p>Four pans of eyeshadow in one compact, from matte to metallic.</p>
-                <p class="product-card__status"><span class="pill">On the horizon</span></p>
+                <p class="product-card__status"><span class="pill">Taking shape</span></p>
                 <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-B04">
                   <input type="hidden" name="_subject" value="Luxe shelf interest — LX-B04 Quatre Palmes">
                   <input type="hidden" name="_next" value="https://luxemiamiaesthetics.com/confirmed.html">
@@ -1750,12 +1796,12 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 </form>
               </div>
             </article>
-            <article class="product-card">
+            <article class="product-card product-card--parked">
               <div class="product-card__media">
                 <img src="spa/products/LX-B05-causeway-bronze.jpg" alt="Causeway Bronze: an open compact of bronze powder pressed into waves, with a cream lid lettered luxe Miami." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
-                <p class="product-card__index">06</p>
+                <p class="product-card__index">LX-B05</p>
                 <h3>Causeway Bronze</h3>
                 <p>A sunlit bronzing powder in an ivory compact, with a warm finish.</p>
                 <p class="product-card__status"><span class="pill">Taking shape</span></p>
@@ -1777,15 +1823,15 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 </form>
               </div>
             </article>
-            <article class="product-card">
+            <article class="product-card product-card--parked">
               <div class="product-card__media">
                 <img src="spa/products/LX-B06-nuit-de-velours.jpg" alt="Nuit de Velours: a rectangular amber glass flacon with an ornate gold stopper and a burgundy velvet medallion lettered luxe Miami." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
-                <p class="product-card__index">07</p>
+                <p class="product-card__index">LX-B06</p>
                 <h3>Nuit de Velours</h3>
-                <p>The house extrait, in heavy glass with a velvet cord.</p>
-                <p class="product-card__status"><span class="pill">Members only</span></p>
+                <p>Fragrance concept. The house extrait, in heavy glass with a velvet cord.</p>
+                <p class="product-card__status"><span class="pill">Taking shape</span></p>
                 <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-B06">
                   <input type="hidden" name="_subject" value="Luxe shelf interest — LX-B06 Nuit de Velours">
                   <input type="hidden" name="_next" value="https://luxemiamiaesthetics.com/confirmed.html">
@@ -1804,15 +1850,15 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 </form>
               </div>
             </article>
-            <article class="product-card">
+            <article class="product-card product-card--parked">
               <div class="product-card__media">
                 <img src="spa/products/LX-B08-agua-de-seda.jpg" alt="Agua de Seda: a frosted glass dropper of golden oil with a burgundy velvet bulb, an orchid medallion, and a cream label lettered luxe Miami." width="1024" height="1024" loading="lazy">
               </div>
               <div class="product-card__body">
-                <p class="product-card__index">08</p>
+                <p class="product-card__index">LX-B08</p>
                 <h3>Agua de Seda</h3>
                 <p>A watery-light oil in frosted glass. A silky texture, for a quiet ritual.</p>
-                <p class="product-card__status"><span class="pill">In the works</span></p>
+                <p class="product-card__status"><span class="pill">Taking shape</span></p>
                 <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-B08">
                   <input type="hidden" name="_subject" value="Luxe shelf interest — LX-B08 Agua de Seda">
                   <input type="hidden" name="_next" value="https://luxemiamiaesthetics.com/confirmed.html">
@@ -1837,7 +1883,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
             <button type="button" id="product-next" aria-controls="product-row">Next</button>
           </div>
         </div>
-        <p class="note">Nothing on this shelf is for sale today. Notify me sends a note about that piece. It does not reserve it, and it is not a purchase. The Gratitude waitlist is <a href="#lx-06">here</a>.</p>
+        <p class="note">Notify me is for a piece still taking shape. It does not reserve it. The Gratitude waitlist is <a href="#lx-06">here</a>.</p>
       </div>
     </div>
   </section>
@@ -1850,10 +1896,10 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
       </div>
       <div class="lx06-intro">
         <h2 id="lx-06-title">LX-06 Gratitude card &amp; seal set — waitlist</h2>
-        <p class="lx06-body">Taking shape. Join for first word when the set is in stock. Not a purchase.</p>
+        <p class="lx06-body">A folded ivory card with gold foil, seals, and an envelope.</p>
+        <p class="lx06-truth">Join the waitlist for first word. Nothing is for sale today.</p>
         <p class="lx06-house">Proceeds support opening Spa 1 in Coral Gables — goal $1M by 2028.</p>
         <p class="lx06-perk">LX-06 buyers receive Spa 1 consult-waitlist priority when Luxe™ may lawfully offer injectables. Not available today. No date guaranteed. Not a medical offer.</p>
-        <p class="lx06-teaser">Taking shape: LX-06 buyers receive Spa 1 consult-waitlist priority when care may lawfully begin. Not a medical offer; no treatment date guaranteed.</p>
       </div>
       <div class="lx06-formcol">
         <details class="lx06-terms" id="lx-06-terms">
@@ -1903,11 +1949,11 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
             <button class="cta" type="submit">Join the waitlist</button>
             <p class="form-error" id="lx06-error" role="alert" hidden></p>
           </form>
-          <p class="fine">Or write directly to <a class="text-link" href="mailto:info@luxemiamiaesthetics.com?subject=LX-06%20Gratitude%20waitlist">info@luxemiamiaesthetics.com</a>. This note is not a purchase.</p>
+          <p class="fine">Or write directly to <a class="text-link" href="mailto:info@luxemiamiaesthetics.com?subject=LX-06%20Gratitude%20waitlist">info@luxemiamiaesthetics.com</a>.</p>
         </div>
         <div class="waitlist-confirm" id="lx06-confirm" hidden>
           <h2 id="lx06-confirm-title" tabindex="-1">You’re on the LX-06 list.</h2>
-          <p class="confirm-line">We’ll write with first word. This is not a purchase.</p>
+          <p class="confirm-line">We’ll write with first word.</p>
           <p class="confirm-meta">Taking Shape · On the Horizon</p>
         </div>
       </div>
