@@ -1545,7 +1545,13 @@ html.js .products-campaign__media .envelope-static img { position: static; }
   backface-visibility: hidden;
   filter: drop-shadow(0 10px 12px rgba(28, 18, 20, 0.06));
 }
-.env.is-open .env-flap { transform: rotateX(188deg); z-index: 1; }
+.env.is-open .env-flap {
+  transform: rotateX(188deg);
+  z-index: 1;
+  /* Let the wax leave before the triangle swings through it. Close uses the
+     base transition, so this delay does not hold the flap shut. */
+  transition: transform 0.9s cubic-bezier(0.45, 0.05, 0.2, 1) 0.14s;
+}
 .env-seal {
   position: absolute;
   left: 50%;
@@ -1580,12 +1586,30 @@ html.js .products-campaign__media .envelope-static img { position: static; }
   border: 1px solid transparent;
   pointer-events: none;
 }
-.env.is-seal:not(.is-open) .env-seal-mark { animation: seal-press 0.7s ease; }
-.env.is-seal:not(.is-open) .env-seal::after { animation: seal-ring 0.7s ease; }
+.env-seal:disabled { cursor: default; }
+.env-seal:disabled .env-seal-mark { color: rgba(74, 42, 14, 0.88); }
+.env.is-seal .env-seal-mark { animation: seal-press 0.42s ease; }
+.env.is-seal .env-seal::after { animation: seal-ring 0.42s ease; }
 .env.is-open .env-seal {
   transform: translate(-50%, -190%) scale(0.84);
   opacity: 0;
   pointer-events: none;
+  transition: transform 0.4s ease, opacity 0.1s linear;
+}
+/* The flap is a triangle in a 3D context. If the wax returns while that
+   triangle is still rotating shut, the tip sorts in front of the seal and
+   cuts a V through it. Hold the seal invisible until the flap is nearly
+   flat, then let it land. Linear so the 80% hold is wall-clock, not eased. */
+.env.is-closing .env-seal {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: none;
+  animation: seal-land 1.05s linear forwards;
+}
+@keyframes seal-land {
+  0%, 80% { opacity: 0; transform: translate(-50%, -50%); }
+  100% { opacity: 1; transform: translate(-50%, -50%); }
 }
 @keyframes seal-press {
   0% { transform: scale(1) rotate(0deg); }
@@ -3255,11 +3279,25 @@ html.js .product-card.is-lifting .product-card__plate {
     var sealText = seal ? seal.querySelector(".sr-only") : null;
     if (!env || !card || !seal || !toggle) return;
     var state = "closed";
-    var timer = 0;
+    var timers = [];
     var drag = null;
+    /* Short wax press, then the flap. The flap's own delay waits until the
+       seal has faded, so the triangle never cuts the wax on the way open.
+       The close hold matches seal-land: wax stays hidden until the flap is flat. */
+    var SEAL_BEAT = 200;
+    var SEAL_PRESS = 420;
+    var SEAL_LAND = 1080;
+    function clearTimers() {
+      timers.forEach(function (id) { window.clearTimeout(id); });
+      timers = [];
+    }
+    function later(fn, ms) {
+      var id = window.setTimeout(fn, ms);
+      timers.push(id);
+      return id;
+    }
     function say(text) { if (status) status.textContent = text; }
     function render() {
-      env.classList.toggle("is-seal", state === "seal");
       env.classList.toggle("is-open", state === "open" || state === "pulled");
       env.classList.toggle("is-pulled", state === "pulled");
       var live = document.querySelector(".envelope-live");
@@ -3271,7 +3309,6 @@ html.js .product-card.is-lifting .product-card__plate {
         var pull = state === "pulled" ? 1 : state === "open" ? 0.16 : 0;
         env.style.setProperty("--pull", String(pull));
       }
-      var open = state !== "closed" && state !== "seal";
       seal.setAttribute("aria-expanded", state === "closed" ? "false" : "true");
       if (sealText) sealText.textContent = state === "closed" ? "Open the Gratitude envelope" : "Close the Gratitude envelope";
       toggle.textContent = state === "closed" ? "Open the envelope" : "Close";
@@ -3279,27 +3316,43 @@ html.js .product-card.is-lifting .product-card__plate {
         pullBtn.hidden = !(state === "open" || state === "pulled");
         pullBtn.textContent = state === "pulled" ? "Tuck the card back" : "Pull the card";
       }
-      seal.disabled = state === "open" || state === "pulled";
+      seal.disabled = state !== "closed" || env.classList.contains("is-closing");
     }
     function openEnv() {
       if (state !== "closed") return;
+      clearTimers();
+      env.classList.remove("is-closing");
       state = "seal";
+      env.classList.add("is-seal");
       render();
       say("Wax seal.");
-      window.clearTimeout(timer);
-      timer = window.setTimeout(function () {
+      later(function () {
         if (state !== "seal") return;
         state = "open";
         render();
         say("Envelope open. Pull the card to read it.");
-      }, 720);
+      }, SEAL_BEAT);
+      later(function () {
+        if (state === "closed") return;
+        env.classList.remove("is-seal");
+      }, SEAL_PRESS);
     }
     function closeEnv() {
-      window.clearTimeout(timer);
+      clearTimers();
+      var flapWasOpen = state === "open" || state === "pulled";
       state = "closed";
       env.classList.remove("is-dragging");
+      env.classList.remove("is-seal");
+      if (flapWasOpen) env.classList.add("is-closing");
+      else env.classList.remove("is-closing");
       render();
       say("Envelope closed.");
+      if (flapWasOpen) {
+        later(function () {
+          env.classList.remove("is-closing");
+          if (state === "closed") render();
+        }, SEAL_LAND);
+      }
     }
     function pullCard() {
       if (state === "pulled") {
