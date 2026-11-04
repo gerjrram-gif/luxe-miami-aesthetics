@@ -1671,6 +1671,170 @@ html.js .products-campaign__media .envelope-static img { position: static; }
     animation: none;
   }
 }
+
+/* Shelf lift and peek.
+   Front plates stay the live <img> (leap optC lit, LX-06 seals, Nuit campaign still).
+   Set --shelf-plate on a card to a url(...) later to cover that photograph;
+   leave it none until a new master exists. The lift does not need rewiring.
+   --shelf-seal is the inner mark. Default is the velvet luxe seal.
+   --shelf-house paints a ground behind the face (Nuit's MIAMI medallion).
+   --shelf-velvet, --shelf-gold, and --shelf-miami tint the inner face. */
+.product-card {
+  --shelf-plate: none;
+  --shelf-seal: url("spa/products/peek/seal-velvet-luxe-gold.png");
+  --shelf-seal-zoom: 100%;
+  --shelf-house: none;
+  --shelf-velvet: #712733;
+  --shelf-gold: #c6b48c;
+  --shelf-miami: #6b1e2e;
+  --shelf-lift: 0.5;
+  --shelf-lift-drag: 0;
+}
+.product-card--peek-orchid {
+  --shelf-seal: url("spa/products/peek/atelier-orchid-seal.jpg");
+  --shelf-seal-zoom: 146%;
+}
+.product-card--peek-house {
+  --shelf-house: url("spa/products/peek/miami-house-mark.jpg");
+}
+.product-card__stage {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: var(--shelf-velvet);
+}
+.product-card__face {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3px;
+  padding: 0 14px 12px;
+  text-align: center;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 80% at 50% 100%, rgba(198, 180, 140, 0.16), transparent 58%),
+    var(--shelf-velvet);
+}
+.product-card--peek-house .product-card__face {
+  background:
+    linear-gradient(180deg, rgba(36, 16, 14, 0.12) 0%, rgba(36, 16, 14, 0.28) 42%, rgba(28, 12, 14, 0.62) 100%),
+    var(--shelf-house) center 70% / 195% no-repeat,
+    var(--shelf-velvet);
+}
+.product-card--peek-house .product-card__face-material,
+.product-card--peek-house .product-card__face-scent {
+  text-shadow: 0 1px 2px rgba(28, 12, 14, 0.72), 0 10px 18px rgba(28, 12, 14, 0.45);
+}
+.product-card__seal {
+  width: 86px;
+  height: 86px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--shelf-seal) center 48% / var(--shelf-seal-zoom) no-repeat;
+  box-shadow:
+    0 8px 16px rgba(28, 18, 20, 0.22),
+    0 0 0 1px rgba(198, 180, 140, 0.45);
+}
+.product-card__face-material {
+  margin: 2px 0 0;
+  font-family: "Cormorant SC", "Cormorant Garamond", Georgia, serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  line-height: 1.2;
+  color: var(--shelf-gold);
+}
+.product-card__face-scent {
+  margin: 0;
+  max-width: 16em;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  color: #f7f2ea;
+}
+.product-card--peek-house .product-card__face-material { color: #f3e6c8; }
+.product-card__plate {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  aspect-ratio: auto;
+}
+.product-card__plate::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--shelf-plate) center / cover no-repeat;
+  pointer-events: none;
+}
+.product-card--parked .product-card__plate::after {
+  filter: grayscale(0.55);
+  opacity: 0.82;
+}
+.product-row.is-orbit .product-card.is-active .product-card__plate::after,
+.product-card[data-orbit-center] .product-card__plate::after {
+  filter: none;
+  opacity: 1;
+}
+html.js .product-card__stage { touch-action: none; }
+html.js .product-card__plate {
+  transform: translate3d(0, 0, 0) scale(1);
+  transform-origin: center 0;
+  transition: transform 0.7s cubic-bezier(0.22, 0.8, 0.2, 1), box-shadow 0.7s ease;
+  box-shadow: 0 0 0 rgba(28, 18, 20, 0);
+}
+html.js .product-card.is-lifted .product-card__plate,
+html.js .product-card:focus-within .product-card__plate {
+  transform: translate3d(0, 8px, 0) scale(calc(1 - var(--shelf-lift)));
+  box-shadow: 0 18px 26px rgba(28, 18, 20, 0.32), 0 1px 0 var(--shelf-gold);
+}
+html.js .product-card.is-lifted .product-card__plate img,
+html.js .product-card:focus-within .product-card__plate img,
+html.js .product-card.is-lifting .product-card__plate img,
+html.js .product-card.is-lifted .product-card__plate::after,
+html.js .product-card:focus-within .product-card__plate::after,
+html.js .product-card.is-lifting .product-card__plate::after {
+  filter: none;
+  opacity: 1;
+}
+@media (hover: hover) and (pointer: fine) {
+  html.js .product-card:hover .product-card__plate {
+    transform: translate3d(0, 8px, 0) scale(calc(1 - var(--shelf-lift)));
+    box-shadow: 0 18px 26px rgba(28, 18, 20, 0.32), 0 1px 0 var(--shelf-gold);
+  }
+  html.js .product-card:hover .product-card__plate img,
+  html.js .product-card:hover .product-card__plate::after {
+    filter: none;
+    opacity: 1;
+  }
+}
+html.js .product-card.is-lifting .product-card__plate {
+  transition: none;
+  transform: translate3d(0, calc(var(--shelf-lift-drag) * 8px), 0) scale(calc(1 - var(--shelf-lift-drag) * var(--shelf-lift)));
+  box-shadow: 0 calc(var(--shelf-lift-drag) * 18px) calc(var(--shelf-lift-drag) * 26px) rgba(28, 18, 20, calc(var(--shelf-lift-drag) * 0.32));
+}
+@media (max-width: 719px) {
+  .product-card { --shelf-lift: 0.54; }
+  .product-card__seal { width: 72px; height: 72px; }
+  .product-card__face { padding-bottom: 10px; }
+  .product-card__face-scent { font-size: 0.98rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.js .product-card__plate,
+  html.js .product-card.is-lifted .product-card__plate,
+  html.js .product-card:hover .product-card__plate,
+  html.js .product-card:focus-within .product-card__plate,
+  html.js .product-card.is-lifting .product-card__plate {
+    transform: none;
+    transition: none;
+    box-shadow: none;
+  }
+}
+
 </style>
 <script>
 (function () {
@@ -1947,13 +2111,21 @@ html.js .products-campaign__media .envelope-static img { position: static; }
           <p class="kicker">The shelf</p>
           <h3 class="label">Gratitude, then pieces taking shape</h3>
           <p>LX-06 Gratitude is the card and seal set on the list. Color, powder, scent, and a candle follow, still taking shape.</p>
-          <p class="orbit-hint">Swipe the shelf. The piece in the center is the one in hand.</p>
+          <p class="orbit-hint">Swipe the shelf. The piece in the center is the one in hand. Lift a plate to read the note beneath.</p>
         </div>
         <div class="treatment-wrap" role="region" aria-roledescription="carousel" aria-label="Product shelf">
+          <!-- Inner faces: spa/products/peek/. --shelf-seal, --shelf-house, and --shelf-plate swap art without touching the lift. -->
           <div class="product-row" id="product-row" tabindex="0">
             <article class="product-card product-card--live">
-              <div class="product-card__media">
-                <img src="spa/products/LX-06-gratitude-seals.jpg" alt="Gratitude seals: six circular stickers in burgundy and ivory, with luxe script, a monogram, and dashed cut lines." width="1400" height="893" loading="lazy">
+              <div class="product-card__stage">
+                <div class="product-card__face" aria-hidden="true">
+                  <span class="product-card__seal"></span>
+                  <p class="product-card__face-material">Paper, foil, wax</p>
+                  <p class="product-card__face-scent">Ivory paper, gold foil, and a wax seal.</p>
+                </div>
+                <div class="product-card__media product-card__plate">
+                  <img src="spa/products/LX-06-gratitude-seals.jpg" alt="Gratitude seals: six circular stickers in burgundy and ivory, with luxe script, a monogram, and dashed cut lines." width="1400" height="893" loading="lazy">
+                </div>
               </div>
               <div class="product-card__body">
                 <p class="product-card__index">LX-06</p>
@@ -1965,8 +2137,15 @@ html.js .products-campaign__media .envelope-static img { position: static; }
               </div>
             </article>
             <article class="product-card product-card--parked">
-              <div class="product-card__media">
-                <img src="spa/products/LX-B07-la-veilleuse.jpg" alt="La Veilleuse: a cream candle in a faceted glass vessel with a brushed gold lid and a burgundy velvet band lettered luxe Miami." width="1024" height="1024" loading="lazy">
+              <div class="product-card__stage">
+                <div class="product-card__face" aria-hidden="true">
+                  <span class="product-card__seal"></span>
+                  <p class="product-card__face-material">Wax and glass</p>
+                  <p class="product-card__face-scent">A room just lit. Warm wax, held close.</p>
+                </div>
+                <div class="product-card__media product-card__plate">
+                  <img src="spa/products/LX-B07-la-veilleuse.jpg" alt="La Veilleuse: a cream candle in a faceted glass vessel with a brushed gold lid and a burgundy velvet band lettered luxe Miami." width="1024" height="1024" loading="lazy">
+                </div>
               </div>
               <div class="product-card__body">
                 <p class="product-card__index">LX-B07</p>
@@ -1992,9 +2171,16 @@ html.js .products-campaign__media .envelope-static img { position: static; }
                 </form>
               </div>
             </article>
-            <article class="product-card product-card--parked">
-              <div class="product-card__media">
-                <img src="spa/products/LX-B01-signet-rouge.jpg" alt="Signet Rouge: an open red lipstick in a gold case beside a burgundy velvet cylinder with a jeweled orchid, a gold lid lettered LUXE, and a mirror." width="1024" height="1024" loading="lazy">
+            <article class="product-card product-card--parked product-card--peek-orchid">
+              <div class="product-card__stage">
+                <div class="product-card__face" aria-hidden="true">
+                  <span class="product-card__seal"></span>
+                  <p class="product-card__face-material">Case and velvet</p>
+                  <p class="product-card__face-scent">Velvet rose, kept in the case.</p>
+                </div>
+                <div class="product-card__media product-card__plate">
+                  <img src="spa/products/LX-B01-signet-rouge.jpg" alt="Signet Rouge: an open red lipstick in a gold case beside a burgundy velvet cylinder with a jeweled orchid, a gold lid lettered LUXE, and a mirror." width="1024" height="1024" loading="lazy">
+                </div>
               </div>
               <div class="product-card__body">
                 <p class="product-card__index">LX-B01</p>
@@ -2020,9 +2206,16 @@ html.js .products-campaign__media .envelope-static img { position: static; }
                 </form>
               </div>
             </article>
-            <article class="product-card product-card--parked">
-              <div class="product-card__media">
-                <img src="spa/products/LX-B02-brickell-pearls.jpg" alt="Brickell Pearls: an open compact of pink, ivory, and lilac powder pearls, a beaded lid lettered luxe, and a cream puff with a burgundy band lettered luxe Miami." width="1024" height="1024" loading="lazy">
+            <article class="product-card product-card--parked product-card--peek-orchid">
+              <div class="product-card__stage">
+                <div class="product-card__face" aria-hidden="true">
+                  <span class="product-card__seal"></span>
+                  <p class="product-card__face-material">Powder pearls</p>
+                  <p class="product-card__face-scent">Powder-soft. A last cool veil.</p>
+                </div>
+                <div class="product-card__media product-card__plate">
+                  <img src="spa/products/LX-B02-brickell-pearls.jpg" alt="Brickell Pearls: an open compact of pink, ivory, and lilac powder pearls, a beaded lid lettered luxe, and a cream puff with a burgundy band lettered luxe Miami." width="1024" height="1024" loading="lazy">
+                </div>
               </div>
               <div class="product-card__body">
                 <p class="product-card__index">LX-B02</p>
@@ -2048,9 +2241,16 @@ html.js .products-campaign__media .envelope-static img { position: static; }
                 </form>
               </div>
             </article>
-            <article class="product-card product-card--parked">
-              <div class="product-card__media">
-                <img src="spa/products/LX-B03-miel-de-mar.jpg" alt="Miel de Mar: a square glass bottle of gold lip oil with a gold cap lettered LUXE, and its wand beside it." width="1024" height="1024" loading="lazy">
+            <article class="product-card product-card--parked product-card--peek-orchid">
+              <div class="product-card__stage">
+                <div class="product-card__face" aria-hidden="true">
+                  <span class="product-card__seal"></span>
+                  <p class="product-card__face-material">Glass and oil</p>
+                  <p class="product-card__face-scent">Honey and salt air. A sheer gold wash.</p>
+                </div>
+                <div class="product-card__media product-card__plate">
+                  <img src="spa/products/LX-B03-miel-de-mar.jpg" alt="Miel de Mar: a square glass bottle of gold lip oil with a gold cap lettered LUXE, and its wand beside it." width="1024" height="1024" loading="lazy">
+                </div>
               </div>
               <div class="product-card__body">
                 <p class="product-card__index">LX-B03</p>
@@ -2076,9 +2276,16 @@ html.js .products-campaign__media .envelope-static img { position: static; }
                 </form>
               </div>
             </article>
-            <article class="product-card product-card--parked">
-              <div class="product-card__media">
-                <img src="spa/products/LX-B04-quatre-palmes.jpg" alt="Quatre Palmes: an open gold compact of four eyeshadows under a burgundy velvet lid embroidered with palms and lettered LUXE." width="1024" height="1024" loading="lazy">
+            <article class="product-card product-card--parked product-card--peek-orchid">
+              <div class="product-card__stage">
+                <div class="product-card__face" aria-hidden="true">
+                  <span class="product-card__seal"></span>
+                  <p class="product-card__face-material">Four pans</p>
+                  <p class="product-card__face-scent">Shade and shimmer, in four quiet pans.</p>
+                </div>
+                <div class="product-card__media product-card__plate">
+                  <img src="spa/products/LX-B04-quatre-palmes.jpg" alt="Quatre Palmes: an open gold compact of four eyeshadows under a burgundy velvet lid embroidered with palms and lettered LUXE." width="1024" height="1024" loading="lazy">
+                </div>
               </div>
               <div class="product-card__body">
                 <p class="product-card__index">LX-B04</p>
@@ -2104,9 +2311,16 @@ html.js .products-campaign__media .envelope-static img { position: static; }
                 </form>
               </div>
             </article>
-            <article class="product-card product-card--parked">
-              <div class="product-card__media">
-                <img src="spa/products/LX-B05-causeway-bronze.jpg" alt="Causeway Bronze: an open cream compact of bronze powder pressed into an orchid, lettered LUXE, on burgundy velvet." width="1024" height="1024" loading="lazy">
+            <article class="product-card product-card--parked product-card--peek-orchid">
+              <div class="product-card__stage">
+                <div class="product-card__face" aria-hidden="true">
+                  <span class="product-card__seal"></span>
+                  <p class="product-card__face-material">Pressed powder</p>
+                  <p class="product-card__face-scent">Sun on skin. A warm, golden finish.</p>
+                </div>
+                <div class="product-card__media product-card__plate">
+                  <img src="spa/products/LX-B05-causeway-bronze.jpg" alt="Causeway Bronze: an open cream compact of bronze powder pressed into an orchid, lettered LUXE, on burgundy velvet." width="1024" height="1024" loading="lazy">
+                </div>
               </div>
               <div class="product-card__body">
                 <p class="product-card__index">LX-B05</p>
@@ -2132,9 +2346,16 @@ html.js .products-campaign__media .envelope-static img { position: static; }
                 </form>
               </div>
             </article>
-            <article class="product-card product-card--parked" data-orbit-center="true">
-              <div class="product-card__media product-card__media--portrait">
-                <img src="spa/products/LX-B06-nuit-de-velours-campaign.jpg" alt="Nuit de Velours extrait: an amber glass flacon with a faceted gold stopper on purple velvet, with frost, pale orchids, and a gold ribbon." width="864" height="1152">
+            <article class="product-card product-card--parked product-card--peek-house" data-orbit-center="true">
+              <div class="product-card__stage">
+                <div class="product-card__face" aria-hidden="true">
+                  <span class="product-card__seal"></span>
+                  <p class="product-card__face-material">Glass and cord</p>
+                  <p class="product-card__face-scent">Velvet night. Amber and orchid, worn close.</p>
+                </div>
+                <div class="product-card__media product-card__plate product-card__media--portrait">
+                  <img src="spa/products/LX-B06-nuit-de-velours-campaign.jpg" alt="Nuit de Velours extrait: an amber glass flacon with a faceted gold stopper on purple velvet, with frost, pale orchids, and a gold ribbon." width="864" height="1152">
+                </div>
               </div>
               <div class="product-card__body">
                 <p class="product-card__index">LX-B06</p>
@@ -2160,9 +2381,16 @@ html.js .products-campaign__media .envelope-static img { position: static; }
                 </form>
               </div>
             </article>
-            <article class="product-card product-card--parked">
-              <div class="product-card__media">
-                <img src="spa/products/LX-B08-agua-de-seda.jpg" alt="Agua de Seda: a frosted glass dropper bottle with a burgundy velvet bulb, gold rope collars, and a small gold medallion, with luxe Miami on the glass." width="1024" height="1024" loading="lazy">
+            <article class="product-card product-card--parked product-card--peek-orchid">
+              <div class="product-card__stage">
+                <div class="product-card__face" aria-hidden="true">
+                  <span class="product-card__seal"></span>
+                  <p class="product-card__face-material">Frosted glass</p>
+                  <p class="product-card__face-scent">Water-light silk. A cool, clean veil.</p>
+                </div>
+                <div class="product-card__media product-card__plate">
+                  <img src="spa/products/LX-B08-agua-de-seda.jpg" alt="Agua de Seda: a frosted glass dropper bottle with a burgundy velvet bulb, gold rope collars, and a small gold medallion, with luxe Miami on the glass." width="1024" height="1024" loading="lazy">
+                </div>
               </div>
               <div class="product-card__body">
                 <p class="product-card__index">LX-B08</p>
@@ -2833,7 +3061,10 @@ html.js .products-campaign__media .envelope-static img { position: static; }
         var on = n === index;
         card.classList.toggle("is-active", on);
         if (on) card.setAttribute("aria-current", "true");
-        else card.removeAttribute("aria-current");
+        else {
+          card.removeAttribute("aria-current");
+          card.classList.remove("is-lifted");
+        }
       });
     }
     function stepFrom(start, dx) {
@@ -2844,7 +3075,8 @@ html.js .products-campaign__media .envelope-static img { position: static; }
     }
     row.addEventListener("pointerdown", function (event) {
       if (event.target.closest("a, button, input, textarea, label, select")) return;
-      drag = { x: event.clientX, t: translate, start: index, pid: event.pointerId, moved: false };
+      drag = { x: event.clientX, y: event.clientY, t: translate, start: index, pid: event.pointerId, moved: false };
+      row.dataset.shelfGesture = "";
       row.classList.add("is-dragging");
       row.style.transition = "none";
       if (row.setPointerCapture) row.setPointerCapture(event.pointerId);
@@ -2852,6 +3084,9 @@ html.js .products-campaign__media .envelope-static img { position: static; }
     row.addEventListener("pointermove", function (event) {
       if (!drag || event.pointerId !== drag.pid) return;
       var dx = event.clientX - drag.x;
+      var dy = event.clientY - drag.y;
+      if (row.dataset.shelfGesture === "lift") return;
+      if (!drag.moved && dy < -14 && Math.abs(dy) > Math.abs(dx) + 4) return;
       if (Math.abs(dx) > 8) drag.moved = true;
       if (!drag.moved) return;
       translate = drag.t + dx;
@@ -2885,6 +3120,129 @@ html.js .products-campaign__media .envelope-static img { position: static; }
   if (!bindOrbit("product-row", "product-prev", "product-next")) {
     bindScroller("product-row", "product-controls", "product-prev", "product-next", ".product-card", 18);
   }
+
+  function bindShelfLift(row) {
+    if (!row || !document.documentElement.classList.contains("js")) return;
+    if (reduce.matches) return;
+    var holdTimer = 0;
+    var gesture = null;
+    function cardFrom(target) {
+      var node = target && target.closest ? target.closest(".product-card") : null;
+      if (!node || !row.contains(node)) return null;
+      return node;
+    }
+    function clearOthers(keep) {
+      Array.prototype.forEach.call(row.querySelectorAll(".product-card.is-lifted, .product-card.is-lifting"), function (card) {
+        if (card === keep) return;
+        card.classList.remove("is-lifted");
+        card.classList.remove("is-lifting");
+        card.style.removeProperty("--shelf-lift-drag");
+      });
+    }
+    function endDragVisual(card) {
+      if (!card) return;
+      card.classList.remove("is-lifting");
+      card.style.removeProperty("--shelf-lift-drag");
+    }
+    row.addEventListener("pointerdown", function (event) {
+      if (event.pointerType === "mouse") return;
+      if (event.target.closest("a, button, input, textarea, label, select")) return;
+      var card = cardFrom(event.target);
+      if (!card) return;
+      gesture = {
+        card: card,
+        x: event.clientX,
+        y: event.clientY,
+        pid: event.pointerId,
+        mode: "pending",
+        wasLifted: card.classList.contains("is-lifted"),
+        lift: 0
+      };
+      window.clearTimeout(holdTimer);
+      holdTimer = window.setTimeout(function () {
+        if (!gesture || gesture.pid !== event.pointerId || gesture.mode !== "pending") return;
+        gesture.mode = "hold";
+        clearOthers(card);
+        card.classList.add("is-lifted");
+      }, 420);
+    });
+    row.addEventListener("pointermove", function (event) {
+      if (!gesture || event.pointerId !== gesture.pid || gesture.mode === "orbit") return;
+      var dx = event.clientX - gesture.x;
+      var dy = event.clientY - gesture.y;
+      if (gesture.mode === "pending" && Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy)) {
+        gesture.mode = "orbit";
+        row.dataset.shelfGesture = "orbit";
+        window.clearTimeout(holdTimer);
+        if (!gesture.wasLifted) {
+          gesture.card.classList.remove("is-lifted");
+          endDragVisual(gesture.card);
+        }
+        return;
+      }
+      if (gesture.mode === "pending" && dy > 18 && Math.abs(dy) > Math.abs(dx)) {
+        gesture.mode = "close";
+        window.clearTimeout(holdTimer);
+        gesture.card.classList.remove("is-lifted");
+        endDragVisual(gesture.card);
+        return;
+      }
+      if (gesture.mode === "pending" && dy < -14 && Math.abs(dy) > Math.abs(dx) + 4) {
+        gesture.mode = "lift";
+        row.dataset.shelfGesture = "lift";
+        window.clearTimeout(holdTimer);
+        clearOthers(gesture.card);
+      }
+      if (gesture.mode === "lift") {
+        var lift = Math.max(0, Math.min(1, -dy / 88));
+        gesture.lift = lift;
+        gesture.card.classList.add("is-lifting");
+        gesture.card.style.setProperty("--shelf-lift-drag", String(lift));
+      }
+    });
+    function finish(event) {
+      if (!gesture || (event && event.pointerId !== gesture.pid)) return;
+      window.clearTimeout(holdTimer);
+      var card = gesture.card;
+      var mode = gesture.mode;
+      var was = gesture.wasLifted;
+      var lift = gesture.lift || 0;
+      gesture = null;
+      row.dataset.shelfGesture = "";
+      endDragVisual(card);
+      if (mode === "orbit") return;
+      if (mode === "close") {
+        card.classList.remove("is-lifted");
+        return;
+      }
+      if (mode === "lift") {
+        if (lift > 0.42) {
+          clearOthers(card);
+          card.classList.add("is-lifted");
+        } else if (!was) card.classList.remove("is-lifted");
+        return;
+      }
+      if (mode === "hold") {
+        if (!was) card.classList.remove("is-lifted");
+        return;
+      }
+      var next = !was;
+      if (next) clearOthers(card);
+      card.classList.toggle("is-lifted", next);
+    }
+    row.addEventListener("pointerup", finish);
+    row.addEventListener("pointercancel", function (event) {
+      if (!gesture || event.pointerId !== gesture.pid) return;
+      window.clearTimeout(holdTimer);
+      if ((gesture.mode === "hold" || gesture.mode === "lift" || gesture.mode === "pending") && !gesture.wasLifted) {
+        gesture.card.classList.remove("is-lifted");
+      }
+      endDragVisual(gesture.card);
+      gesture = null;
+      row.dataset.shelfGesture = "";
+    });
+  }
+  bindShelfLift(document.getElementById("product-row"));
 
   function bindEnvelope() {
     if (!document.documentElement.classList.contains("js")) return;
