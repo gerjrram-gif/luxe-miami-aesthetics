@@ -1107,6 +1107,173 @@ html.js .quote.is-active { display: block; }
 .timeline h3 { margin: 2px 0 0; font-size: clamp(1.5rem, 2.4vw, 1.85rem); }
 .timeline p:last-child { margin-top: 4px; }
 
+/* Scroll-told build. The ordered list stays the record. With script and
+   motion, a reading head keeps the current step and a gold line grows
+   with the page. Reduced motion, and no script, keep the static timeline. */
+.build-story {
+  width: min(720px, calc(100% - 40px));
+  margin: 0 auto;
+}
+.build-frame { margin-top: 0; }
+.build-stage { display: none; }
+.build .build-stage__index {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(3.4rem, 5vw, 4.8rem);
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+.build .build-stage__count {
+  margin: 10px 0 0;
+  font-family: "Cormorant SC", "Cormorant Garamond", Georgia, serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+}
+.build .build-stage__when {
+  margin: 22px 0 0;
+  font-family: "Cormorant SC", "Cormorant Garamond", Georgia, serif;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+}
+.build .build-stage__name {
+  margin: 8px 0 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(1.7rem, 2.2vw, 2.25rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.build-stage__rule {
+  position: relative;
+  width: 1px;
+  height: 72px;
+  margin-top: 28px;
+  background: var(--line);
+}
+.build-stage__rule span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: calc(var(--build-progress, 0) * 100%);
+  background: var(--gold);
+}
+html.js .build .timeline::before {
+  top: var(--build-line-top, 18px);
+  bottom: auto;
+  height: var(--build-track, 0px);
+  background: var(--line);
+}
+html.js .build .timeline::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: var(--build-line-top, 18px);
+  width: 1px;
+  height: var(--build-track, 0px);
+  background: var(--gold);
+  transform-origin: top center;
+  transform: scaleY(var(--build-progress, 0));
+  pointer-events: none;
+}
+html.js .build .timeline li.is-ahead .when,
+html.js .build .timeline li.is-ahead h3,
+html.js .build .timeline li.is-ahead p {
+  color: var(--muted);
+}
+html.js .build .timeline li.is-current .when { color: var(--bronze); }
+html.js .build .timeline li.is-current h3 { color: var(--ink); }
+html.js .build .timeline li.is-current p { color: var(--body); }
+html.js .build .timeline li.is-past .when { color: var(--muted); }
+html.js .build .timeline li.is-past h3 { color: var(--ink); }
+html.js .build .timeline li.is-past p { color: var(--body); }
+html.js .build .timeline li.is-now .when { color: var(--bronze); }
+html.js .build.is-bound .timeline h3,
+html.js .build.is-bound .timeline p,
+html.js .build.is-bound .timeline .when,
+html.js .build.is-bound .timeline li::before {
+  transition: color 0.5s ease, background-color 0.5s ease, box-shadow 0.5s ease;
+}
+html.js .build .timeline li.is-past::before {
+  background: var(--gold-soft);
+  box-shadow: none;
+}
+html.js .build .timeline li.is-current::before {
+  background: var(--bronze);
+  box-shadow: 0 0 0 1px var(--bronze);
+}
+html.js .build .timeline li.is-ahead::before {
+  background: var(--white);
+  box-shadow: 0 0 0 1px var(--champagne);
+}
+@media (max-width: 899px) {
+  html.js .build .timeline li {
+    min-height: 26vh;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+  html.js .build .timeline li:last-child {
+    min-height: 0;
+    padding-bottom: 16px;
+  }
+}
+@media (min-width: 900px) {
+  html.js .build-story.is-wide {
+    width: min(1120px, calc(100% - 48px));
+  }
+  html.js .build-frame.is-split {
+    display: grid;
+    grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+    column-gap: clamp(36px, 5vw, 84px);
+    align-items: start;
+    margin-top: 8px;
+  }
+  html.js .build-frame.is-split .build-stage {
+    display: block;
+    position: sticky;
+    top: max(var(--build-stick, 124px), 18vh);
+    align-self: start;
+    z-index: 1;
+  }
+  html.js .build-frame.is-split .timeline li {
+    min-height: 64vh;
+    align-content: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  html.js .build-frame.is-split .timeline li::before {
+    top: calc(50% - 3.5px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .build-stage,
+  html.js .build-stage { display: none; }
+  html.js .build-story.is-wide { width: min(720px, calc(100% - 40px)); }
+  html.js .build-frame.is-split { display: block; }
+  .build .timeline li,
+  html.js .build .timeline li { min-height: 0; opacity: 1; transform: none; }
+  .build .timeline::after,
+  html.js .build .timeline::after { display: none; }
+  html.js .build .timeline::before {
+    top: 14px;
+    bottom: 14px;
+    height: auto;
+    background: var(--gold-soft);
+    transform: none;
+  }
+  .build .timeline h3,
+  .build .timeline p,
+  .build .timeline .when,
+  .build .timeline li::before { transition: none; }
+}
+
 .own-hero {
   position: relative;
   min-height: 70svh;
@@ -2814,54 +2981,65 @@ html.js .product-card.is-lifting .product-card__plate {
   </section>
 
   <section class="section-pad build" id="build" aria-labelledby="build-title">
-    <div class="narrow" data-reveal>
-      <h2 id="build-title">Building Luxe Miami Aesthetics</h2>
-      <p class="lead">The work, in the order it actually happens. The doors are not open. No treatments are offered yet.</p>
-      <ol class="timeline">
-        <li class="is-now">
-          <p class="when">Now</p>
-          <div>
-            <h3>Nursing school</h3>
-            <p>In progress. The clinical foundation comes before a treatment room.</p>
-          </div>
-        </li>
-        <li>
-          <p class="when">Next</p>
-          <div>
-            <h3>RN licensure</h3>
-            <p>A license, earned in full. Nothing is offered before it.</p>
-          </div>
-        </li>
-        <li>
-          <p class="when">Then</p>
-          <div>
-            <h3>Formal injector training</h3>
-            <p>Hands-on training after licensure, before any injectable.</p>
-          </div>
-        </li>
-        <li>
-          <p class="when">Then</p>
-          <div>
-            <h3>Physician collaboration</h3>
-            <p>Injectables only under a physician — in place before a single treatment is offered.</p>
-          </div>
-        </li>
-        <li>
-          <p class="when">2027</p>
-          <div>
-            <h3>Palm Beach office</h3>
-            <p>Taking shape. Not a clinic for sale.</p>
-          </div>
-        </li>
-        <li>
-          <p class="when">2028</p>
-          <div>
-            <h3>Coral Gables</h3>
-            <p>Still ahead. Not before the license and a physician.</p>
-          </div>
-        </li>
-      </ol>
-      <p class="note">Until this sequence is finished, Luxe does not treat anyone. A future studio, if one is ever built, would be held to that same sequence. It is not something this page can grant.</p>
+    <div class="build-story">
+      <div data-reveal>
+        <h2 id="build-title">Building Luxe Miami Aesthetics</h2>
+        <p class="lead">The work, in the order it actually happens. The doors are not open. No treatments are offered yet.</p>
+      </div>
+      <div class="build-frame" data-build-story>
+        <div class="build-stage" aria-hidden="true">
+          <p class="build-stage__index"><span data-build-index>01</span></p>
+          <p class="build-stage__count" data-build-count>of 06</p>
+          <p class="build-stage__when" data-build-when>Now</p>
+          <p class="build-stage__name" data-build-name>Nursing school</p>
+          <div class="build-stage__rule"><span data-build-fill></span></div>
+        </div>
+        <ol class="timeline">
+          <li class="is-now" data-build-step>
+            <p class="when">Now</p>
+            <div>
+              <h3>Nursing school</h3>
+              <p>In progress. The clinical foundation comes before a treatment room.</p>
+            </div>
+          </li>
+          <li data-build-step>
+            <p class="when">Next</p>
+            <div>
+              <h3>RN licensure</h3>
+              <p>A license, earned in full. Nothing is offered before it.</p>
+            </div>
+          </li>
+          <li data-build-step>
+            <p class="when">Then</p>
+            <div>
+              <h3>Formal injector training</h3>
+              <p>Hands-on training after licensure, before any injectable.</p>
+            </div>
+          </li>
+          <li data-build-step>
+            <p class="when">Then</p>
+            <div>
+              <h3>Physician collaboration</h3>
+              <p>Injectables only under a physician — in place before a single treatment is offered.</p>
+            </div>
+          </li>
+          <li data-build-step>
+            <p class="when">2027</p>
+            <div>
+              <h3>Palm Beach office</h3>
+              <p>Taking shape. Not a clinic for sale.</p>
+            </div>
+          </li>
+          <li data-build-step>
+            <p class="when">2028</p>
+            <div>
+              <h3>Coral Gables</h3>
+              <p>Still ahead. Not before the license and a physician.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <p class="note" data-reveal>Until this sequence is finished, Luxe does not treat anyone. A future studio, if one is ever built, would be held to that same sequence. It is not something this page can grant.</p>
     </div>
   </section>
 
@@ -3722,6 +3900,130 @@ html.js .product-card.is-lifting .product-card__plate {
     render();
   }
   bindEnvelope();
+
+  function bindBuildStory() {
+    var root = document.querySelector("[data-build-story]");
+    if (!root || reduce.matches || !document.documentElement.classList.contains("js")) return;
+    var section = document.getElementById("build");
+    var timeline = root.querySelector(".timeline");
+    var steps = Array.prototype.slice.call(root.querySelectorAll("[data-build-step]"));
+    if (!section || !timeline || steps.length < 2) return;
+    var indexEl = root.querySelector("[data-build-index]");
+    var countEl = root.querySelector("[data-build-count]");
+    var whenEl = root.querySelector("[data-build-when]");
+    var nameEl = root.querySelector("[data-build-name]");
+    var desktop = window.matchMedia("(min-width: 900px)");
+    var story = section.querySelector(".build-story");
+    var current = -1;
+    var ticking = false;
+    if (countEl) countEl.textContent = "of " + (steps.length < 10 ? "0" : "") + steps.length;
+
+    function splitOn() {
+      return desktop.matches && !reduce.matches && root.classList.contains("is-split");
+    }
+    function readingLine() {
+      var headerH = header ? header.offsetHeight : 72;
+      if (splitOn()) {
+        var stageTop = Math.max(headerH + 36, (window.innerHeight || 1) * 0.18);
+        return stageTop + 132;
+      }
+      var view = window.innerHeight || 1;
+      var line = Math.max(headerH + 108, view * 0.46);
+      var limit = headerH + (view - headerH) * 0.5;
+      if (line > limit) line = limit;
+      return line;
+    }
+    function dotCenter(step) {
+      if (splitOn()) return step.offsetHeight / 2;
+      var top = 22;
+      var probe = window.getComputedStyle(step, "::before");
+      if (probe.top.indexOf("%") === -1) {
+        var parsed = parseFloat(probe.top);
+        var h = parseFloat(probe.height);
+        if (!isNaN(parsed) && !isNaN(h)) top = parsed + h / 2;
+      }
+      return top;
+    }
+    function syncFrame() {
+      var split = desktop.matches && !reduce.matches;
+      root.classList.toggle("is-split", split);
+      if (story) story.classList.toggle("is-wide", split);
+    }
+    function measure() {
+      syncFrame();
+      var headerH = header ? header.offsetHeight : 72;
+      section.style.setProperty("--build-stick", (headerH + 36) + "px");
+      var first = steps[0].offsetTop + dotCenter(steps[0]);
+      var last = steps[steps.length - 1].offsetTop + dotCenter(steps[steps.length - 1]);
+      timeline.style.setProperty("--build-line-top", first + "px");
+      timeline.style.setProperty("--build-track", Math.max(0, last - first) + "px");
+    }
+    function apply(active, progress) {
+      steps.forEach(function (step, i) {
+        step.classList.toggle("is-current", i === active);
+        step.classList.toggle("is-past", i < active);
+        step.classList.toggle("is-ahead", i > active);
+      });
+      section.style.setProperty("--build-progress", progress.toFixed(4));
+      if (active === current) return;
+      current = active;
+      var step = steps[active];
+      var when = step.querySelector(".when");
+      var title = step.querySelector("h3");
+      if (indexEl) indexEl.textContent = (active + 1 < 10 ? "0" : "") + (active + 1);
+      if (whenEl && when) whenEl.textContent = when.textContent;
+      if (nameEl && title) nameEl.textContent = title.textContent;
+    }
+    function anchor(step) {
+      var rect = step.getBoundingClientRect();
+      return rect.top + dotCenter(step);
+    }
+    function update() {
+      ticking = false;
+      var line = readingLine();
+      var active = 0;
+      var start = anchor(steps[0]);
+      var end = anchor(steps[steps.length - 1]);
+      for (var i = 0; i < steps.length; i++) {
+        if (anchor(steps[i]) <= line + 1) active = i;
+      }
+      var progress = (line - start) / ((end - start) || 1);
+      if (progress < 0) progress = 0;
+      if (progress > 1) progress = 1;
+      apply(active, progress);
+    }
+    function requestUpdate() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+    function onReduce() {
+      if (!reduce.matches) return;
+      root.classList.remove("is-split");
+      if (story) story.classList.remove("is-wide");
+      steps.forEach(function (step) {
+        step.classList.remove("is-current", "is-past", "is-ahead");
+      });
+      section.style.removeProperty("--build-progress");
+      timeline.style.removeProperty("--build-line-top");
+      timeline.style.removeProperty("--build-track");
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", onResize);
+    }
+    function onResize() {
+      measure();
+      requestUpdate();
+    }
+    measure();
+    update();
+    window.requestAnimationFrame(function () { section.classList.add("is-bound"); });
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", onResize);
+    window.addEventListener("load", onResize);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(onResize);
+    if (reduce.addEventListener) reduce.addEventListener("change", onReduce);
+  }
+  bindBuildStory();
 
   function revealNow(el) {
     if (!el || el.dataset.revealed === "1") return;
