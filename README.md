@@ -13,7 +13,7 @@ The homepage follows a medspa landing rhythm — light header, full-bleed hero, 
 | `confirmed.html` | No-JavaScript confirmation for the guest waitlist, a shelf notify note, and the LX-06 waitlist. |
 | `interest.html` | No-JavaScript confirmation for a future-studio note. It is not a franchise offer. |
 
-With JavaScript, a successful signup stays on the homepage and shows the matching confirmation. Without JavaScript, the browser posts to `https://formsubmit.co/info@luxemiamiaesthetics.com` and `_next` opens `confirmed.html` (waitlist and shelf notify) or `interest.html` (future-studio note). FormSubmit must be activated once from the info@luxemiamiaesthetics.com inbox before the first delivery.
+With JavaScript, a successful signup stays on the page. The guest waitlist and the LX-06 waitlist play a short sequence — Received, Sealed, On the list — then show the matching confirmation. A return in the same session, or reduced motion, shows that confirmation at once. A shelf notify note fades in under a short gold line. The future-studio note still swaps straight to its confirmation. Without JavaScript, the browser posts to `https://formsubmit.co/info@luxemiamiaesthetics.com` and `_next` opens `confirmed.html` (waitlist and shelf notify) or `interest.html` (future-studio note). FormSubmit must be activated once from the info@luxemiamiaesthetics.com inbox before the first delivery.
 
 ## Photography
 
