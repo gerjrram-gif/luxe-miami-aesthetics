@@ -1401,13 +1401,31 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
 }
 ::selection { background: #e7d3c0; color: #1c1214; }
 
-/* One envelope: static plate unless script + motion unlock the live one. */
+/* One envelope: static plate unless script + motion unlock the live one.
+   The live scene is perspective + preserve-3d, and the seal fades with
+   opacity. iOS Safari detaches that compositor layer when the ancestors
+   are overflow:visible, then paints a second seal and Open control that
+   sticks to the viewport — over the waitlist and the browser chrome.
+   Contain the layer on the live envelope only. The no-script plate stays
+   absolute inside the campaign frame, so this must not touch that path. */
 .envelope-live { display: none; }
 html.js .envelope-static { display: none; }
-html.js .envelope-live { display: block; width: min(100%, 440px); margin: 0 auto; }
+html.js .envelope-live {
+  display: block;
+  width: min(100%, 440px);
+  margin: 0 auto;
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  border-radius: 1px;
+  -webkit-mask-image: linear-gradient(#fff, #fff);
+  mask-image: linear-gradient(#fff, #fff);
+}
 html.js .products-campaign__media {
   aspect-ratio: auto;
-  overflow: visible;
+  overflow: hidden;
   background: transparent;
   min-height: 0;
   display: grid;
@@ -1416,7 +1434,8 @@ html.js .products-campaign__media {
 html.js .products-campaign__media .envelope-static img { position: static; }
 .env-stage {
   perspective: 1400px;
-  padding-top: 4px;
+  /* Room for the open-card peek (pull 0.16) inside the clip. */
+  padding-top: 20px;
   transition: padding-top 0.85s cubic-bezier(0.22, 0.8, 0.2, 1);
 }
 .envelope-live.is-revealed .env-stage { padding-top: 214px; }
@@ -1543,7 +1562,8 @@ html.js .products-campaign__media .envelope-static img { position: static; }
   transform: rotateX(0deg);
   transition: transform 0.9s cubic-bezier(0.45, 0.05, 0.2, 1);
   backface-visibility: hidden;
-  filter: drop-shadow(0 10px 12px rgba(28, 18, 20, 0.06));
+  /* No filter here. drop-shadow plus preserve-3d is what iOS promotes
+     into the stuck seal layer. The body already carries the soft shadow. */
 }
 .env.is-open .env-flap {
   transform: rotateX(188deg);
