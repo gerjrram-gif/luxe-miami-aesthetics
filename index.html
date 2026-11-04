@@ -1400,6 +1400,277 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
   }
 }
 ::selection { background: #e7d3c0; color: #1c1214; }
+
+/* One envelope: static plate unless script + motion unlock the live one. */
+.envelope-live { display: none; }
+html.js .envelope-static { display: none; }
+html.js .envelope-live { display: block; width: min(100%, 440px); margin: 0 auto; }
+html.js .products-campaign__media {
+  aspect-ratio: auto;
+  overflow: visible;
+  background: transparent;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+}
+html.js .products-campaign__media .envelope-static img { position: static; }
+.env-stage {
+  perspective: 1400px;
+  padding-top: 4px;
+  transition: padding-top 0.85s cubic-bezier(0.22, 0.8, 0.2, 1);
+}
+.envelope-live.is-revealed .env-stage { padding-top: 214px; }
+.env {
+  --pull: 0;
+  position: relative;
+  width: min(100%, 380px);
+  height: 228px;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+}
+.env-back {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #fbf7f1 0%, #f4ece3 55%, #eadfce 100%);
+  border: 1px solid rgba(198, 180, 140, 0.9);
+  box-shadow: 0 22px 40px rgba(58, 18, 28, 0.08);
+}
+.env-liner {
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  top: 7%;
+  height: 42%;
+  background: linear-gradient(180deg, #7a2a3c, #3a121c);
+  opacity: 0;
+  transition: opacity 0.45s ease 0.15s;
+  z-index: 1;
+}
+.env.is-open .env-liner { opacity: 1; }
+.env-card {
+  pointer-events: none;
+  position: absolute;
+  left: 11%;
+  right: 11%;
+  top: 22px;
+  height: 186px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 16px 16px 14px;
+  background: #fffdf8;
+  color: var(--ink);
+  text-align: center;
+  box-shadow: 0 12px 28px rgba(28, 18, 20, 0.08);
+  opacity: 0;
+  transform: translateY(calc(var(--pull) * -228px));
+  transition: transform 0.85s cubic-bezier(0.22, 0.8, 0.2, 1), opacity 0.35s ease;
+  cursor: grab;
+  touch-action: none;
+}
+.env.is-open .env-card { pointer-events: auto; opacity: 1; }
+.env.is-pulled .env-card { z-index: 6; }
+.env.is-dragging .env-card { transition: none; cursor: grabbing; }
+.env-card-kicker {
+  margin: 0;
+  font-family: "Cormorant SC", "Cormorant Garamond", Georgia, serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+}
+.env-card-script {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.7rem, 3vw, 2.15rem);
+  line-height: 1;
+  color: #8a6a32;
+}
+.env-card-rule {
+  width: 36px;
+  height: 1px;
+  margin: 2px 0;
+  background: #c6b48c;
+}
+.env-card-body {
+  margin: 0 0 6px;
+  max-width: 16rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--body);
+}
+.env-card .cta { min-height: 38px; padding: 0 14px; font-size: 0.66rem; }
+.env-front {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 68%;
+  z-index: 4;
+  background:
+    linear-gradient(180deg, rgba(255, 252, 247, 0.35), rgba(255, 252, 247, 0) 30%),
+    linear-gradient(180deg, #f8f3eb, #efe4d6);
+  clip-path: polygon(0 16%, 50% 0, 100% 16%, 100% 100%, 0 100%);
+  box-shadow: 0 14px 24px rgba(58, 18, 28, 0.06);
+  border-bottom: 1px solid rgba(198, 180, 140, 0.85);
+}
+.env-front::before,
+.env-front::after {
+  content: "";
+  position: absolute;
+  top: 28%;
+  width: 46%;
+  height: 1px;
+  background: #6b2434;
+  opacity: 0.85;
+}
+.env-front::before { left: 6%; transform: rotate(18deg); }
+.env-front::after { right: 6%; transform: rotate(-18deg); }
+.env-flap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 58%;
+  z-index: 5;
+  background: linear-gradient(180deg, #fbf7f1, #f0e6da);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: center top;
+  transform: rotateX(0deg);
+  transition: transform 0.9s cubic-bezier(0.45, 0.05, 0.2, 1);
+  backface-visibility: hidden;
+  filter: drop-shadow(0 10px 12px rgba(28, 18, 20, 0.06));
+}
+.env.is-open .env-flap { transform: rotateX(188deg); z-index: 1; }
+.env-seal {
+  position: absolute;
+  left: 50%;
+  top: 49%;
+  z-index: 7;
+  width: 76px;
+  height: 76px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(circle at 35% 30%, #f8edd2 0%, #e4c98a 32%, #b8893c 64%, #7a5522 100%);
+  box-shadow:
+    0 10px 18px rgba(80, 48, 16, 0.28),
+    inset 0 0 0 2px rgba(255, 248, 230, 0.5),
+    inset 0 0 0 7px rgba(122, 78, 24, 0.22);
+  cursor: pointer;
+  transition: transform 0.55s ease, opacity 0.45s ease;
+}
+.env-seal-mark {
+  font-family: Allura, "Segoe Script", cursive;
+  font-size: 2.35rem;
+  line-height: 1;
+  color: rgba(74, 42, 14, 0.88);
+}
+.env-seal::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  pointer-events: none;
+}
+.env.is-seal:not(.is-open) .env-seal-mark { animation: seal-press 0.7s ease; }
+.env.is-seal:not(.is-open) .env-seal::after { animation: seal-ring 0.7s ease; }
+.env.is-open .env-seal {
+  transform: translate(-50%, -190%) scale(0.84);
+  opacity: 0;
+  pointer-events: none;
+}
+@keyframes seal-press {
+  0% { transform: scale(1) rotate(0deg); }
+  40% { transform: scale(0.9) rotate(-6deg); }
+  100% { transform: scale(1.04) rotate(4deg); }
+}
+@keyframes seal-ring {
+  0% { transform: scale(0.85); opacity: 0.55; border-color: #c6b48c; }
+  100% { transform: scale(1.45); opacity: 0; border-color: #c6b48c; }
+}
+.env-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 18px 0 0;
+}
+.env-textbtn {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid rgba(198, 180, 140, 0.95);
+  border-radius: 999px;
+  background: transparent;
+  color: #6b1e2e;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  cursor: pointer;
+}
+.env-textbtn:hover { background: rgba(255, 252, 247, 0.7); }
+.env-hint {
+  margin: 10px 0 0;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.product-card__scent {
+  margin-top: 8px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  color: #6b1e2e;
+}
+.orbit-hint {
+  margin-top: 8px;
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+.product-card__media--portrait img { object-position: center 40%; }
+.product-card[data-orbit-center] .product-card__media img,
+.product-row.is-orbit .product-card.is-active .product-card__media img {
+  filter: none;
+  opacity: 1;
+}
+.treatment-wrap.is-orbit-on { overflow: hidden; touch-action: pan-y; }
+.product-row.is-orbit {
+  position: relative;
+  display: flex;
+  overflow: visible;
+  scroll-snap-type: none;
+  gap: 22px;
+  cursor: grab;
+  padding-inline: 0;
+}
+.product-row.is-orbit.is-dragging { cursor: grabbing; }
+.product-row.is-orbit .product-card {
+  flex: 0 0 min(280px, 74vw);
+  scroll-snap-align: none;
+  opacity: 0.72;
+  transform: scale(0.94);
+  transition: transform 0.45s ease, opacity 0.45s ease;
+}
+.product-row.is-orbit .product-card.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .env-stage, .env-flap, .env-card, .env-seal, .env-liner,
+  .product-row.is-orbit, .product-row.is-orbit .product-card {
+    transition: none;
+    animation: none;
+  }
+}
 </style>
 <script>
 (function () {
@@ -1626,7 +1897,38 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
     <div class="products-campaign products-campaign--gratitude">
       <div class="products-campaign__frame wide">
         <div class="products-campaign__media">
-          <img src="spa/products/LX-06-gratitude-folded-set-hero.jpg" alt="Gratitude card and seal set: a folded ivory card with gold foil reading with gratitude, a burgundy luxe seal, a gold monogram seal, and an envelope closed with a gold wax seal." width="2600" height="1900">
+          <div class="envelope-experience" id="gratitude-envelope">
+            <div class="envelope-static">
+              <img src="spa/products/LX-06-gratitude-folded-set-hero.jpg" alt="Gratitude card and seal set: a folded ivory card with gold foil reading with gratitude, a burgundy luxe seal, a gold monogram seal, and an envelope closed with a gold wax seal." width="2600" height="1900">
+            </div>
+            <div class="envelope-live" role="group" aria-label="Gratitude envelope">
+              <p class="sr-only" id="env-status" aria-live="polite"></p>
+              <div class="env-stage">
+                <div class="env" id="env">
+                  <div class="env-back" aria-hidden="true"></div>
+                  <div class="env-liner" aria-hidden="true"></div>
+                  <div class="env-card" id="env-card" aria-hidden="true">
+                    <p class="env-card-kicker">LX-06</p>
+                    <p class="env-card-script">with gratitude</p>
+                    <span class="env-card-rule" aria-hidden="true"></span>
+                    <p class="env-card-body">A folded ivory card. Seals, and this envelope. Nothing is for sale today.</p>
+                    <a class="cta" href="#lx-06">Join the waitlist</a>
+                  </div>
+                  <div class="env-front" aria-hidden="true"></div>
+                  <div class="env-flap" aria-hidden="true"></div>
+                  <button class="env-seal" type="button" id="env-seal" aria-expanded="false" aria-controls="env">
+                    <span class="env-seal-mark" aria-hidden="true">l</span>
+                    <span class="sr-only">Open the Gratitude envelope</span>
+                  </button>
+                </div>
+              </div>
+              <div class="env-controls">
+                <button class="env-textbtn" type="button" id="env-toggle">Open the envelope</button>
+                <button class="env-textbtn" type="button" id="env-pull" hidden>Pull the card</button>
+              </div>
+              <p class="env-hint">Open the seal, then pull the card.</p>
+            </div>
+          </div>
         </div>
         <div class="products-campaign__copy">
           <p class="kicker">Products</p>
@@ -1645,6 +1947,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
           <p class="kicker">The shelf</p>
           <h3 class="label">Gratitude, then pieces taking shape</h3>
           <p>LX-06 Gratitude is the card and seal set on the list. Color, powder, scent, and a candle follow, still taking shape.</p>
+          <p class="orbit-hint">Swipe the shelf. The piece in the center is the one in hand.</p>
         </div>
         <div class="treatment-wrap" role="region" aria-roledescription="carousel" aria-label="Product shelf">
           <div class="product-row" id="product-row" tabindex="0">
@@ -1656,6 +1959,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 <p class="product-card__index">LX-06</p>
                 <h3>Gratitude</h3>
                 <p>The card and seal set.</p>
+                <p class="product-card__scent">Ivory paper, gold foil, and a wax seal.</p>
                 <p class="product-card__status"><span class="pill">Waitlist open</span></p>
                 <p class="product-card__action"><a class="cta" href="#lx-06">Join the waitlist</a></p>
               </div>
@@ -1668,6 +1972,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 <p class="product-card__index">LX-B07</p>
                 <h3>La Veilleuse</h3>
                 <p>An Atelier candle concept. Vessel, scent, and a monogram, still taking shape.</p>
+                <p class="product-card__scent">A room just lit. Warm wax, held close.</p>
                 <p class="product-card__status"><span class="pill">Taking shape</span></p>
                 <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-B07">
                   <input type="hidden" name="_subject" value="Luxe shelf interest — LX-B07 La Veilleuse">
@@ -1695,6 +2000,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 <p class="product-card__index">LX-B01</p>
                 <h3>Signet Rouge</h3>
                 <p>A refillable lipstick. A keepsake case, then a shade from the Luxe wardrobe.</p>
+                <p class="product-card__scent">Velvet rose, kept in the case.</p>
                 <p class="product-card__status"><span class="pill">Taking shape</span></p>
                 <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-B01">
                   <input type="hidden" name="_subject" value="Luxe shelf interest — LX-B01 Signet Rouge">
@@ -1722,6 +2028,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 <p class="product-card__index">LX-B02</p>
                 <h3>Brickell Pearls</h3>
                 <p>Softly tinted pearls of setting powder, a last veil of finish.</p>
+                <p class="product-card__scent">Powder-soft. A last cool veil.</p>
                 <p class="product-card__status"><span class="pill">Taking shape</span></p>
                 <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-B02">
                   <input type="hidden" name="_subject" value="Luxe shelf interest — LX-B02 Brickell Pearls">
@@ -1749,6 +2056,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 <p class="product-card__index">LX-B03</p>
                 <h3>Miel de Mar</h3>
                 <p>A honey-tint lip oil. A sheer, glossy wash of color in a glass wand.</p>
+                <p class="product-card__scent">Honey and salt air. A sheer gold wash.</p>
                 <p class="product-card__status"><span class="pill">Taking shape</span></p>
                 <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-B03">
                   <input type="hidden" name="_subject" value="Luxe shelf interest — LX-B03 Miel de Mar">
@@ -1776,6 +2084,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 <p class="product-card__index">LX-B04</p>
                 <h3>Quatre Palmes</h3>
                 <p>Four pans of eyeshadow in one compact, from matte to metallic.</p>
+                <p class="product-card__scent">Shade and shimmer, in four quiet pans.</p>
                 <p class="product-card__status"><span class="pill">Taking shape</span></p>
                 <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-B04">
                   <input type="hidden" name="_subject" value="Luxe shelf interest — LX-B04 Quatre Palmes">
@@ -1803,6 +2112,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 <p class="product-card__index">LX-B05</p>
                 <h3>Causeway Bronze</h3>
                 <p>A sunlit bronzing powder in an ivory compact, with a warm finish.</p>
+                <p class="product-card__scent">Sun on skin. A warm, golden finish.</p>
                 <p class="product-card__status"><span class="pill">Taking shape</span></p>
                 <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-B05">
                   <input type="hidden" name="_subject" value="Luxe shelf interest — LX-B05 Causeway Bronze">
@@ -1822,14 +2132,15 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 </form>
               </div>
             </article>
-            <article class="product-card product-card--parked">
-              <div class="product-card__media">
-                <img src="spa/products/LX-B06-nuit-de-velours.jpg" alt="Nuit de Velours: an amber glass flacon labeled Nuit de Velours Signature Extrait, with a gold stopper and a burgundy velvet label reading luxe Miami, in front of a palm-embroidered velvet box and a gold LUXE medallion." width="1024" height="1024" loading="lazy">
+            <article class="product-card product-card--parked" data-orbit-center="true">
+              <div class="product-card__media product-card__media--portrait">
+                <img src="spa/products/LX-B06-nuit-de-velours-campaign.jpg" alt="Nuit de Velours extrait: an amber glass flacon with a faceted gold stopper on purple velvet, with frost, pale orchids, and a gold ribbon." width="864" height="1152">
               </div>
               <div class="product-card__body">
                 <p class="product-card__index">LX-B06</p>
                 <h3>Nuit de Velours</h3>
                 <p>Fragrance concept. The house extrait, in heavy glass with a velvet cord.</p>
+                <p class="product-card__scent">Velvet night. Amber and orchid, worn close.</p>
                 <p class="product-card__status"><span class="pill">Taking shape</span></p>
                 <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-B06">
                   <input type="hidden" name="_subject" value="Luxe shelf interest — LX-B06 Nuit de Velours">
@@ -1857,6 +2168,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
                 <p class="product-card__index">LX-B08</p>
                 <h3>Agua de Seda</h3>
                 <p>A watery-light oil in frosted glass. A silky texture, for a quiet ritual.</p>
+                <p class="product-card__scent">Water-light silk. A cool, clean veil.</p>
                 <p class="product-card__status"><span class="pill">Taking shape</span></p>
                 <form class="sku-notify" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST" data-sku="LX-B08">
                   <input type="hidden" name="_subject" value="Luxe shelf interest — LX-B08 Agua de Seda">
@@ -2491,7 +2803,204 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
     window.addEventListener("resize", sync);
   }
   bindScroller("treatment-row", "treatment-controls", "treat-prev", "treat-next", ".treatment-card", 16);
-  bindScroller("product-row", "product-controls", "product-prev", "product-next", ".product-card", 18);
+
+  function bindOrbit(rowId, prevId, nextId) {
+    var row = document.getElementById(rowId);
+    if (!row) return false;
+    var wrap = row.parentElement;
+    var cards = Array.prototype.slice.call(row.querySelectorAll(".product-card"));
+    if (cards.length < 2) return false;
+    var index = 0;
+    cards.forEach(function (card, n) {
+      if (card.hasAttribute("data-orbit-center")) index = n;
+    });
+    var translate = 0;
+    var drag = null;
+    row.classList.add("is-orbit");
+    if (wrap) wrap.classList.add("is-orbit-on");
+    function translateFor(i) {
+      var viewW = wrap ? wrap.clientWidth : row.clientWidth;
+      var card = cards[i];
+      return (viewW / 2) - (card.offsetLeft + card.offsetWidth / 2);
+    }
+    function go(i, animate) {
+      index = Math.max(0, Math.min(cards.length - 1, i));
+      translate = translateFor(index);
+      var motion = animate && !reduce.matches;
+      row.style.transition = motion ? "transform 0.55s cubic-bezier(.22,.8,.2,1)" : "none";
+      row.style.transform = "translate3d(" + translate + "px,0,0)";
+      cards.forEach(function (card, n) {
+        var on = n === index;
+        card.classList.toggle("is-active", on);
+        if (on) card.setAttribute("aria-current", "true");
+        else card.removeAttribute("aria-current");
+      });
+    }
+    function stepFrom(start, dx) {
+      var cardW = cards[0].offsetWidth + 22;
+      var steps = Math.abs(dx) < 28 ? 0 : Math.round(-dx / Math.max(cardW, 1));
+      if (steps === 0 && Math.abs(dx) >= 28) steps = dx < 0 ? 1 : -1;
+      go(start + steps, true);
+    }
+    row.addEventListener("pointerdown", function (event) {
+      if (event.target.closest("a, button, input, textarea, label, select")) return;
+      drag = { x: event.clientX, t: translate, start: index, pid: event.pointerId, moved: false };
+      row.classList.add("is-dragging");
+      row.style.transition = "none";
+      if (row.setPointerCapture) row.setPointerCapture(event.pointerId);
+    });
+    row.addEventListener("pointermove", function (event) {
+      if (!drag || event.pointerId !== drag.pid) return;
+      var dx = event.clientX - drag.x;
+      if (Math.abs(dx) > 8) drag.moved = true;
+      if (!drag.moved) return;
+      translate = drag.t + dx;
+      row.style.transform = "translate3d(" + translate + "px,0,0)";
+    });
+    function endDrag(event) {
+      if (!drag || (event && event.pointerId !== drag.pid)) return;
+      var dx = event.clientX - drag.x;
+      var moved = drag.moved;
+      var start = drag.start;
+      var card = event.target.closest ? event.target.closest(".product-card") : null;
+      drag = null;
+      row.classList.remove("is-dragging");
+      if (!moved && card && cards.indexOf(card) >= 0) go(cards.indexOf(card), true);
+      else stepFrom(start, dx);
+    }
+    row.addEventListener("pointerup", endDrag);
+    row.addEventListener("pointercancel", endDrag);
+    row.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowRight") { event.preventDefault(); go(index + 1, true); }
+      if (event.key === "ArrowLeft") { event.preventDefault(); go(index - 1, true); }
+    });
+    var prev = document.getElementById(prevId);
+    var next = document.getElementById(nextId);
+    if (prev) prev.addEventListener("click", function () { go(index - 1, true); });
+    if (next) next.addEventListener("click", function () { go(index + 1, true); });
+    go(index, false);
+    window.addEventListener("resize", function () { go(index, false); });
+    return true;
+  }
+  if (!bindOrbit("product-row", "product-prev", "product-next")) {
+    bindScroller("product-row", "product-controls", "product-prev", "product-next", ".product-card", 18);
+  }
+
+  function bindEnvelope() {
+    if (!document.documentElement.classList.contains("js")) return;
+    var env = document.getElementById("env");
+    var card = document.getElementById("env-card");
+    var seal = document.getElementById("env-seal");
+    var toggle = document.getElementById("env-toggle");
+    var pullBtn = document.getElementById("env-pull");
+    var status = document.getElementById("env-status");
+    var sealText = seal ? seal.querySelector(".sr-only") : null;
+    if (!env || !card || !seal || !toggle) return;
+    var state = "closed";
+    var timer = 0;
+    var drag = null;
+    function say(text) { if (status) status.textContent = text; }
+    function render() {
+      env.classList.toggle("is-seal", state === "seal");
+      env.classList.toggle("is-open", state === "open" || state === "pulled");
+      env.classList.toggle("is-pulled", state === "pulled");
+      var live = document.querySelector(".envelope-live");
+      if (live) live.classList.toggle("is-revealed", state === "pulled");
+      card.setAttribute("aria-hidden", state === "pulled" ? "false" : "true");
+      var cardLink = card.querySelector("a");
+      if (cardLink) cardLink.tabIndex = state === "pulled" ? 0 : -1;
+      if (!env.classList.contains("is-dragging")) {
+        var pull = state === "pulled" ? 1 : state === "open" ? 0.16 : 0;
+        env.style.setProperty("--pull", String(pull));
+      }
+      var open = state !== "closed" && state !== "seal";
+      seal.setAttribute("aria-expanded", state === "closed" ? "false" : "true");
+      if (sealText) sealText.textContent = state === "closed" ? "Open the Gratitude envelope" : "Close the Gratitude envelope";
+      toggle.textContent = state === "closed" ? "Open the envelope" : "Close";
+      if (pullBtn) {
+        pullBtn.hidden = !(state === "open" || state === "pulled");
+        pullBtn.textContent = state === "pulled" ? "Tuck the card back" : "Pull the card";
+      }
+      seal.disabled = state === "open" || state === "pulled";
+    }
+    function openEnv() {
+      if (state !== "closed") return;
+      state = "seal";
+      render();
+      say("Wax seal.");
+      window.clearTimeout(timer);
+      timer = window.setTimeout(function () {
+        if (state !== "seal") return;
+        state = "open";
+        render();
+        say("Envelope open. Pull the card to read it.");
+      }, 720);
+    }
+    function closeEnv() {
+      window.clearTimeout(timer);
+      state = "closed";
+      env.classList.remove("is-dragging");
+      render();
+      say("Envelope closed.");
+    }
+    function pullCard() {
+      if (state === "pulled") {
+        state = "open";
+        render();
+        say("Card tucked. The envelope is still open.");
+        return;
+      }
+      if (state !== "open") return;
+      state = "pulled";
+      render();
+      say("The Gratitude card reads: with gratitude.");
+    }
+    seal.addEventListener("click", function () { if (state === "closed") openEnv(); });
+    toggle.addEventListener("click", function () {
+      if (state === "closed") openEnv();
+      else closeEnv();
+    });
+    if (pullBtn) pullBtn.addEventListener("click", pullCard);
+    card.addEventListener("pointerdown", function (event) {
+      if (state !== "open" && state !== "pulled") return;
+      if (event.target.closest("a, button")) return;
+      drag = {
+        y: event.clientY,
+        pull: state === "pulled" ? 1 : 0.16,
+        pid: event.pointerId
+      };
+      env.classList.add("is-dragging");
+      if (card.setPointerCapture) card.setPointerCapture(event.pointerId);
+    });
+    card.addEventListener("pointermove", function (event) {
+      if (!drag || event.pointerId !== drag.pid) return;
+      var dy = drag.y - event.clientY;
+      var next = Math.max(0, Math.min(1, drag.pull + dy / 150));
+      drag.next = next;
+      env.style.setProperty("--pull", String(next));
+    });
+    function endPull(event) {
+      if (!drag || (event && event.pointerId !== drag.pid)) return;
+      var next = drag.next == null ? drag.pull : drag.next;
+      drag = null;
+      env.classList.remove("is-dragging");
+      if (next > 0.42) {
+        state = "pulled";
+        say("The Gratitude card reads: with gratitude.");
+      } else if (state !== "closed") {
+        state = "open";
+        say("Card tucked. The envelope is still open.");
+      }
+      render();
+    }
+    card.addEventListener("pointerup", endPull);
+    card.addEventListener("pointercancel", endPull);
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && state !== "closed") closeEnv();
+    });
+    render();
+  }
+  bindEnvelope();
 
   function revealNow(el) {
     if (!el || el.dataset.revealed === "1") return;
