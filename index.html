@@ -18,6 +18,14 @@
 <link rel="preload" as="image" href="spa/hero-bw.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+  }
+}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Cormorant+SC:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
@@ -233,9 +241,20 @@ footer .wordmark-sub { color: var(--gold-soft); }
   background: var(--velvet-deep);
   overflow: hidden;
 }
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  display: block;
+  pointer-events: none;
+}
 .hero-still {
   position: absolute;
   inset: 0;
+  z-index: 1;
   width: 100%;
   height: 100%;
   max-width: none;
@@ -248,6 +267,7 @@ footer .wordmark-sub { color: var(--gold-soft); }
 .hero-shade {
   position: absolute;
   inset: 0;
+  z-index: 2;
   pointer-events: none;
   background:
     linear-gradient(90deg, rgba(32, 10, 16, 0.5) 0%, rgba(32, 10, 16, 0.22) 38%, rgba(32, 10, 16, 0) 62%),
@@ -255,7 +275,7 @@ footer .wordmark-sub { color: var(--gold-soft); }
 }
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   width: min(680px, 100%);
   padding: 28px 24px calc(40px + env(safe-area-inset-bottom));
 }
@@ -298,6 +318,58 @@ footer .wordmark-sub { color: var(--gold-soft); }
   color: rgba(255, 255, 255, 0.92);
 }
 .hero :focus-visible { outline-color: #fff; }
+html.hero-webgl .hero {
+  background: #f7f2ea;
+  color: var(--ink);
+}
+html.hero-webgl .hero-still {
+  opacity: 0;
+  transition: opacity 0.55s ease;
+}
+html.hero-webgl .hero-shade {
+  background:
+    linear-gradient(90deg, rgba(247, 242, 234, 0.94) 0%, rgba(247, 242, 234, 0.78) 34%, rgba(247, 242, 234, 0.28) 56%, rgba(247, 242, 234, 0) 74%);
+}
+html.hero-webgl .hero-content { width: min(540px, 100%); }
+html.hero-webgl .hero-mark .script-name {
+  color: var(--logo);
+  text-shadow: 0 0 18px rgba(247, 242, 234, 0.95);
+}
+html.hero-webgl .hero-mark .wordmark-sub,
+html.hero-webgl .hero .eyebrow {
+  color: var(--gold);
+  text-shadow: none;
+}
+html.hero-webgl .hero h1 {
+  color: var(--ink);
+  text-shadow: 0 0 22px rgba(247, 242, 234, 0.95);
+}
+html.hero-webgl .hero .deck {
+  color: var(--body);
+  text-shadow: 0 0 16px rgba(247, 242, 234, 0.95);
+}
+html.hero-webgl .hero :focus-visible { outline-color: var(--btn); }
+@media (max-width: 979px) {
+  html.hero-webgl .hero { align-items: flex-end; }
+  html.hero-webgl .hero-shade {
+    background:
+      linear-gradient(180deg, rgba(247, 242, 234, 0.02) 0%, rgba(247, 242, 234, 0.08) 36%, rgba(247, 242, 234, 0.84) 62%, rgba(247, 242, 234, 0.97) 100%);
+  }
+  html.hero-webgl .hero-content { width: min(680px, 100%); }
+}
+@media (min-width: 980px) {
+  html.hero-webgl .hero { align-items: center; }
+}
+@media (min-width: 980px) and (max-width: 1199px) {
+  html.hero-webgl .hero-content { width: min(460px, 48vw); }
+}
+@media (min-width: 980px) and (max-height: 860px) {
+  html.hero-webgl .hero { align-items: flex-end; }
+  html.hero-webgl .hero h1 { font-size: clamp(2.7rem, 6vw, 4.2rem); }
+  html.hero-webgl .hero-mark .script-name { font-size: clamp(2.6rem, 5vw, 3.6rem); }
+  html.hero-webgl .hero-content { padding-top: 24px; padding-bottom: 32px; }
+  html.hero-webgl .hero .deck { margin-bottom: 16px; }
+}
 
 .wide { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
 .narrow { width: min(720px, calc(100% - 40px)); margin: 0 auto; }
@@ -1393,6 +1465,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
   html { scroll-behavior: auto; }
   .quote-controls { display: none; }
   html.js [data-reveal], .hero-content { animation: none; opacity: 1; transform: none; }
+  .hero-still { transition: none; }
 }
 @media (prefers-contrast: more) {
   .hero-shade { background: rgba(42, 12, 20, 0.62); }
@@ -1444,6 +1517,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
 
 <main id="main">
   <section class="hero" aria-labelledby="hero-title">
+    <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
     <img class="hero-still" src="spa/hero-bw.jpg" alt="Black-and-white editorial portrait, the homepage frame." width="1280" height="720">
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="hero-content">
@@ -2519,5 +2593,6 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
 
 })();
 </script>
+<script type="module" src="hero-scene.js"></script>
 </body>
 </html>
