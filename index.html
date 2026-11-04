@@ -2128,6 +2128,7 @@ html.js .products-campaign__media .envelope-static img { position: static; }
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: var(--shelf-plate) center / cover no-repeat;
   pointer-events: none;
 }
@@ -2193,6 +2194,80 @@ html.js .product-card.is-lifting .product-card__plate {
     transition: none;
     box-shadow: none;
   }
+}
+
+/* Magnetic soft light.
+   A warm wash on the Gratitude campaign and on each shelf plate.
+   It sits outside the envelope's 3D tree and does not take clicks,
+   so the seal, the flap, the card, and the lift stay as they are.
+   The shelf wash is painted on the plate, and lifts with that photograph,
+   leaving the note underneath clear. A fine pointer eases the wash
+   toward the hand. Coarse pointers and reduced motion keep it still. */
+.products-campaign__media::after,
+html.js .envelope-live::after,
+.product-card__plate::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.products-campaign__media::after {
+  z-index: 2;
+  background:
+    radial-gradient(84% 72% at 30% 24%,
+      rgba(255, 250, 242, 0.26) 0%,
+      rgba(255, 244, 220, 0.16) 18%,
+      rgba(198, 180, 140, 0.08) 42%,
+      transparent 74%);
+}
+html.js .products-campaign__media::after { content: none; }
+html.js .envelope-live {
+  --soft-x: 18%;
+  --soft-y: 12%;
+}
+html.js .envelope-live::after {
+  z-index: 8;
+  inset: -20%;
+  opacity: 1;
+  background:
+    radial-gradient(72% 64% at var(--soft-x, 18%) var(--soft-y, 12%),
+      rgba(255, 250, 242, 0.34) 0%,
+      rgba(255, 244, 220, 0.26) 14%,
+      rgba(232, 208, 160, 0.16) 32%,
+      rgba(210, 184, 138, 0.08) 50%,
+      rgba(198, 180, 140, 0.03) 66%,
+      transparent 80%);
+  -webkit-mask-image: linear-gradient(#000 0%, #000 70%, rgba(0, 0, 0, 0.35) 84%, transparent 96%);
+  mask-image: linear-gradient(#000 0%, #000 70%, rgba(0, 0, 0, 0.35) 84%, transparent 96%);
+  transition: opacity 0.9s ease;
+}
+html.js .envelope-live.is-lit::after { opacity: 1; }
+.product-card__plate {
+  --soft-x: 22%;
+  --soft-y: 12%;
+}
+.product-card__plate::before {
+  z-index: 3;
+  inset: -16%;
+  opacity: 1;
+  background:
+    radial-gradient(64% 58% at var(--soft-x, 22%) var(--soft-y, 12%),
+      rgba(255, 250, 242, 0.3) 0%,
+      rgba(255, 244, 220, 0.2) 16%,
+      rgba(226, 196, 140, 0.12) 34%,
+      rgba(198, 180, 140, 0.05) 54%,
+      transparent 74%);
+  transition: opacity 0.9s ease;
+}
+.product-card__plate.is-lit::before { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  html.js .envelope-live::after,
+  .product-card__plate::before { transition: none; }
+}
+@media (prefers-contrast: more) {
+  .products-campaign__media::after,
+  html.js .envelope-live::after,
+  .product-card__plate::before { opacity: 0.4; }
 }
 
 </style>
@@ -4047,6 +4122,180 @@ html.js .product-card.is-lifting .product-card__plate {
     document.querySelectorAll("[data-reveal]").forEach(revealNow);
   }
 
+})();
+</script>
+<script>
+/* Desktop magnetic soft light. Still wash unless the pointer is fine and motion is allowed. */
+(function () {
+  var fine = window.matchMedia("(hover: hover) and (pointer: fine)");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var surfaces = [];
+  var active = null;
+  var raf = 0;
+  var live = false;
+  var px = 0;
+  var py = 0;
+  var MAGNET = 36;
+
+  function allowed() {
+    return fine.matches && !reduce.matches;
+  }
+
+  function make(el, restX, restY, yMax) {
+    return {
+      el: el,
+      x: restX,
+      y: restY,
+      restX: restX,
+      restY: restY,
+      yMax: yMax,
+      lit: false,
+      paintedX: restX,
+      paintedY: restY
+    };
+  }
+
+  function collect() {
+    surfaces = [];
+    var env = document.querySelector(".envelope-live");
+    if (env) surfaces.push(make(env, 18, 12, 62));
+    var plates = document.querySelectorAll(".product-card__plate");
+    for (var i = 0; i < plates.length; i++) surfaces.push(make(plates[i], 22, 12, 84));
+  }
+
+  function dist(el, x, y) {
+    var r = el.getBoundingClientRect();
+    if (r.width < 2 || r.height < 2) return Infinity;
+    var dx = x < r.left ? r.left - x : (x > r.right ? x - r.right : 0);
+    var dy = y < r.top ? r.top - y : (y > r.bottom ? y - r.bottom : 0);
+    if (dx === 0 && dy === 0) {
+      return -Math.min(x - r.left, r.right - x, y - r.top, r.bottom - y);
+    }
+    return Math.sqrt(dx * dx + dy * dy);
+  }
+
+  function pick(x, y) {
+    var best = null;
+    var bestD = MAGNET;
+    for (var i = 0; i < surfaces.length; i++) {
+      var d = dist(surfaces[i].el, x, y);
+      if (d < bestD) {
+        bestD = d;
+        best = surfaces[i];
+      }
+    }
+    return best;
+  }
+
+  function paint(s) {
+    if (Math.abs(s.x - s.paintedX) < 0.04 && Math.abs(s.y - s.paintedY) < 0.04) return;
+    s.paintedX = s.x;
+    s.paintedY = s.y;
+    s.el.style.setProperty("--soft-x", s.x.toFixed(2) + "%");
+    s.el.style.setProperty("--soft-y", s.y.toFixed(2) + "%");
+  }
+
+  function goalFor(s) {
+    if (s !== active) return { x: s.restX, y: s.restY };
+    var r = s.el.getBoundingClientRect();
+    if (r.width < 2 || r.height < 2) return { x: s.restX, y: s.restY };
+    var rawX = ((px - r.left) / r.width) * 100;
+    var rawY = ((py - r.top) / r.height) * 100;
+    var x = s.restX + (rawX - s.restX) * 0.76;
+    var y = s.restY + (rawY - s.restY) * 0.76;
+    if (x < 14) x = 14;
+    if (x > 86) x = 86;
+    if (y < 10) y = 10;
+    if (y > s.yMax) y = s.yMax;
+    return { x: x, y: y };
+  }
+
+  function tick() {
+    raf = 0;
+    if (!live) return;
+    var moving = false;
+    for (var i = 0; i < surfaces.length; i++) {
+      var s = surfaces[i];
+      var goal = goalFor(s);
+      var dx = goal.x - s.x;
+      var dy = goal.y - s.y;
+      if (Math.abs(dx) < 0.12 && Math.abs(dy) < 0.12) {
+        s.x = goal.x;
+        s.y = goal.y;
+      } else {
+        s.x += dx * 0.072;
+        s.y += dy * 0.072;
+        moving = true;
+      }
+      paint(s);
+      var lit = s === active;
+      if (lit !== s.lit) {
+        s.lit = lit;
+        if (lit) s.el.classList.add("is-lit");
+        else s.el.classList.remove("is-lit");
+      }
+    }
+    if (moving) raf = window.requestAnimationFrame(tick);
+  }
+
+  function kick() {
+    if (!raf) raf = window.requestAnimationFrame(tick);
+  }
+
+  function onMove(event) {
+    if (!live) return;
+    if (event.pointerType && event.pointerType !== "mouse" && event.pointerType !== "pen") return;
+    px = event.clientX;
+    py = event.clientY;
+    active = pick(px, py);
+    kick();
+  }
+
+  function onLeave() {
+    if (!live || !active) return;
+    active = null;
+    kick();
+  }
+
+  function snapOff() {
+    live = false;
+    active = null;
+    if (raf) window.cancelAnimationFrame(raf);
+    raf = 0;
+    for (var i = 0; i < surfaces.length; i++) {
+      var s = surfaces[i];
+      s.x = s.restX;
+      s.y = s.restY;
+      s.paintedX = s.restX;
+      s.paintedY = s.restY;
+      s.lit = false;
+      s.el.style.removeProperty("--soft-x");
+      s.el.style.removeProperty("--soft-y");
+      s.el.classList.remove("is-lit");
+    }
+  }
+
+  function sync() {
+    if (allowed()) {
+      live = true;
+      if (!surfaces.length) collect();
+      return;
+    }
+    if (!surfaces.length) collect();
+    snapOff();
+  }
+
+  collect();
+  sync();
+  document.addEventListener("pointermove", onMove, { passive: true });
+  document.addEventListener("pointerout", function (event) {
+    if (!event.relatedTarget) onLeave();
+  });
+  window.addEventListener("blur", onLeave);
+  if (fine.addEventListener) fine.addEventListener("change", sync);
+  else if (fine.addListener) fine.addListener(sync);
+  if (reduce.addEventListener) reduce.addEventListener("change", sync);
+  else if (reduce.addListener) reduce.addListener(sync);
 })();
 </script>
 </body>
