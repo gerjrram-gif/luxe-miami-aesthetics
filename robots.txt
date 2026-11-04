@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /confirmed.html
+Disallow: /interest.html
+
+Sitemap: https://luxemiamiaesthetics.com/sitemap.xml

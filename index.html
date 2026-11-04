@@ -3,18 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luxe Miami Aesthetics</title>
-<meta name="description" content="Luxe Miami Aesthetics is being rebuilt. The practice is not open. No treatments yet.">
+<title>Luxe Miami Aesthetics — Coral Gables and Palm Beach</title>
+<meta name="description" content="Luxe Miami Aesthetics is taking shape. Members-only facial aesthetics for Coral Gables and Palm Beach. The practice is not open. No treatments yet.">
 <link rel="canonical" href="https://luxemiamiaesthetics.com/">
-<meta property="og:title" content="Luxe Miami Aesthetics">
-<meta property="og:description" content="Luxe Miami Aesthetics is being rebuilt. The practice is not open. No treatments yet.">
-<meta property="og:url" content="https://luxemiamiaesthetics.com">
+<meta property="og:site_name" content="Luxe Miami Aesthetics">
+<meta property="og:title" content="Luxe Miami Aesthetics — Coral Gables and Palm Beach">
+<meta property="og:description" content="Luxe Miami Aesthetics is taking shape. Members-only facial aesthetics for Coral Gables and Palm Beach. The practice is not open. No treatments yet.">
+<meta property="og:url" content="https://luxemiamiaesthetics.com/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://luxemiamiaesthetics.com/spa/hero-bw.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
 <meta property="og:image:alt" content="Black-and-white editorial portrait, the homepage frame for Luxe Miami Aesthetics.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Luxe Miami Aesthetics — Coral Gables and Palm Beach">
+<meta name="twitter:description" content="Luxe Miami Aesthetics is taking shape. Members-only facial aesthetics for Coral Gables and Palm Beach. The practice is not open. No treatments yet.">
+<meta name="twitter:image" content="https://luxemiamiaesthetics.com/spa/hero-bw.jpg">
+<meta name="twitter:image:alt" content="Black-and-white editorial portrait, the homepage frame for Luxe Miami Aesthetics.">
 <meta name="theme-color" content="#f7f2ea">
-<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
-<link rel="apple-touch-icon" href="apple-touch.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="preload" as="image" href="spa/hero-bw.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,9 +34,12 @@
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Luxe Miami Aesthetics",
-  "url": "https://luxemiamiaesthetics.com",
+  "url": "https://luxemiamiaesthetics.com/",
   "email": "info@luxemiamiaesthetics.com",
-  "description": "Luxe Miami Aesthetics is being rebuilt and is not open. No treatments are offered yet."
+  "logo": "https://luxemiamiaesthetics.com/logo-mark.png",
+  "image": "https://luxemiamiaesthetics.com/spa/hero-bw.jpg",
+  "sameAs": ["https://instagram.com/luxemiamiaesthetics"],
+  "description": "Luxe Miami Aesthetics is taking shape and is not open. No treatments are offered yet."
 }
 </script>
 <style>
@@ -63,6 +76,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 img { max-width: 100%; display: block; }
+picture { display: contents; }
 button, input, textarea { font: inherit; }
 h1, h2, h3 {
   font-family: "Cormorant Garamond", Georgia, serif;
@@ -187,9 +201,10 @@ footer .wordmark-sub { color: var(--gold-soft); }
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  min-height: 38px;
+  min-height: 44px;
   opacity: 1;
 }
+.nav-cta { display: none; }
 .nav-links a.cta:hover { opacity: 1; filter: none; background: var(--btn-hover); }
 
 .cta {
@@ -212,7 +227,7 @@ footer .wordmark-sub { color: var(--gold-soft); }
 }
 .cta:hover { background: var(--btn-hover); color: var(--btn-text); }
 .cta:disabled { opacity: 0.72; cursor: default; }
-.cta-nav { min-height: 38px; padding: 0 14px; font-size: 0.68rem; }
+.cta-nav { min-height: 44px; padding: 0 16px; font-size: 0.68rem; }
 .hero .cta {
   background: var(--velvet);
   color: var(--cream);
@@ -442,7 +457,7 @@ footer .wordmark-sub { color: var(--gold-soft); }
   margin-top: 14px;
 }
 .row-controls button, .quote-controls button {
-  min-height: 40px;
+  min-height: 44px;
   padding: 0 12px;
   border: 1px solid var(--line);
   background: transparent;
@@ -902,18 +917,32 @@ html.js .quote.is-active { display: block; }
   gap: 14px;
   margin-top: 28px;
 }
-.quote-dots { display: flex; gap: 8px; }
+.quote-dots { display: flex; gap: 0; align-items: center; }
 .quote-dots button {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+.quote-dots button::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
   width: 9px;
   height: 9px;
-  min-height: 0;
-  padding: 0;
+  margin: -5px 0 0 -5px;
   border-radius: 50%;
   border: 1px solid var(--ink);
   background: transparent;
-  letter-spacing: 0;
 }
-.quote-dots button[aria-current="true"] { background: var(--bronze); border-color: var(--bronze); }
+.quote-dots button[aria-current="true"]::before { background: var(--bronze); border-color: var(--bronze); }
 .quote-note {
   max-width: 36rem;
   margin: 22px auto 0;
@@ -1439,6 +1468,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
     width: min(1180px, calc(100% - 48px));
   }
   .nav-toggle, .cta-mobile { display: none; }
+  .nav-cta { display: list-item; }
   .wordmark {
     position: absolute;
     left: 50%;
@@ -1465,7 +1495,7 @@ html.js [data-reveal] { opacity: 0; transform: translateY(12px); }
   .site-nav .nav-links:first-child { grid-column: 1; }
   .site-nav .nav-links:last-child { grid-column: 3; justify-content: flex-end; padding: 0; }
   .nav-links a {
-    min-height: 0;
+    min-height: 44px;
     font-family: Inter, system-ui, sans-serif;
     font-size: 0.66rem;
     font-weight: 500;
@@ -1547,11 +1577,14 @@ html.js .products-campaign__media {
 html.js .products-campaign__media .envelope-static img { position: static; }
 .env-stage {
   perspective: 1400px;
-  /* Room for the open-card peek (pull 0.16) inside the clip. */
+  /* Closed envelope stays tight. While the flap is open, is-peeking
+     makes room for the LX-06 kicker inside the #38 clip. Full pull
+     uses is-revealed. Seal timing is unchanged. */
   padding-top: 20px;
   transition: padding-top 0.85s cubic-bezier(0.22, 0.8, 0.2, 1);
 }
-.envelope-live.is-revealed .env-stage { padding-top: 214px; }
+.envelope-live.is-peeking .env-stage { padding-top: 78px; }
+.envelope-live.is-revealed .env-stage { padding-top: 232px; }
 .env {
   --pull: 0;
   position: relative;
@@ -1585,14 +1618,15 @@ html.js .products-campaign__media .envelope-static img { position: static; }
   left: 11%;
   right: 11%;
   top: 22px;
-  height: 186px;
+  height: 200px;
+  overflow: visible;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 16px 16px 14px;
+  justify-content: flex-start;
+  gap: 4px;
+  padding: 12px 16px 12px;
   background: #fffdf8;
   color: var(--ink);
   text-align: center;
@@ -1610,7 +1644,9 @@ html.js .products-campaign__media .envelope-static img { position: static; }
   margin: 0;
   font-family: "Cormorant SC", "Cormorant Garamond", Georgia, serif;
   font-size: 0.68rem;
-  letter-spacing: 0.22em;
+  line-height: 1.15;
+  letter-spacing: 0.18em;
+  padding-right: 0.18em;
   color: var(--gold);
 }
 .env-card-script {
@@ -1635,7 +1671,7 @@ html.js .products-campaign__media .envelope-static img { position: static; }
   line-height: 1.45;
   color: var(--body);
 }
-.env-card .cta { min-height: 38px; padding: 0 14px; font-size: 0.66rem; }
+.env-card .cta { min-height: 44px; padding: 0 14px; font-size: 0.66rem; }
 .env-front {
   position: absolute;
   left: 0;
@@ -1761,7 +1797,7 @@ html.js .products-campaign__media .envelope-static img { position: static; }
   margin: 18px 0 0;
 }
 .env-textbtn {
-  min-height: 40px;
+  min-height: 44px;
   padding: 0 14px;
   border: 1px solid rgba(198, 180, 140, 0.95);
   border-radius: 999px;
@@ -1838,7 +1874,7 @@ html.js .products-campaign__media .envelope-static img { position: static; }
    --shelf-velvet, --shelf-gold, and --shelf-miami tint the inner face. */
 .product-card {
   --shelf-plate: none;
-  --shelf-seal: url("spa/products/peek/seal-velvet-luxe-gold.png");
+  --shelf-seal: url("spa/products/peek/seal-velvet-luxe-gold.webp");
   --shelf-seal-zoom: 100%;
   --shelf-house: none;
   --shelf-velvet: #712733;
@@ -1848,11 +1884,11 @@ html.js .products-campaign__media .envelope-static img { position: static; }
   --shelf-lift-drag: 0;
 }
 .product-card--peek-orchid {
-  --shelf-seal: url("spa/products/peek/atelier-orchid-seal.jpg");
+  --shelf-seal: url("spa/products/peek/atelier-orchid-seal.webp");
   --shelf-seal-zoom: 146%;
 }
 .product-card--peek-house {
-  --shelf-house: url("spa/products/peek/miami-house-mark.jpg");
+  --shelf-house: url("spa/products/peek/miami-house-mark.webp");
 }
 .product-card__stage {
   position: relative;
@@ -2035,7 +2071,7 @@ html.js .product-card.is-lifting .product-card__plate {
 
 <main id="main">
   <section class="hero" aria-labelledby="hero-title">
-    <img class="hero-still" src="spa/hero-bw.jpg" alt="Black-and-white editorial portrait, the homepage frame." width="1280" height="720">
+    <img class="hero-still" src="spa/hero-bw.jpg" alt="Black-and-white editorial portrait, the homepage frame." width="1280" height="720" decoding="async" fetchpriority="high">
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="hero-content">
       <div class="hero-mark">
@@ -2053,7 +2089,7 @@ html.js .product-card.is-lifting .product-card__plate {
     <div class="perk-inner">
       <div>
         <h2 id="list-title">The list, held quietly.</h2>
-        <p class="perk-lead">Members only, and not a public shop. A way to stay close while Luxe Miami Aesthetics takes shape — school first, then a license, then a Physician, then the door.</p>
+        <p class="perk-lead">Members only, and not a public shop. A way to stay close while Luxe Miami Aesthetics takes shape — school first, then a license, then a physician, then the door.</p>
         <a class="cta" href="#waitlist">Join the waitlist</a>
       </div>
       <div class="perk-grid">
@@ -2081,34 +2117,34 @@ html.js .product-card.is-lifting .product-card__plate {
     <div class="wide">
       <div class="section-label">
         <h2 id="treatments-title">In the works</h2>
-        <p>Planned for after RN licensure, injector training, and a Physician. Still taking shape.</p>
+        <p>Planned for after RN licensure, injector training, and a physician. Still taking shape.</p>
       </div>
       <!-- Photographs in spa/ were made for Luxe. They are not a reference medspa’s files and not the Coral Gables room. -->
       <div class="treatment-wrap">
         <div class="treatment-row" id="treatment-row">
           <article class="treatment-card">
             <div class="treatment-card__media">
-              <img src="spa/card-neuro.jpg" alt="Black-and-white close-up of an eye, a still for neuromodulator care." width="1024" height="1024">
+              <picture><source srcset="spa/card-neuro.webp" type="image/webp"><img src="spa/card-neuro.jpg" alt="Black-and-white close-up of an eye, a still for neuromodulator care." width="960" height="960" loading="lazy" decoding="async"></picture>
               <div>
                 <span class="index">01</span>
                 <h3>Neuromodulators</h3>
               </div>
             </div>
-            <p>A members-only neuromodulator service. Only under a Physician, after RN licensure and injector training.</p>
+            <p>A members-only neuromodulator service. Only under a physician, after RN licensure and injector training.</p>
           </article>
           <article class="treatment-card">
             <div class="treatment-card__media">
-              <img src="spa/card-filler.jpg" alt="Black-and-white close-up of lips, a still for dermal filler care." width="1024" height="1024">
+              <picture><source srcset="spa/card-filler.webp" type="image/webp"><img src="spa/card-filler.jpg" alt="Black-and-white close-up of lips, a still for dermal filler care." width="960" height="960" loading="lazy" decoding="async"></picture>
               <div>
                 <span class="index">02</span>
                 <h3>Dermal fillers</h3>
               </div>
             </div>
-            <p>A members-only filler service. Only under a Physician, when treatment is allowed to begin.</p>
+            <p>A members-only filler service. Only under a physician, when treatment is allowed to begin.</p>
           </article>
           <article class="treatment-card">
             <div class="treatment-card__media">
-              <img src="spa/card-facial.jpg" alt="Black-and-white close-up of a shoulder in a spa wrap beside treatment equipment." width="1024" height="1024">
+              <picture><source srcset="spa/card-facial.webp" type="image/webp"><img src="spa/card-facial.jpg" alt="Black-and-white close-up of a shoulder in a spa wrap beside treatment equipment." width="960" height="960" loading="lazy" decoding="async"></picture>
               <div>
                 <span class="index">03</span>
                 <h3>Facials</h3>
@@ -2118,7 +2154,7 @@ html.js .product-card.is-lifting .product-card__plate {
           </article>
           <article class="treatment-card">
             <div class="treatment-card__media">
-              <img src="spa/card-consult.jpg" alt="Black-and-white close-up of a neck and collarbone, a still for consultations." width="1024" height="1024">
+              <picture><source srcset="spa/card-consult.webp" type="image/webp"><img src="spa/card-consult.jpg" alt="Black-and-white close-up of a neck and collarbone, a still for consultations." width="960" height="960" loading="lazy" decoding="async"></picture>
               <div>
                 <span class="index">04</span>
                 <h3>Consultations</h3>
@@ -2128,27 +2164,27 @@ html.js .product-card.is-lifting .product-card__plate {
           </article>
           <article class="treatment-card">
             <div class="treatment-card__media">
-              <img src="spa/card-laser.jpg" alt="Black-and-white close-up of smooth skin, a still for laser hair removal." width="1024" height="1024">
+              <picture><source srcset="spa/card-laser.webp" type="image/webp"><img src="spa/card-laser.jpg" alt="Black-and-white close-up of smooth skin, a still for laser hair removal." width="960" height="960" loading="lazy" decoding="async"></picture>
               <div>
                 <span class="index">05</span>
                 <h3>Laser hair removal</h3>
               </div>
             </div>
-            <p>A members-only laser hair removal service. After licensure, with a Physician in place.</p>
+            <p>A members-only laser hair removal service. After licensure, with a physician in place.</p>
           </article>
           <article class="treatment-card">
             <div class="treatment-card__media">
-              <img src="spa/card-sculptra.jpg" alt="Black-and-white close-up of a cheek and jaw, a still for Sculptra." width="1024" height="1024">
+              <picture><source srcset="spa/card-sculptra.webp" type="image/webp"><img src="spa/card-sculptra.jpg" alt="Black-and-white close-up of a cheek and jaw, a still for Sculptra." width="960" height="960" loading="lazy" decoding="async"></picture>
               <div>
                 <span class="index">06</span>
                 <h3>Sculptra</h3>
               </div>
             </div>
-            <p>A members-only Sculptra service. Only under a Physician, once treatment may begin.</p>
+            <p>A members-only Sculptra service. Only under a physician, once treatment may begin.</p>
           </article>
           <article class="treatment-card">
             <div class="treatment-card__media">
-              <img src="spa/card-micro.jpg" alt="Black-and-white macro of skin texture, a still for microneedling." width="1024" height="1024">
+              <picture><source srcset="spa/card-micro.webp" type="image/webp"><img src="spa/card-micro.jpg" alt="Black-and-white macro of skin texture, a still for microneedling." width="960" height="960" loading="lazy" decoding="async"></picture>
               <div>
                 <span class="index">07</span>
                 <h3>Microneedling</h3>
@@ -2158,7 +2194,7 @@ html.js .product-card.is-lifting .product-card__plate {
           </article>
           <article class="treatment-card">
             <div class="treatment-card__media">
-              <img src="spa/card-peel.jpg" alt="Black-and-white close-up of a luminous cheek, a still for chemical peels." width="1024" height="1024">
+              <picture><source srcset="spa/card-peel.webp" type="image/webp"><img src="spa/card-peel.jpg" alt="Black-and-white close-up of a luminous cheek, a still for chemical peels." width="960" height="960" loading="lazy" decoding="async"></picture>
               <div>
                 <span class="index">08</span>
                 <h3>Chemical peels</h3>
@@ -2168,13 +2204,13 @@ html.js .product-card.is-lifting .product-card__plate {
           </article>
           <article class="treatment-card">
             <div class="treatment-card__media">
-              <img src="spa/card-prp.jpg" alt="Black-and-white close-up of a collarbone and shoulder, a still for PRP." width="1024" height="1024">
+              <picture><source srcset="spa/card-prp.webp" type="image/webp"><img src="spa/card-prp.jpg" alt="Black-and-white close-up of a collarbone and shoulder, a still for PRP." width="960" height="960" loading="lazy" decoding="async"></picture>
               <div>
                 <span class="index">09</span>
                 <h3>PRP injections</h3>
               </div>
             </div>
-            <p>A members-only PRP service. Only under a Physician, after licensure.</p>
+            <p>A members-only PRP service. Only under a physician, after licensure.</p>
           </article>
         </div>
         <div class="row-controls" id="treatment-controls">
@@ -2182,7 +2218,7 @@ html.js .product-card.is-lifting .product-card__plate {
           <button type="button" id="treat-next">Next</button>
         </div>
       </div>
-      <p class="note">These services are in the works. This is not a public shop, and nothing here can be booked. Injectables — neuromodulators, fillers, Sculptra, and PRP — begin only after RN licensure and formal injector training, under a Physician. Facials, peels, microneedling, and laser hair removal are members-only, and by appointment once that door exists.</p>
+      <p class="note">These services are in the works. This is not a public shop, and nothing here can be booked. Injectables — neuromodulators, fillers, Sculptra, and PRP — begin only after RN licensure and formal injector training, under a physician. Facials, peels, microneedling, and laser hair removal are members-only, and by appointment once that door exists.</p>
     </div>
   </section>
 
@@ -2205,8 +2241,8 @@ html.js .product-card.is-lifting .product-card__plate {
           <p>Time in the chair without a promotion. The standard comes before any privilege.</p>
         </article>
         <article>
-          <h3>Under a Physician</h3>
-          <p>Injectables only after licensure and a Physician. No price is published today.</p>
+          <h3>Under a physician</h3>
+          <p>Injectables only after licensure and a physician. No price is published today.</p>
         </article>
       </div>
       <p class="atelier-actions"><a class="cta" href="#waitlist">Learn more</a></p>
@@ -2219,9 +2255,34 @@ html.js .product-card.is-lifting .product-card__plate {
       <div class="products-campaign__frame wide">
         <div class="products-campaign__media">
           <div class="envelope-experience" id="gratitude-envelope">
-            <div class="envelope-static">
-              <img src="spa/products/LX-06-gratitude-folded-set-hero.jpg" alt="Gratitude card and seal set: a folded ivory card with gold foil reading with gratitude, a burgundy luxe seal, a gold monogram seal, and an envelope closed with a gold wax seal." width="2600" height="1900">
+            <div class="envelope-static" id="envelope-static">
+              <noscript>
+                <picture>
+                  <source srcset="spa/products/LX-06-gratitude-folded-set-hero.webp" type="image/webp">
+                  <img src="spa/products/LX-06-gratitude-folded-set-hero.jpg" alt="Gratitude card and seal set: a folded ivory card with gold foil reading with gratitude, a burgundy luxe seal, a gold monogram seal, and an envelope closed with a gold wax seal." width="1800" height="1315" decoding="async">
+                </picture>
+              </noscript>
             </div>
+            <script>
+            (function () {
+              if (document.documentElement.classList.contains("js")) return;
+              var plate = document.getElementById("envelope-static");
+              if (!plate || plate.querySelector("img")) return;
+              var picture = document.createElement("picture");
+              var source = document.createElement("source");
+              source.srcset = "spa/products/LX-06-gratitude-folded-set-hero.webp";
+              source.type = "image/webp";
+              var img = document.createElement("img");
+              img.src = "spa/products/LX-06-gratitude-folded-set-hero.jpg";
+              img.alt = "Gratitude card and seal set: a folded ivory card with gold foil reading with gratitude, a burgundy luxe seal, a gold monogram seal, and an envelope closed with a gold wax seal.";
+              img.width = 1800;
+              img.height = 1315;
+              img.decoding = "async";
+              picture.appendChild(source);
+              picture.appendChild(img);
+              plate.appendChild(picture);
+            })();
+            </script>
             <div class="envelope-live" role="group" aria-label="Gratitude envelope">
               <p class="sr-only" id="env-status" aria-live="polite"></p>
               <div class="env-stage">
@@ -2281,7 +2342,7 @@ html.js .product-card.is-lifting .product-card__plate {
                   <p class="product-card__face-scent">Ivory paper, gold foil, and a wax seal.</p>
                 </div>
                 <div class="product-card__media product-card__plate">
-                  <img src="spa/products/LX-06-gratitude-seals.jpg" alt="Gratitude seals: six circular stickers in burgundy and ivory, with luxe script, a monogram, and dashed cut lines." width="1400" height="893" loading="lazy">
+                  <picture><source srcset="spa/products/LX-06-gratitude-seals.webp" type="image/webp"><img src="spa/products/LX-06-gratitude-seals.jpg" alt="Gratitude seals: six circular stickers in burgundy and ivory, with luxe script, a monogram, and dashed cut lines." width="1400" height="893" loading="lazy" decoding="async"></picture>
                 </div>
               </div>
               <div class="product-card__body">
@@ -2301,7 +2362,7 @@ html.js .product-card.is-lifting .product-card__plate {
                   <p class="product-card__face-scent">A room just lit. Warm wax, held close.</p>
                 </div>
                 <div class="product-card__media product-card__plate">
-                  <img src="spa/products/LX-B07-la-veilleuse.jpg" alt="La Veilleuse: a cream candle in a faceted glass vessel with a brushed gold lid and a burgundy velvet band lettered luxe Miami." width="1024" height="1024" loading="lazy">
+                  <picture><source srcset="spa/products/LX-B07-la-veilleuse.webp" type="image/webp"><img src="spa/products/LX-B07-la-veilleuse.jpg" alt="La Veilleuse: a cream candle in a faceted glass vessel with a brushed gold lid and a burgundy velvet band lettered luxe Miami." width="1024" height="1024" loading="lazy" decoding="async"></picture>
                 </div>
               </div>
               <div class="product-card__body">
@@ -2336,7 +2397,7 @@ html.js .product-card.is-lifting .product-card__plate {
                   <p class="product-card__face-scent">Velvet rose, kept in the case.</p>
                 </div>
                 <div class="product-card__media product-card__plate">
-                  <img src="spa/products/LX-B01-signet-rouge.jpg" alt="Signet Rouge: an open red lipstick in a gold case beside a burgundy velvet cylinder with a jeweled orchid, a gold lid lettered LUXE, and a mirror." width="1024" height="1024" loading="lazy">
+                  <picture><source srcset="spa/products/LX-B01-signet-rouge.webp" type="image/webp"><img src="spa/products/LX-B01-signet-rouge.jpg" alt="Signet Rouge: an open red lipstick in a gold case beside a burgundy velvet cylinder with a jeweled orchid, a gold lid lettered LUXE, and a mirror." width="1024" height="1024" loading="lazy" decoding="async"></picture>
                 </div>
               </div>
               <div class="product-card__body">
@@ -2371,7 +2432,7 @@ html.js .product-card.is-lifting .product-card__plate {
                   <p class="product-card__face-scent">Powder-soft. A last cool veil.</p>
                 </div>
                 <div class="product-card__media product-card__plate">
-                  <img src="spa/products/LX-B02-brickell-pearls.jpg" alt="Brickell Pearls: an open compact of pink, ivory, and lilac powder pearls, a beaded lid lettered luxe, and a cream puff with a burgundy band lettered luxe Miami." width="1024" height="1024" loading="lazy">
+                  <picture><source srcset="spa/products/LX-B02-brickell-pearls.webp" type="image/webp"><img src="spa/products/LX-B02-brickell-pearls.jpg" alt="Brickell Pearls: an open compact of pink, ivory, and lilac powder pearls, a beaded lid lettered luxe, and a cream puff with a burgundy band lettered luxe Miami." width="1024" height="1024" loading="lazy" decoding="async"></picture>
                 </div>
               </div>
               <div class="product-card__body">
@@ -2406,7 +2467,7 @@ html.js .product-card.is-lifting .product-card__plate {
                   <p class="product-card__face-scent">Honey and salt air. A sheer gold wash.</p>
                 </div>
                 <div class="product-card__media product-card__plate">
-                  <img src="spa/products/LX-B03-miel-de-mar.jpg" alt="Miel de Mar: a square glass bottle of gold lip oil with a gold cap lettered LUXE, and its wand beside it." width="1024" height="1024" loading="lazy">
+                  <picture><source srcset="spa/products/LX-B03-miel-de-mar.webp" type="image/webp"><img src="spa/products/LX-B03-miel-de-mar.jpg" alt="Miel de Mar: a square glass bottle of gold lip oil with a gold cap lettered LUXE, and its wand beside it." width="1024" height="1024" loading="lazy" decoding="async"></picture>
                 </div>
               </div>
               <div class="product-card__body">
@@ -2441,7 +2502,7 @@ html.js .product-card.is-lifting .product-card__plate {
                   <p class="product-card__face-scent">Shade and shimmer, in four quiet pans.</p>
                 </div>
                 <div class="product-card__media product-card__plate">
-                  <img src="spa/products/LX-B04-quatre-palmes.jpg" alt="Quatre Palmes: an open gold compact of four eyeshadows under a burgundy velvet lid embroidered with palms and lettered LUXE." width="1024" height="1024" loading="lazy">
+                  <picture><source srcset="spa/products/LX-B04-quatre-palmes.webp" type="image/webp"><img src="spa/products/LX-B04-quatre-palmes.jpg" alt="Quatre Palmes: an open gold compact of four eyeshadows under a burgundy velvet lid embroidered with palms and lettered LUXE." width="1024" height="1024" loading="lazy" decoding="async"></picture>
                 </div>
               </div>
               <div class="product-card__body">
@@ -2476,7 +2537,7 @@ html.js .product-card.is-lifting .product-card__plate {
                   <p class="product-card__face-scent">Sun on skin. A warm, golden finish.</p>
                 </div>
                 <div class="product-card__media product-card__plate">
-                  <img src="spa/products/LX-B05-causeway-bronze.jpg" alt="Causeway Bronze: an open cream compact of bronze powder pressed into an orchid, lettered LUXE, on burgundy velvet." width="1024" height="1024" loading="lazy">
+                  <picture><source srcset="spa/products/LX-B05-causeway-bronze.webp" type="image/webp"><img src="spa/products/LX-B05-causeway-bronze.jpg" alt="Causeway Bronze: an open cream compact of bronze powder pressed into an orchid, lettered LUXE, on burgundy velvet." width="1024" height="1024" loading="lazy" decoding="async"></picture>
                 </div>
               </div>
               <div class="product-card__body">
@@ -2511,7 +2572,7 @@ html.js .product-card.is-lifting .product-card__plate {
                   <p class="product-card__face-scent">Velvet night. Amber and orchid, worn close.</p>
                 </div>
                 <div class="product-card__media product-card__plate product-card__media--portrait">
-                  <img src="spa/products/LX-B06-nuit-de-velours-campaign.jpg" alt="Nuit de Velours extrait: an amber glass flacon with a faceted gold stopper on purple velvet, with frost, pale orchids, and a gold ribbon." width="864" height="1152">
+                  <picture><source srcset="spa/products/LX-B06-nuit-de-velours-campaign.webp" type="image/webp"><img src="spa/products/LX-B06-nuit-de-velours-campaign.jpg" alt="Nuit de Velours extrait: an amber glass flacon with a faceted gold stopper on purple velvet, with frost, pale orchids, and a gold ribbon." width="864" height="1152" loading="lazy" decoding="async"></picture>
                 </div>
               </div>
               <div class="product-card__body">
@@ -2546,7 +2607,7 @@ html.js .product-card.is-lifting .product-card__plate {
                   <p class="product-card__face-scent">Water-light silk. A cool, clean veil.</p>
                 </div>
                 <div class="product-card__media product-card__plate">
-                  <img src="spa/products/LX-B08-agua-de-seda.jpg" alt="Agua de Seda: a frosted glass dropper bottle with a burgundy velvet bulb, gold rope collars, and a small gold medallion, with luxe Miami on the glass." width="1024" height="1024" loading="lazy">
+                  <picture><source srcset="spa/products/LX-B08-agua-de-seda.webp" type="image/webp"><img src="spa/products/LX-B08-agua-de-seda.jpg" alt="Agua de Seda: a frosted glass dropper bottle with a burgundy velvet bulb, gold rope collars, and a small gold medallion, with luxe Miami on the glass." width="1024" height="1024" loading="lazy" decoding="async"></picture>
                 </div>
               </div>
               <div class="product-card__body">
@@ -2579,7 +2640,7 @@ html.js .product-card.is-lifting .product-card__plate {
             <button type="button" id="product-next" aria-controls="product-row">Next</button>
           </div>
         </div>
-        <p class="note">Notify me is for a piece still taking shape. It does not reserve it. The Gratitude waitlist is <a href="#lx-06">here</a>.</p>
+        <p class="note">Notify me is for a piece still taking shape. It does not reserve it, and it is not a purchase. The Gratitude waitlist is <a href="#lx-06">here</a> and on the <a href="/lx-06.html">LX-06 page</a>. <a href="/privacy">Privacy</a>.</p>
       </div>
     </div>
   </section>
@@ -2587,19 +2648,20 @@ html.js .product-card.is-lifting .product-card__plate {
   <section class="lx06" id="lx-06" aria-labelledby="lx-06-title">
     <div class="wide lx06-grid">
       <div class="lx06-media">
-        <img class="lx06-seals" src="spa/products/LX-06-gratitude-seals.jpg" alt="Gratitude seals" width="1400" height="893">
+        <picture><source srcset="spa/products/LX-06-gratitude-seals.webp" type="image/webp"><img class="lx06-seals" src="spa/products/LX-06-gratitude-seals.jpg" alt="Gratitude seals" width="1400" height="893" loading="lazy" decoding="async"></picture>
       </div>
       <div class="lx06-intro">
         <h2 id="lx-06-title">LX-06 Gratitude card &amp; seal set — waitlist</h2>
         <p class="lx06-body">A folded ivory card with gold foil, seals, and an envelope.</p>
         <p class="lx06-truth">Join the waitlist for first word. Nothing is for sale today.</p>
-        <p class="lx06-house">Proceeds support opening Spa 1 in Coral Gables — goal $1M by 2028.</p>
-        <p class="lx06-perk">LX-06 buyers receive Spa 1 consult-waitlist priority when Luxe may lawfully offer injectables. Not available today. No date guaranteed. Not a medical offer.</p>
+        <p class="lx06-house">A place on the list, for when the set can be offered. Spa 1 in Coral Gables is still taking shape.</p>
+        <p class="lx06-perk">Waitlist priority for a future Spa 1 injectable consult may follow, when Luxe may lawfully offer injectables. Not available today. No date is guaranteed. Not a medical offer, and not a purchase.</p>
+        <p class="fine" style="margin-top:12px"><a class="text-link" href="/lx-06.html">The LX-06 page</a></p>
       </div>
       <div class="lx06-formcol">
         <details class="lx06-terms" id="lx-06-terms">
           <summary>Terms</summary>
-          <p><strong>Spa 1 consult-waitlist priority, terms.</strong> This is a for-profit product purchase: you receive the LX-06 set. Not a donation. The included code gives <strong>waitlist priority only</strong> for future injectable <strong>consults</strong> at Spa 1 (Coral Gables). <strong>It is not a medical offer, booking, or prepaid service, and has no cash value.</strong> Luxe Miami Aesthetics is not yet open and does not provide medical services today. Our founder's nursing licensure, injector training, and a Physician collaboration are still ahead. <strong>No consult or treatment date is guaranteed</strong>, and Spa 1 may not open. Purchase creates no obligation to provide treatment. Any treatment would follow a clinical evaluation and happen only if clinically appropriate. One code, one person. Full terms: <a class="lx06-terms-jump" href="#lx-06-terms">this notice</a>.</p>
+          <p><strong>Spa 1 consult-waitlist priority.</strong> Joining this waitlist is not a purchase and not a donation. Nothing is for sale today. No payment is taken, and no product is shipped from this page. A place on the list is a request for first word. It may also mean <strong>waitlist priority only</strong> for a future injectable <strong>consult</strong> at Spa 1 in Coral Gables, if that priority is later offered. <strong>It is not a medical offer, a booking, or a prepaid service, and it has no cash value.</strong> Luxe Miami Aesthetics is not yet open and does not provide medical services today. Our founder's nursing licensure, injector training, and a physician collaboration are still ahead. <strong>No consult or treatment date is guaranteed</strong>, and Spa 1 may not open. A note here creates no obligation to provide treatment. Any treatment would follow a clinical evaluation and happen only if clinically appropriate. One place on the list, one person. Full terms: <a href="/terms">Terms</a>. <a href="/privacy">Privacy</a>.</p>
         </details>
         <div id="lx06-form-wrap">
           <form class="inquiry-form" id="lx06-form" action="https://formsubmit.co/info@luxemiamiaesthetics.com" method="POST">
@@ -2617,7 +2679,7 @@ html.js .product-card.is-lifting .product-card__plate {
             <label class="field" for="lx06-instagram">Instagram handle, optional</label>
             <input id="lx06-instagram" name="instagram" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
             <div class="check-row">
-              <input id="lx06-interest" name="interested_lx06" type="checkbox" value="Yes" checked>
+              <input id="lx06-interest" name="interested_lx06" type="checkbox" value="Yes">
               <label for="lx06-interest">Interested in the LX-06 Gratitude set?</label>
             </div>
             <fieldset class="choice-set">
@@ -2635,7 +2697,7 @@ html.js .product-card.is-lifting .product-card__plate {
             </fieldset>
             <div class="check-row">
               <input id="lx06-consent" name="consent" type="checkbox" value="Yes" required>
-              <label for="lx06-consent">I agree to be contacted about Luxe products and the <a class="lx06-terms-jump" href="#lx-06-terms">Spa 1 waitlist terms</a>.</label>
+              <label for="lx06-consent">I agree to be contacted about this waitlist. <a href="/privacy">Privacy</a>.</label>
             </div>
             <div class="check-row">
               <input id="lx06-age" name="age_18" type="checkbox" value="Yes" required>
@@ -2661,7 +2723,7 @@ html.js .product-card.is-lifting .product-card__plate {
         <div class="waitlist-confirm" id="lx06-confirm" hidden>
           <h2 id="lx06-confirm-title" tabindex="-1">You’re on the LX-06 list.</h2>
           <p class="confirm-line">We’ll write with first word.</p>
-          <p class="confirm-meta">Taking Shape · On the Horizon</p>
+          <p class="confirm-meta">Taking shape · On the horizon</p>
         </div>
       </div>
     </div>
@@ -2671,11 +2733,11 @@ html.js .product-card.is-lifting .product-card__plate {
     <h2>Standards</h2>
     <div class="quote-stage">
       <figure class="quote is-active" data-quote>
-        <blockquote>Injectables only under a Physician — and only after an RN license and formal injector training.</blockquote>
+        <blockquote>Injectables only under a physician — and only after an RN license and formal injector training.</blockquote>
         <figcaption>How Luxe will work</figcaption>
       </figure>
       <figure class="quote" data-quote>
-        <blockquote>The sequence is the standard. Nursing school, an RN license, injector training, a Physician, then the door.</blockquote>
+        <blockquote>The sequence is the standard. Nursing school, an RN license, injector training, a physician, then the door.</blockquote>
         <figcaption>The order of the build</figcaption>
       </figure>
       <figure class="quote" data-quote>
@@ -2704,27 +2766,27 @@ html.js .product-card.is-lifting .product-card__plate {
       </div>
       <div class="location-row">
         <article class="location-card">
-          <img src="spa/location-interior.jpg" alt="A burgundy tiled corridor, the kind of interior planned for Coral Gables. It is not open." width="864" height="1152">
+          <picture><source srcset="spa/location-interior.webp" type="image/webp"><img src="spa/location-interior.jpg" alt="A burgundy tiled corridor, the kind of interior planned for Coral Gables. It is not open." width="864" height="1152" loading="lazy" decoding="async"></picture>
           <div class="loc-copy">
             <p class="idx">01</p>
             <h3>Coral Gables</h3>
-            <p class="loc-note">Miami, Palm Beach on the horizon</p>
+            <p class="loc-note">Taking shape</p>
           </div>
         </article>
         <article class="location-card">
           <div class="loc-stage">
-            <img class="loc-map" src="spa/florida-map.jpg" alt="" width="864" height="1152">
+            <picture><source srcset="spa/florida-map.webp" type="image/webp"><img class="loc-map" src="spa/florida-map.jpg" alt="" width="864" height="1152" loading="lazy" decoding="async"></picture>
             <div class="loc-paper">
-              <p class="loc-paper-kicker">Taking Shape</p>
+              <p class="loc-paper-kicker">Taking shape</p>
               <p class="script-name">luxe</p>
               <p class="loc-paper-place">Palm Beach, Florida</p>
-              <img src="spa/palm-beach-line.jpg" alt="Line drawing of a small Palm Beach clinic with an arched door and two palms." width="1024" height="1024">
+              <picture><source srcset="spa/palm-beach-line.webp" type="image/webp"><img src="spa/palm-beach-line.jpg" alt="Line drawing of a small Palm Beach clinic with an arched door and two palms." width="840" height="840" loading="lazy" decoding="async"></picture>
             </div>
           </div>
           <div class="loc-copy">
             <p class="idx">02</p>
             <h3>Palm Beach</h3>
-            <p class="loc-note">Taking Shape</p>
+            <p class="loc-note">Taking shape</p>
           </div>
         </article>
       </div>
@@ -2735,7 +2797,7 @@ html.js .product-card.is-lifting .product-card__plate {
   <section class="section-pad about" id="about" aria-labelledby="about-title">
     <div class="wide about-grid" data-reveal>
       <figure class="founder-photo">
-        <img src="founder.jpg" alt="Mateo Ramirez, founder of Luxe Miami Aesthetics, on a Miami terrace at night." width="1500" height="2000">
+        <picture><source srcset="founder.webp" type="image/webp"><img src="founder.jpg" alt="Mateo Ramirez, founder of Luxe Miami Aesthetics, on a Miami terrace at night." width="1050" height="1400" loading="lazy" decoding="async"></picture>
       </figure>
       <div>
         <p class="kicker">About Luxe</p>
@@ -2744,7 +2806,7 @@ html.js .product-card.is-lifting .product-card__plate {
         <p class="role">In nursing school. Not a physician.</p>
         <h2 id="about-title">Built before it opens.</h2>
         <p>I’m Mateo Ramirez. I’ve spent years building businesses and learning how to do things properly the first time. Luxe Miami Aesthetics is the next one — facial aesthetics, natural results, and care that doesn’t look like work was done.</p>
-        <p>I am in nursing school. I do not treat anyone. Luxe Miami Aesthetics is the practice being built. Coral Gables and Palm Beach are still ahead. Neither door is open. An RN license, formal injector training, and a Physician come first. Treatments are still ahead.</p>
+        <p>I am in nursing school. I do not treat anyone. Luxe Miami Aesthetics is the practice being built. Coral Gables and Palm Beach are still ahead. Neither door is open. An RN license, formal injector training, and a physician come first. Treatments are still ahead.</p>
         <p>Most studios open and write the rules afterward. This one is being built in reverse, so the first day is already at the standard.</p>
         <p><a class="cta" href="#waitlist">Join the waitlist</a></p>
       </div>
@@ -2781,7 +2843,7 @@ html.js .product-card.is-lifting .product-card__plate {
           <p class="when">Then</p>
           <div>
             <h3>Physician collaboration</h3>
-            <p>Injectables only under a Physician — in place before a single treatment is offered.</p>
+            <p>Injectables only under a physician — in place before a single treatment is offered.</p>
           </div>
         </li>
         <li>
@@ -2795,7 +2857,7 @@ html.js .product-card.is-lifting .product-card__plate {
           <p class="when">2028</p>
           <div>
             <h3>Coral Gables</h3>
-            <p>Miami, Palm Beach on the horizon. Not before the license and a Physician.</p>
+            <p>Still ahead. Not before the license and a physician.</p>
           </div>
         </li>
       </ol>
@@ -2805,11 +2867,11 @@ html.js .product-card.is-lifting .product-card__plate {
 
   <section id="own" aria-labelledby="own-title">
     <div class="own-hero">
-      <img src="spa/own-palm-beach.jpg" alt="A cream clinic exterior with a burgundy awning and gold lanterns, a still for the future Palm Beach office." width="1280" height="720">
+      <picture><source srcset="spa/own-palm-beach.webp" type="image/webp"><img src="spa/own-palm-beach.jpg" alt="A cream clinic exterior with a burgundy awning and gold lanterns, a still for the future Palm Beach office." width="1280" height="720" loading="lazy" decoding="async"></picture>
       <div class="own-card">
         <p class="kicker">A future office</p>
         <h2 id="own-title">Own a Luxe</h2>
-        <p>Coral Gables and Palm Beach are future places for Luxe Miami Aesthetics. Miami, Palm Beach on the horizon. Neither is open, and neither is a clinic you can buy.</p>
+        <p>Coral Gables and Palm Beach are future places for Luxe Miami Aesthetics. Neither is open, and neither is a clinic you can buy.</p>
         <a class="cta" href="#franchise-form">Tell us you’re interested</a>
       </div>
     </div>
@@ -2817,11 +2879,11 @@ html.js .product-card.is-lifting .product-card__plate {
       <div class="wide own-panel-grid" data-reveal>
         <div class="own-copy">
           <h2>A note, not an offer.</h2>
-          <p>The Palm Beach office is a future Luxe place, taking shape. It is not a franchise and not for sale. Coral Gables is the other place. Miami, Palm Beach on the horizon. Franchising is a longer aim — other cities, Colombia included — and nothing on this page reserves a city, sets a fee, or starts a franchise relationship.</p>
+          <p>The Palm Beach office is a future Luxe place, taking shape. It is not a franchise and not for sale. Coral Gables is the other place. Franchising is a longer aim — other cities, Colombia included — and nothing on this page reserves a city, sets a fee, or starts a franchise relationship.</p>
           <ul class="own-list">
             <li>Single-unit or multi-unit interest is welcome. Neither is being signed today.</li>
             <li>There is no fee, no territory map, and no franchise disclosure here, because a franchise is not being offered.</li>
-            <li>Any later studio would follow the same rule: a license and a Physician before any treatment. This note cannot grant that.</li>
+            <li>Any later studio would follow the same rule: a license and a physician before any treatment. This note cannot grant that.</li>
           </ul>
         </div>
         <div>
@@ -2843,12 +2905,12 @@ html.js .product-card.is-lifting .product-card__plate {
               <button class="cta" type="submit">Tell us you’re interested</button>
               <p class="form-error" id="franchise-error" role="alert" hidden></p>
             </form>
-            <p class="fine">Or write directly to <a class="text-link" href="mailto:info@luxemiamiaesthetics.com?subject=Interest%20in%20a%20future%20Luxe%20studio">info@luxemiamiaesthetics.com</a>. The guest waitlist is separate, and it does not reserve a studio.</p>
+            <p class="fine">Or write directly to <a class="text-link" href="mailto:info@luxemiamiaesthetics.com?subject=Interest%20in%20a%20future%20Luxe%20studio">info@luxemiamiaesthetics.com</a>. The guest waitlist is separate, and it does not reserve a studio. <a href="/privacy">Privacy</a>.</p>
           </div>
           <div class="franchise-confirm" id="franchise-confirm" hidden>
             <h2 id="franchise-confirm-title" tabindex="-1">We have your note.</h2>
             <p class="confirm-line">This is interest in a future studio, not a franchise offer. Nothing is reserved, and no address is for sale.</p>
-            <p class="confirm-meta">Taking Shape · On the Horizon</p>
+            <p class="confirm-meta">Taking shape · On the horizon</p>
           </div>
         </div>
       </div>
@@ -2861,15 +2923,15 @@ html.js .product-card.is-lifting .product-card__plate {
       <div class="faq-list">
         <details>
           <summary>When do you open?</summary>
-          <p>Luxe Miami Aesthetics is taking shape. Neither door is open. Treatments wait on RN licensure, injector training, and a Physician.</p>
+          <p>Luxe Miami Aesthetics is taking shape. Neither door is open. Treatments wait on RN licensure, injector training, and a physician.</p>
         </details>
         <details>
           <summary>Are you licensed yet?</summary>
-          <p>Not yet. Mateo is in nursing school. He is not a physician. Treatments will be offered only after full licensure and under a Physician.</p>
+          <p>Not yet. Mateo is in nursing school. He is not a physician. Treatments will be offered only after full licensure and under a physician.</p>
         </details>
         <details>
           <summary>Where will you be located?</summary>
-          <p>Coral Gables and Palm Beach. Miami, Palm Beach on the horizon. Neither door is open.</p>
+          <p>Coral Gables and Palm Beach. Neither door is open.</p>
         </details>
         <details>
           <summary>Can I buy a franchise now?</summary>
@@ -2877,7 +2939,7 @@ html.js .product-card.is-lifting .product-card__plate {
         </details>
         <details>
           <summary>What will you serve first?</summary>
-          <p>South Florida: Palm Beach and Coral Gables, both still taking shape. The guest list is for that practice. It is not a reservation, and it is not a franchise.</p>
+          <p>Facials, peels, microneedling, and laser hair removal are the members-only services planned once a door can open. Injectables come only after RN licensure, injector training, and a physician. Nothing is served today. The list is not a reservation.</p>
         </details>
         <details>
           <summary>Can I join The Atelier now?</summary>
@@ -2910,6 +2972,7 @@ html.js .product-card.is-lifting .product-card__plate {
             </div>
             <p class="form-error" id="form-error" role="alert" hidden></p>
           </form>
+          <p class="fine">By joining, you agree to be contacted about the practice. <a href="/privacy">Privacy</a>.</p>
         </div>
         <div class="list-ritual" id="waitlist-ritual" hidden tabindex="-1" role="status" aria-live="polite" aria-atomic="true">
           <p class="list-ritual__status sr-only"></p>
@@ -2928,7 +2991,7 @@ html.js .product-card.is-lifting .product-card__plate {
           <p class="confirm-sub">Miami Aesthetics</p>
           <h2 id="confirm-title" tabindex="-1">You’re on the list.</h2>
           <p class="confirm-line">Natural results. Precise care. Built the right way.</p>
-          <p class="confirm-meta">Taking Shape · On the Horizon</p>
+          <p class="confirm-meta">Taking shape · On the horizon</p>
         </div>
       </div>
     </div>
@@ -2952,9 +3015,9 @@ html.js .product-card.is-lifting .product-card__plate {
       <div>
         <h2>Hours</h2>
         <dl class="hours">
-          <div><dt>Sunday–Saturday</dt><dd>On the horizon</dd></div>
+          <div><dt>The doors</dt><dd>Not open</dd></div>
           <div><dt>Palm Beach</dt><dd>Taking shape</dd></div>
-          <div><dt>Coral Gables</dt><dd>Miami, Palm Beach on the horizon</dd></div>
+          <div><dt>Coral Gables</dt><dd>Taking shape</dd></div>
           <div><dt>The list</dt><dd>Open for notes</dd></div>
         </dl>
       </div>
@@ -2965,16 +3028,19 @@ html.js .product-card.is-lifting .product-card__plate {
           <li><a href="#atelier">The Atelier</a></li>
           <li><a href="#products">Products</a></li>
           <li><a href="#lx-06">Gratitude</a></li>
+          <li><a href="/lx-06.html">LX-06 page</a></li>
           <li><a href="#location">Locations</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#build">Building Luxe Miami Aesthetics</a></li>
           <li><a href="#own">Own a Luxe</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="https://instagram.com/luxemiamiaesthetics" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms</a></li>
         </ul>
       </div>
     </div>
-    <p class="legal">Currently in nursing school. Not yet offering treatments. Injections will be performed only after RN licensure and under a Physician. Treatments are still ahead. The practice is still taking shape. Neither door is open. There is no public shop. The Products shelf is for members. Nothing on it is for sale. The Atelier is not being offered. A franchise is not being offered today. No fee, territory, or disclosure is published here.</p>
+    <p class="legal">Currently in nursing school. Not yet offering treatments. Injections will be performed only after RN licensure and under a physician. Treatments are still ahead. The practice is still taking shape. Neither door is open. There is no public shop. The Products shelf is for members. Nothing on it is for sale. The Atelier is not being offered. A franchise is not being offered today. No fee, territory, or disclosure is published here. <a href="/privacy">Privacy</a>. <a href="/terms">Terms</a>.</p>
   </div>
 </footer>
 <script>
@@ -3031,6 +3097,44 @@ html.js .product-card.is-lifting .product-card__plate {
     return action;
   }
 
+  var FORM_WAIT_MS = 12000;
+
+  function showFormError(error, kind) {
+    if (!error) return;
+    error.hidden = false;
+    error.textContent = "";
+    var lead = kind === "timeout"
+      ? "That took too long. Nothing was sent. Try again, or write to "
+      : "That didn’t go through. Nothing was sent. Try again, or write to ";
+    error.appendChild(document.createTextNode(lead));
+    error.appendChild(mailLink());
+    error.appendChild(document.createTextNode("."));
+  }
+
+  function postForm(action, payload) {
+    var controller = typeof AbortController === "function" ? new AbortController() : null;
+    var timer = window.setTimeout(function () {
+      if (controller) controller.abort();
+    }, FORM_WAIT_MS);
+    return window.fetch(ajaxEndpoint(action), {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify(payload),
+      signal: controller ? controller.signal : undefined
+    }).then(function (response) {
+      window.clearTimeout(timer);
+      if (!response.ok) throw new Error("form");
+      return response.json();
+    }, function (err) {
+      window.clearTimeout(timer);
+      if (err && err.name === "AbortError") throw new Error("timeout");
+      throw new Error("form");
+    });
+  }
+
   function bindForm(form, errorId, storageKey, onOk) {
     if (!form) return;
     try {
@@ -3050,31 +3154,16 @@ html.js .product-card.is-lifting .product-card__plate {
       new FormData(form).forEach(function (value, key) {
         payload[key] = value;
       });
-      window.fetch(ajaxEndpoint(form.action), {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        body: JSON.stringify(payload)
-      }).then(function (response) {
-        if (!response.ok) throw new Error("form");
-        return response.json();
-      }).then(function (data) {
+      postForm(form.action, payload).then(function (data) {
         if (data && (data.success === false || data.success === "false")) throw new Error("form");
         try { sessionStorage.setItem(storageKey, "1"); } catch (err) {}
         onOk(true);
-      }).catch(function () {
+      }).catch(function (err) {
         if (button) {
           button.disabled = false;
-          button.textContent = button.dataset.label || "Try again";
+          button.textContent = "Try again";
         }
-        if (!error) return;
-        error.hidden = false;
-        error.textContent = "";
-        error.appendChild(document.createTextNode("That didn’t go through. Please try again, or write to "));
-        error.appendChild(mailLink());
-        error.appendChild(document.createTextNode("."));
+        showFormError(error, err && err.message === "timeout" ? "timeout" : "form");
       });
     });
   }
@@ -3108,7 +3197,10 @@ html.js .product-card.is-lifting .product-card__plate {
     ritual.setAttribute("aria-live", "polite");
     ritual.classList.remove("is-beat-2", "is-beat-3");
     ritual.classList.add("is-beat-1");
-    if (status) status.textContent = words[0];
+    if (status) status.textContent = "";
+    window.requestAnimationFrame(function () {
+      if (status) status.textContent = words[0];
+    });
     /* The LX-06 form is tall. Hiding it would leave the viewport on the
        next section, so bring the ritual up only when it is off screen. */
     var header = document.querySelector(".site-header");
@@ -3516,12 +3608,15 @@ html.js .product-card.is-lifting .product-card__plate {
       env.classList.toggle("is-open", state === "open" || state === "pulled");
       env.classList.toggle("is-pulled", state === "pulled");
       var live = document.querySelector(".envelope-live");
-      if (live) live.classList.toggle("is-revealed", state === "pulled");
+      if (live) {
+        live.classList.toggle("is-peeking", state === "open");
+        live.classList.toggle("is-revealed", state === "pulled");
+      }
       card.setAttribute("aria-hidden", state === "pulled" ? "false" : "true");
       var cardLink = card.querySelector("a");
       if (cardLink) cardLink.tabIndex = state === "pulled" ? 0 : -1;
       if (!env.classList.contains("is-dragging")) {
-        var pull = state === "pulled" ? 1 : state === "open" ? 0.16 : 0;
+        var pull = state === "pulled" ? 1 : state === "open" ? 0.3 : 0;
         env.style.setProperty("--pull", String(pull));
       }
       seal.setAttribute("aria-expanded", state === "closed" ? "false" : "true");
@@ -3592,7 +3687,7 @@ html.js .product-card.is-lifting .product-card__plate {
       if (event.target.closest("a, button")) return;
       drag = {
         y: event.clientY,
-        pull: state === "pulled" ? 1 : 0.16,
+        pull: state === "pulled" ? 1 : 0.3,
         pid: event.pointerId
       };
       env.classList.add("is-dragging");
