@@ -1,0 +1,21 @@
+{
+  "name": "Luxe Miami Aesthetics",
+  "short_name": "Luxe",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#f7f2ea",
+  "theme_color": "#f7f2ea",
+  "icons": [
+    {
+      "src": "/favicon-32.png",
+      "sizes": "32x19",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
