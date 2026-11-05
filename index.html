@@ -2096,6 +2096,8 @@ html.js .products-campaign__media .envelope-static img { position: static; }
    leave it none until a new master exists. The lift does not need rewiring.
    --shelf-seal is the inner mark. Default is the velvet luxe seal.
    --shelf-house paints a ground behind the face (Nuit's MIAMI medallion).
+   The peek WebP is a flat transparent cutout so shelf burgundy #712733 shows through.
+   The .jpg twin is that same cutout flattened on #712733, because JPEG has no alpha.
    --shelf-velvet, --shelf-gold, and --shelf-miami tint the inner face. */
 .product-card {
   --shelf-plate: none;
@@ -2113,7 +2115,7 @@ html.js .products-campaign__media .envelope-static img { position: static; }
   --shelf-seal-zoom: 146%;
 }
 .product-card--peek-house {
-  --shelf-house: url("spa/products/peek/miami-house-mark.webp");
+  --shelf-house: url("spa/products/peek/miami-house-mark.webp?v=2");
 }
 .product-card__stage {
   position: relative;
